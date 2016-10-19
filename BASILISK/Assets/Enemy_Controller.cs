@@ -7,6 +7,8 @@ public class Enemy_Controller : MonoBehaviour
 
     private float enemySpeed; //How fast the enemy moves
 
+    public float speedMultiplier = 1f; //To allow changing speed in unity editor
+
     public Vector3[] coords; //List of coordinates the enemy will travel to, in order.
     private int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
 
@@ -30,7 +32,7 @@ public class Enemy_Controller : MonoBehaviour
         if (coords.Length > 1)
         {
             //Moves the enemy towards the next point.
-            transform.position = Vector3.MoveTowards(transform.position, coords[nextCoord], enemySpeed);
+            transform.position = Vector3.MoveTowards(transform.position, coords[nextCoord], enemySpeed*speedMultiplier);
             //Possibly temporary, as this does not deal with obstacles.
 
             //If enemy has reached nextCoord, it updates the next coordinate index so the enemy changes direction.
