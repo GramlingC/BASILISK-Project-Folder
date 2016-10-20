@@ -35,6 +35,10 @@ public class Player_Controller : MonoBehaviour {
 
     }
 	void Update () {
-	
+		var mov_V = Input.GetAxis("Vertical") * Time.deltaTime * 2.0f;
+		var mov_H = Input.GetAxis("Horizontal") * Time.deltaTime * 2.0f;
+
+		transform.Translate(0, 0, mov_V, Space.World);
+		transform.Translate(mov_H, 0, 0, Space.World);
 	}
 }
