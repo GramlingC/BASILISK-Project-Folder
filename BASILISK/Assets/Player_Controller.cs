@@ -4,6 +4,7 @@ using System.Collections;
 public class Player_Controller : MonoBehaviour {
     
 	public float speedMultiplier;
+    public int numberOfRays = 10;
 
 	int floorMask;
     Rigidbody player_rb;
@@ -48,7 +49,7 @@ public class Player_Controller : MonoBehaviour {
     {
         //To simplify later code
         float angle_radius = player_light.spotAngle / 2;
-        float angle_increment = player_light.spotAngle / 10;
+        float angle_increment = player_light.spotAngle / numberOfRays;
         float light_length = player_light.range;
         //Iterate through angles
         for (float degree = -angle_radius; degree < angle_radius; degree += angle_increment)
