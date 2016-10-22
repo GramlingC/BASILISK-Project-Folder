@@ -63,6 +63,10 @@ public class Enemy_Controller : MonoBehaviour
             RouteEnemy(coords[0]);
         }
 	}
+    public void LightTrigger()
+    {
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter(Collider other)
     {
