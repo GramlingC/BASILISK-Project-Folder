@@ -35,7 +35,7 @@ public class Enemy_Controller : MonoBehaviour
 
         //Preliminary work for detecting player.  Need to figure out if the enemy can see from all directions or just the front.
         //RaycastHit hit;
-        /*if(Physics.Raycast(transform.position, Vector3.forward, out hit, 1.5F))
+        /*if(Physics.Raycast(transform.position, Vector3.forward (or vector in player direction?), out hit, 1.5F))
         {
             //Debug.Log(hit.transform.gameObject.tag);
             if (hit.transform.gameObject.tag == "Player")
@@ -48,7 +48,7 @@ public class Enemy_Controller : MonoBehaviour
             RouteEnemy(coords[nextCoord]);
 
             //If enemy has reached nextCoord, it updates the next coordinate index so the enemy changes direction.
-            if (transform.position == coords[nextCoord])
+            if (transform.position == new Vector3(coords[nextCoord].x, yOffset, coords[nextCoord].z))
             {
                 if (nextCoord < coords.Length - 1)
                     nextCoord++;
@@ -59,16 +59,19 @@ public class Enemy_Controller : MonoBehaviour
         else if (coords.Length == 1 && transform.position != coords[0])
         {
             //If the enemy's "patrol" is sitting in one place, they are returned to that place after chasing.
-            //If there are no coordinates, the enemy won't return to their original position.
+            //If there are no coordinates in coords, the enemy won't return to their original position.
             RouteEnemy(coords[0]);
         }
 	}
+
     public void LightTrigger()
     {
         Destroy(gameObject);
+        //Or whatever the enemy does when hit by light.  (Run away?  Continue advancing, but slower?  Lose health?)
+        //May try subclassing or something to differentiate between things like normal monsters and the Basilisk.
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag=="Light_Hitbox")
         {
@@ -76,7 +79,7 @@ public class Enemy_Controller : MonoBehaviour
             Destroy(gameObject);
         }
         //Having the Light_Hitbox check for enemies may be better for the framerate.
-    }
+    }*/
 
     //Routes the enemy to point dest.
     private void RouteEnemy(Vector3 dest)
