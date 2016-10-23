@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: ac9f78e55a3569e4bb22486732c8472e
+timeCreated: 1477179028
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BasiliskMCSprites_0
+    21300002: BasiliskMCSprites_1
+    21300004: BasiliskMCSprites_2
+    21300006: BasiliskMCSprites_3
+    21300008: BasiliskMCSprites_4
+    21300010: BasiliskMCSprites_5
+    21300012: BasiliskMCSprites_6
+    21300014: BasiliskMCSprites_7
+    21300016: BasiliskMCSprites_8
+    21300018: BasiliskMCSprites_9
+    21300020: BasiliskMCSprites_10
+    21300022: BasiliskMCSprites_11
+    21300024: BasiliskMCSprites_12
+    21300026: BasiliskMCSprites_13
+    21300028: BasiliskMCSprites_14
+    21300030: BasiliskMCSprites_15
+    21300032: BasiliskMCSprites_16
+    21300034: BasiliskMCSprites_17
+    21300036: BasiliskMCSprites_18
+    21300038: BasiliskMCSprites_19
+    21300040: BasiliskMCSprites_20
+    21300042: BasiliskMCSprites_21
+    21300044: BasiliskMCSprites_22
+    21300046: BasiliskMCSprites_23
+    21300048: BasiliskMCSprites_24
+    21300050: BasiliskMCSprites_25
+    21300052: BasiliskMCSprites_26
+    21300054: BasiliskMCSprites_27
+    21300056: BasiliskMCSprites_28
+    21300058: BasiliskMCSprites_29
+    21300060: BasiliskMCSprites_30
+    21300062: BasiliskMCSprites_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BasiliskMCSprites_0
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 1945
+        width: 182
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_1
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 1951
+        width: 163
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_2
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1965
+        width: 164
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1948
+        width: 164
+        height: 444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_4
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 1948
+        width: 166
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_5
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 1958
+        width: 164
+        height: 431
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_6
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1959
+        width: 164
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_7
+      rect:
+        serializedVersion: 2
+        x: 1847
+        y: 1951
+        width: 164
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_8
+      rect:
+        serializedVersion: 2
+        x: 2027
+        y: 2287
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_9
+      rect:
+        serializedVersion: 2
+        x: 2039
+        y: 2290
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_10
+      rect:
+        serializedVersion: 2
+        x: 2056
+        y: 1944
+        width: 164
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_11
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1955
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_12
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1952
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_13
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 1377
+        width: 152
+        height: 406
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_14
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 1773
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_15
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1478
+        width: 152
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_16
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1483
+        width: 152
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_17
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 1479
+        width: 151
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_18
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 1486
+        width: 152
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_19
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1496
+        width: 152
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_20
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1487
+        width: 152
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_21
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 1493
+        width: 151
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_22
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 1334
+        width: 153
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_23
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 1577
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_24
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 1583
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_25
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1573
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_26
+      rect:
+        serializedVersion: 2
+        x: 2074
+        y: 1580
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_27
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1563
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_28
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1570
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_29
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 1566
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_30
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1560
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BasiliskMCSprites_31
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 1549
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
