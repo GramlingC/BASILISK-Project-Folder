@@ -121,7 +121,7 @@ Transform:
   - {fileID: 1836841814}
   - {fileID: 1331640348}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &293438741
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: 0, y: 0, z: -2}
@@ -359,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: -1, y: 0.2, z: 1}
@@ -423,6 +425,7 @@ GameObject:
   - 124: {fileID: 534544866}
   - 92: {fileID: 534544865}
   - 81: {fileID: 534544864}
+  - 114: {fileID: 534544869}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -498,6 +501,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &534544869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534544863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b89517d7fc4734580ce4f5e87c0d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2039056445}
 --- !u!1 &543895418
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: -2, y: 0.2, z: 0}
@@ -1147,6 +1163,7 @@ GameObject:
   - 4: {fileID: 1706695797}
   - 212: {fileID: 1706695799}
   - 95: {fileID: 1706695798}
+  - 114: {fileID: 1706695800}
   m_Layer: 0
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -1160,13 +1177,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1706695796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 2039056445}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!95 &1706695798
 Animator:
   serializedVersion: 3
@@ -1217,6 +1234,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1706695800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706695796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0a4cff4d11dc4eb4d052cc86c2c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2039056445}
 --- !u!1 &1836841813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: 1, y: 0.2, z: 0}
@@ -1322,6 +1352,7 @@ GameObject:
   - 4: {fileID: 2039056445}
   - 114: {fileID: 2039056444}
   - 54: {fileID: 2039056443}
+  - 65: {fileID: 2039056446}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1371,6 +1402,17 @@ Transform:
   - {fileID: 715195626}
   - {fileID: 1429464271}
   - {fileID: 1672424761}
-  - {fileID: 1706695797}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!65 &2039056446
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2039056442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
