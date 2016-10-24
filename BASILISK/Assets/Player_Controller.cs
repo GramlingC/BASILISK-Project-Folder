@@ -68,7 +68,7 @@ public class Player_Controller : MonoBehaviour {
                     //Get Enemy_Controller script from enemy- will have to change to accept different types of enemies
                     Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
                     //Will have to define LightTrigger() method on all enemy scripts with their corresponding response
-                    enemy.LightTrigger();
+                    //enemy.LightTrigger();
                 }
             }
         }

@@ -29,19 +29,22 @@ public class Enemy_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // rb = GetComponent<Rigidbody>();
-        //  Vector3 Enemy = new Vector3(-0.5f, 0, 0);
-        //    rb.AddForce(Enemy);
+         //rb = GetComponent<Rigidbody>();
+          //Vector3 Enemy = new Vector3(-0.5f, 0, 0);
+            //rb.AddForce(Enemy);
 
-        //Preliminary work for detecting player.  Need to figure out if the enemy can see from all directions or just the front.
-        //RaycastHit hit;
-        /*if(Physics.Raycast(transform.position, Vector3.forward, out hit, 1.5F))
+        //Used code from player's light script to make a script that detects the player within the enemy's fov
+        RaycastHit hit;
+        for (float degree = -30f; degree < 30f; degree += 6f)
         {
-            //Debug.Log(hit.transform.gameObject.tag);
-            if (hit.transform.gameObject.tag == "Player")
-                RouteEnemy(hit.transform.position);
-        }*/
-
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.5F))
+            {
+                Debug.DrawRay(transform.position, transform.forward, Color.green);
+                Debug.Log(hit.transform.gameObject.tag);
+                if (hit.transform.gameObject.tag == "Player")
+                    RouteEnemy(hit.transform.position);
+            }
+        }
         if (coords.Length > 1)
         {
             //Moves the enemy towards the next point.
