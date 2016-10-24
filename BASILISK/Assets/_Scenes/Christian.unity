@@ -41,7 +41,7 @@ RenderSettings:
   m_IndirectSpecularColor: {r: 0.3735644, g: 0.38112032, b: 0.35887682, a: 1}
 =======
   m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
->>>>>>> origin/master:BASILISK/Assets/_Scenes/Christian.unity
+>>>>>>> 2cda77362258eaffb71256d928d826a98997342c:BASILISK/Assets/_Scenes/Christian.unity
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
