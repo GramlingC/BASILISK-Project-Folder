@@ -10,8 +10,12 @@ public class Player_Controller : MonoBehaviour {
     Rigidbody player_rb;
     Light player_light;
     public float lightDiminishPerSecond = 5f;
+    public float lightCrankedPerSecond = 5f;
+    public string crankKeyPress = "c";
+    public bool crankingLight;
     // Use this for initialization
     void Start () {
+        crankingLight = false;
 	}
     void Awake () {
 		speedMultiplier = 2f;
@@ -24,15 +28,15 @@ public class Player_Controller : MonoBehaviour {
         Turning();
     }
     void Update() {
-        var mov_V = Input.GetAxis("Vertical") * getSpeed();
-        var mov_H = Input.GetAxis("Horizontal") * getSpeed();
-
-        transform.Translate(0, 0, mov_V, Space.World);
-        transform.Translate(mov_H, 0, 0, Space.World);
 
         //Call CastLight
         CastLight();
+        crankLight();
         gradualLightDiminish();
+
+        //Player Movement
+        if (!crankingLight) 
+            playerMovement();
     }
 
     //Functions dealing wih diminishing light. Public functions are so that other scripts can call it also
@@ -41,18 +45,44 @@ public class Player_Controller : MonoBehaviour {
     }
 
     private void gradualLightDiminish() {
+        activatateOrDisableLight();
+        if (crankingLight)
+            return;
         if (player_light.spotAngle > 1)
             diminishLight(lightDiminishPerSecond * Time.deltaTime);
-        disableLight();
     }
 
     //Light's spotAngle can't go lower than 1, so if it is 1, then turn the light object off
-    private void disableLight() {
+    private void activatateOrDisableLight() {
         player_light.gameObject.SetActive(player_light.spotAngle <= 1 ? false : true);
     }
 
     public bool lightIsDisabled() {
         return !player_light.gameObject.activeSelf;
+    }
+
+    public void increaseLight(float angleAmount) {
+        player_light.spotAngle += angleAmount;
+    }
+
+    private void crankLight() {
+        if (Input.GetKey(crankKeyPress)) {
+            print("cranking");
+            crankingLight = true;
+            increaseLight(lightCrankedPerSecond * Time.deltaTime);
+        }
+        else {
+            crankingLight = false;
+        }
+    }
+
+    //For controlling player movement
+    private void playerMovement() {
+        var mov_V = Input.GetAxis("Vertical") * getSpeed();
+        var mov_H = Input.GetAxis("Horizontal") * getSpeed();
+
+        transform.Translate(0, 0, mov_V, Space.World);
+        transform.Translate(mov_H, 0, 0, Space.World);
     }
 	
 	// Update is called once per frame
