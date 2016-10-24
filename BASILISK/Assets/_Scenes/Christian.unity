@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -34,14 +34,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD:BASILISK/Assets/Christian.unity
-  m_IndirectSpecularColor: {r: 0.3735644, g: 0.38112032, b: 0.35887682, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
->>>>>>> 2cda77362258eaffb71256d928d826a98997342c:BASILISK/Assets/_Scenes/Christian.unity
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -153,7 +149,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.6, z: 0.1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.1}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 534987472}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!212 &206121903
@@ -340,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: 0, y: 0, z: -2}
@@ -437,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: -1, y: 0.2, z: 1}
@@ -489,6 +488,69 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374492508}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &534987471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 534987472}
+  - 108: {fileID: 534987473}
+  m_Layer: 0
+  m_Name: Point light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &534987472
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534987471}
+  m_LocalRotation: {x: -0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 3.3333333, y: 5, z: 8.333333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 206121902}
+  m_RootOrder: 0
+--- !u!108 &534987473
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534987471}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 3
+  m_Range: 2
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &543895418
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +647,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 543895418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b89517d7fc4734580ce4f5e87c0d56, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b042a7a3fe5124dad906e6d2d7b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2039056445}
@@ -855,6 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: -2, y: 0.2, z: 0}
@@ -1029,6 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
   speedMultiplier: 1
   coords:
   - {x: 1, y: 0.2, z: 0}
@@ -1127,6 +1191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 0
   numberOfRays: 10
+  lightDiminishPerSecond: 5
+  lightCrankedPerSecond: 5
+  crankKeyPress: c
+  crankingLight: 1
 --- !u!4 &2039056445
 Transform:
   m_ObjectHideFlags: 0
