@@ -9,6 +9,7 @@ public class Player_Controller : MonoBehaviour {
 	int floorMask;
     Rigidbody player_rb;
     Light player_light;
+    public Animator player_sprite;
     public float lightDiminishPerSecond = 5f;
     public float lightCrankedPerSecond = 5f;
     public string crankKeyPress = "c";
@@ -37,6 +38,8 @@ public class Player_Controller : MonoBehaviour {
         //Player Movement
         if (!crankingLight) 
             playerMovement();
+        else
+            player_sprite.SetBool("isWalking", false);
     }
 
     //Functions dealing wih diminishing light. Public functions are so that other scripts can call it also
@@ -78,11 +81,34 @@ public class Player_Controller : MonoBehaviour {
 
     //For controlling player movement
     private void playerMovement() {
+        
         var mov_V = Input.GetAxis("Vertical") * getSpeed();
         var mov_H = Input.GetAxis("Horizontal") * getSpeed();
 
-        transform.Translate(0, 0, mov_V, Space.World);
-        transform.Translate(mov_H, 0, 0, Space.World);
+        if (mov_V == 0 & mov_H == 0)
+            player_sprite.SetBool("isWalking", false);
+
+        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H))
+        {
+            player_sprite.SetBool("isWalking", true);
+            transform.Translate(0, 0, mov_V, Space.World);
+
+            if (mov_V > 0)
+                player_sprite.SetInteger("Direction", 3);
+            else
+                player_sprite.SetInteger("Direction", 1);
+        }
+        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
+        {
+            player_sprite.SetBool("isWalking", true);
+            transform.Translate(mov_H, 0, 0, Space.World);
+            
+            if (mov_H > 0)
+                player_sprite.SetInteger("Direction", 2);
+            else
+                player_sprite.SetInteger("Direction", 4);
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -133,7 +159,7 @@ public class Player_Controller : MonoBehaviour {
                     //Get Enemy_Controller script from enemy- will have to change to accept different types of enemies
                     Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
                     //Will have to define LightTrigger() method on all enemy scripts with their corresponding response
-                    //enemy.LightTrigger();
+                    enemy.LightTrigger();
                 }
             }
         }
