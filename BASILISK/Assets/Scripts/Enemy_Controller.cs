@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy_Controller : MonoBehaviour
+public abstract class Enemy_Controller : MonoBehaviour
 {
     //private Rigidbody rb;
 
@@ -16,7 +16,7 @@ public class Enemy_Controller : MonoBehaviour
     private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
     private bool canSeePlayer;  //Becomes true when the enemy has spotted the player, and stays true until the player escapes
-    //Used to trigger chasing behavior.
+    //Used to trigger chasing/game-ending behavior.
     private GameObject player;  //Used to keep tabs on the players' position.
 
     // Use this for initialization
@@ -70,22 +70,8 @@ public class Enemy_Controller : MonoBehaviour
         }
 	}
 
-    public void LightTrigger()
-    {
-        Destroy(gameObject);
-        //Or whatever the enemy does when hit by light.  (Run away?  Continue advancing, but slower?  Lose health?)
-        //May try subclassing or something to differentiate between things like normal monsters and the Basilisk.
-    }
-
-    /*void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag=="Light_Hitbox")
-        {
-            Debug.Log("Enemy hit by light");
-            Destroy(gameObject);
-        }
-        //Having the Light_Hitbox check for enemies may be better for the framerate.
-    }*/
+    //Different enemy types will have their own reactions to the light.
+    public abstract void LightTrigger();
 
     //Routes the enemy to point dest.
     private void RouteEnemy(Vector3 dest)
