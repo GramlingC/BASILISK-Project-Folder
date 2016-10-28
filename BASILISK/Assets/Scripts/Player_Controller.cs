@@ -12,11 +12,22 @@ public class Player_Controller : MonoBehaviour {
     public Animator player_sprite;
     public float lightDiminishPerSecond = 5f;
     public float lightCrankedPerSecond = 5f;
+    public float secondsUntilStartDiminish = 3f;
+    public float maxLightAngle = 60;
+    private float currentSecondsBeforeDiminish;
+
+    private float crankTime;
+    private float secondsCrankUntilDiminish;
     public string crankKeyPress = "c";
     public bool crankingLight;
+
+    
     // Use this for initialization
     void Start () {
         crankingLight = false;
+        currentSecondsBeforeDiminish = secondsUntilStartDiminish;
+        crankTime = 0;
+        secondsCrankUntilDiminish = 1;
 	}
     void Awake () {
 		speedMultiplier = 2f;
@@ -48,6 +59,10 @@ public class Player_Controller : MonoBehaviour {
     }
 
     private void gradualLightDiminish() {
+        currentSecondsBeforeDiminish -= Time.deltaTime;
+        if (currentSecondsBeforeDiminish > 0)
+            return;
+
         activatateOrDisableLight();
         if (crankingLight)
             return;
@@ -65,17 +80,22 @@ public class Player_Controller : MonoBehaviour {
     }
 
     public void increaseLight(float angleAmount) {
-        player_light.spotAngle += angleAmount;
+        if (player_light.spotAngle < maxLightAngle)
+            player_light.spotAngle += angleAmount;
     }
 
     private void crankLight() {
         if (Input.GetKey(crankKeyPress)) {
-            print("cranking");
             crankingLight = true;
+            crankTime = Mathf.Clamp(crankTime += Time.deltaTime, 0, secondsCrankUntilDiminish);
             increaseLight(lightCrankedPerSecond * Time.deltaTime);
         }
         else {
             crankingLight = false;
+        }
+        if (Input.GetKeyUp(crankKeyPress)) {
+            currentSecondsBeforeDiminish = crankTime * secondsCrankUntilDiminish;
+            crankTime = 0;
         }
     }
 
