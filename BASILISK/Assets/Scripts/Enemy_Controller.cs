@@ -15,7 +15,9 @@ public abstract class Enemy_Controller : MonoBehaviour
     private int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
     private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
-    private bool canSeePlayer;  //Becomes true when the enemy has spotted the player, and stays true until the player escapes
+    private Vector3 direction; //Direction the player object faces/ currently not working
+
+    public bool canSeePlayer;  //Becomes true when the enemy has spotted the player, and stays true until the player escapes / public for Guard_Controller access
     //Used to trigger chasing/game-ending behavior.
     private GameObject player;  //Used to keep tabs on the players' position.
 
@@ -23,6 +25,8 @@ public abstract class Enemy_Controller : MonoBehaviour
     void Start ()
     {
         yOffset = transform.position.y;
+
+        direction = transform.forward;
 
         //Sets nextCoord to element 1 of coords (0 is the starting position)
         if (coords.Length > 1)
@@ -78,11 +82,37 @@ public abstract class Enemy_Controller : MonoBehaviour
     {
         //Will likely be changed to allow routing around obstacles.
         //When sprites are added, code to change the faced direction may go here.
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+        
+        direction = new Vector3(dest.x, yOffset, dest.z);
+
+        //transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
         
         
+        //Define horizontal and vertical distances
+        float dist_H = Mathf.Abs(transform.position.x - dest.x);
+        float dist_V = Mathf.Abs(transform.position.z - dest.z);
+
+        ///*
+        //Move horizontally or vertically towards player
+        if (dist_H > dist_V)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
+        }
+        else if (dist_V> dist_H)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+        }
+        //*/
+
+        //Code to make enemy face movement
+        Vector3 enemy_ray = direction - transform.position;
+        enemy_ray.y = 0.0f;
+        Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
+        GetComponent<Rigidbody>().MoveRotation(newRotation);
+
         //Currently is raycasting in the "forward" direction.  (The enemies will only spot the player if the player walks behind them)
         //The player will need some sort of collider for this to work.
+        /*
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.forward, out hit, 0.5F))
         {
@@ -95,7 +125,7 @@ public abstract class Enemy_Controller : MonoBehaviour
             canSeePlayer = false;
 
         //Other options for seeing player:
-        /*
+        
         //Uses player position as destination
         RaycastHit hit;
         if (Physics.Raycast(transform.position, player.transform.position, out hit, 0.5F))
@@ -110,14 +140,15 @@ public abstract class Enemy_Controller : MonoBehaviour
         */
 
         //The enemies will "give up" and return to their patrol once canSeePlayer becomes false.
-        /*
+        
         //Used code from player's light script to make a script that detects the player within the enemy's fov
         RaycastHit hit;
         //So that the enemy will follow if ray hits at least once, but won't if none hit
         bool sawPlayer = false;
         for (float degree = -30f; degree < 30f; degree += 6f)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.5F))
+            Vector3 LookDirection = Quaternion.AngleAxis(degree, Vector3.up) * transform.forward;
+            if (Physics.Raycast(transform.position, LookDirection, out hit, 2F))
             {
                 Debug.DrawRay(transform.position, transform.forward, Color.green);
                 Debug.Log(hit.transform.gameObject.tag);
@@ -129,7 +160,7 @@ public abstract class Enemy_Controller : MonoBehaviour
             else
                 canSeePlayer = false;
         }
-        */
+        
 
     }
 }
