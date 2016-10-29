@@ -13,14 +13,14 @@ public abstract class Enemy_Controller : MonoBehaviour
 
     public Vector3[] coords; //List of coordinates the enemy will travel to, in order.
     protected int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
-    private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
+    protected float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
     private Vector3 direction; //Direction the player object faces/ currently not working
 
     protected bool isLightTriggered;  //True if enemy is reacting to light.
     public bool canSeePlayer;  //Becomes true when the enemy has spotted the player, and stays true until the player escapes / public for Guard_Controller access
     //Used to trigger chasing/game-ending behavior.
-    private GameObject player;  //Used to keep tabs on the players' position.
+    protected GameObject player;  //Used to keep tabs on the players' position.
 
     // Use this for initialization
     void Start ()
@@ -50,6 +50,7 @@ public abstract class Enemy_Controller : MonoBehaviour
         if(isLightTriggered)
         {
             LightReaction();
+            isLightTriggered = false;
         }
         else if (canSeePlayer && !enemyChaseOff)
         {
