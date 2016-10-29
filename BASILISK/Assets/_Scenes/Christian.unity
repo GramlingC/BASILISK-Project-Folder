@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.21
+  m_AmbientIntensity: 0.01
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -34,10 +34,11 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 0.01
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0.000034607277, g: 0.00003378167, b: 0.0000294126,
+    a: 0.01}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &92318194
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +307,7 @@ GameObject:
   - 33: {fileID: 371040588}
   - 65: {fileID: 371040587}
   - 23: {fileID: 371040586}
-  - 114: {fileID: 371040585}
+  - 114: {fileID: 371040584}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -327,7 +328,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92318194}
   m_RootOrder: 0
---- !u!114 &371040585
+--- !u!114 &371040584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -335,9 +336,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 371040582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
+  m_Script: {fileID: 11500000, guid: db524bee27bfd5948a147a836aeb754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
+  speedMultiplier: 1
+  coords: []
 --- !u!23 &371040586
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -397,7 +401,7 @@ GameObject:
   - 33: {fileID: 374492514}
   - 65: {fileID: 374492513}
   - 23: {fileID: 374492512}
-  - 114: {fileID: 374492511}
+  - 114: {fileID: 374492510}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -418,7 +422,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92318194}
   m_RootOrder: 3
---- !u!114 &374492511
+--- !u!114 &374492510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -426,9 +430,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 374492508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4918230bcd59b2149a91907b3aff41de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
+  speedMultiplier: 1
+  coords: []
 --- !u!23 &374492512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -662,10 +669,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 715195625}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -0, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 2039056445}
   m_RootOrder: 0
@@ -967,7 +974,7 @@ GameObject:
   - 33: {fileID: 1331640353}
   - 65: {fileID: 1331640352}
   - 23: {fileID: 1331640351}
-  - 114: {fileID: 1331640350}
+  - 114: {fileID: 1331640349}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -988,7 +995,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92318194}
   m_RootOrder: 2
---- !u!114 &1331640350
+--- !u!114 &1331640349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -996,9 +1003,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331640347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
+  m_Script: {fileID: 11500000, guid: db524bee27bfd5948a147a836aeb754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
+  speedMultiplier: 1
+  coords: []
 --- !u!23 &1331640351
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1137,7 +1147,7 @@ GameObject:
   - 33: {fileID: 1836841819}
   - 65: {fileID: 1836841818}
   - 23: {fileID: 1836841817}
-  - 114: {fileID: 1836841816}
+  - 114: {fileID: 1836841815}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -1158,7 +1168,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 92318194}
   m_RootOrder: 1
---- !u!114 &1836841816
+--- !u!114 &1836841815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1166,9 +1176,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1836841813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e63eca7256f42478e26a55342a73bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4918230bcd59b2149a91907b3aff41de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChaseOff: 0
+  speedMultiplier: 1
+  coords: []
 --- !u!23 &1836841817
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1266,6 +1279,8 @@ MonoBehaviour:
   player_sprite: {fileID: 206121905}
   lightDiminishPerSecond: 5
   lightCrankedPerSecond: 5
+  secondsUntilStartDiminish: 3
+  maxLightAngle: 60
   crankKeyPress: c
   crankingLight: 1
 --- !u!4 &2039056445
