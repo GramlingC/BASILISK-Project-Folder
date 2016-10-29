@@ -1243,7 +1243,7 @@ MonoBehaviour:
   speedMultiplier: 2
   coords:
   - {x: 1, y: 0.2, z: 0}
-  - {x: 2, y: 0, z: -1}
+  - {x: 2, y: 0, z: 0}
   canSeePlayer: 0
 --- !u!54 &1836841816
 Rigidbody:

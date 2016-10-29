@@ -85,14 +85,14 @@ public abstract class Enemy_Controller : MonoBehaviour
         
         direction = new Vector3(dest.x, yOffset, dest.z);
 
-        //transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
+        transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
         
         
         //Define horizontal and vertical distances
         float dist_H = Mathf.Abs(transform.position.x - dest.x);
         float dist_V = Mathf.Abs(transform.position.z - dest.z);
 
-        ///*
+        /*
         //Move horizontally or vertically towards player
         if (dist_H > dist_V)
         {
@@ -102,7 +102,7 @@ public abstract class Enemy_Controller : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
         }
-        //*/
+        */
 
         //Code to make enemy face movement
         Vector3 enemy_ray = direction - transform.position;

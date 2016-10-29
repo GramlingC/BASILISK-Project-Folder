@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8352ac604b0f85348b55ea4381bcd4dc
-timeCreated: 1477706584
+timeCreated: 1477707209
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1298,8 +1298,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4054
-        y: 749
-        width: 190
+        y: 750
+        width: 199
         height: 537
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1310,9 +1310,9 @@ TextureImporter:
       name: MC_Walking_W7
       rect:
         serializedVersion: 2
-        x: 4246
+        x: 4262
         y: 750
-        width: 177
+        width: 186
         height: 543
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
