@@ -12,11 +12,12 @@ public abstract class Enemy_Controller : MonoBehaviour
     public float speedMultiplier = 1f; //To allow changing speed in unity editor
 
     public Vector3[] coords; //List of coordinates the enemy will travel to, in order.
-    private int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
+    protected int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
     private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
     private Vector3 direction; //Direction the player object faces/ currently not working
 
+    protected bool isLightTriggered;  //True if enemy is reacting to light.
     public bool canSeePlayer;  //Becomes true when the enemy has spotted the player, and stays true until the player escapes / public for Guard_Controller access
     //Used to trigger chasing/game-ending behavior.
     private GameObject player;  //Used to keep tabs on the players' position.
@@ -36,16 +37,21 @@ public abstract class Enemy_Controller : MonoBehaviour
         //May add some code to ensure that the enemy's orignal position is included in the set of coordiantes.
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        isLightTriggered = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // rb = GetComponent<Rigidbody>();
-        //  Vector3 Enemy = new Vector3(-0.5f, 0, 0);
-        //    rb.AddForce(Enemy);
-
-        if (canSeePlayer && !enemyChaseOff)
+        //Bats will run away from light even if they can see player.
+        //There may be a better way of doing this...  Guards may react to light no differently than if they saw the player.
+        //Subclassing may not be the way to go...
+        if(isLightTriggered)
+        {
+            LightReaction();
+        }
+        else if (canSeePlayer && !enemyChaseOff)
         {
             RouteEnemy(player.transform.position);
         }
@@ -77,8 +83,10 @@ public abstract class Enemy_Controller : MonoBehaviour
     //Different enemy types will have their own reactions to the light.
     public abstract void LightTrigger();
 
+    public abstract void LightReaction();
+
     //Routes the enemy to point dest.
-    private void RouteEnemy(Vector3 dest)
+    protected void RouteEnemy(Vector3 dest)
     {
         //Will likely be changed to allow routing around obstacles.
         //When sprites are added, code to change the faced direction may go here.

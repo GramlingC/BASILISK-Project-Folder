@@ -11,4 +11,9 @@ public class Guard_Controller : Enemy_Controller
 
         canSeePlayer = true; //Guard can see player once shined with light
     }
+
+    public override void LightReaction()
+    {
+        //Pretty much the same as if the player walked into their line of sight.  I think.
+    }
 }
