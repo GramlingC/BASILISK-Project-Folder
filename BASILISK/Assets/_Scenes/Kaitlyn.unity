@@ -154,6 +154,21 @@ Prefab:
       propertyPath: coords.Array.data[1].z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 54000010495102482, guid: c59d9f9f2a865c14c94e63ddc793d3f4,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000010495102482, guid: c59d9f9f2a865c14c94e63ddc793d3f4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000010495102482, guid: c59d9f9f2a865c14c94e63ddc793d3f4,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c59d9f9f2a865c14c94e63ddc793d3f4, type: 2}
   m_IsPrefabParent: 0
@@ -888,6 +903,21 @@ Prefab:
       propertyPath: coords.Array.data[1].z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 54000011945486630, guid: 4ad857c2875ec9742bbe9a7508e30eb1,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000011945486630, guid: 4ad857c2875ec9742bbe9a7508e30eb1,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000011945486630, guid: 4ad857c2875ec9742bbe9a7508e30eb1,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ad857c2875ec9742bbe9a7508e30eb1, type: 2}
   m_IsPrefabParent: 0
@@ -1118,6 +1148,8 @@ MonoBehaviour:
   player_sprite: {fileID: 1706695798}
   lightDiminishPerSecond: 5
   lightCrankedPerSecond: 5
+  secondsUntilStartDiminish: 3
+  maxLightAngle: 60
   crankKeyPress: c
   crankingLight: 0
 --- !u!4 &2039056445
