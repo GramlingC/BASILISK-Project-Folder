@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.01
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000034607277, g: 0.00003378167, b: 0.0000294126,
+  m_IndirectSpecularColor: {r: 0.00004256874, g: 0.000046561374, b: 0.00005291822,
     a: 0.01}
 --- !u!157 &3
 LightmapSettings:
@@ -308,6 +308,7 @@ GameObject:
   - 65: {fileID: 371040587}
   - 23: {fileID: 371040586}
   - 114: {fileID: 371040584}
+  - 54: {fileID: 371040585}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -340,8 +341,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyChaseOff: 0
-  speedMultiplier: 1
-  coords: []
+  speedMultiplier: 2
+  coords:
+  - {x: 0, y: 0.2, z: -2}
+  - {x: 1, y: 0.2, z: -2}
+  canSeePlayer: 0
+--- !u!54 &371040585
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371040582}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &371040586
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -402,6 +421,7 @@ GameObject:
   - 65: {fileID: 374492513}
   - 23: {fileID: 374492512}
   - 114: {fileID: 374492510}
+  - 54: {fileID: 374492511}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -416,7 +436,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374492508}
   m_LocalRotation: {x: 0, y: 0.99993765, z: -0, w: -0.011169814}
-  m_LocalPosition: {x: -1.01, y: 0.19999999, z: 0.78000003}
+  m_LocalPosition: {x: -1, y: 0.19999999, z: 1}
   m_LocalScale: {x: 0.40000024, y: 0.4, z: 0.40000024}
   m_LocalEulerAnglesHint: {x: 0, y: 181.28, z: 0}
   m_Children: []
@@ -434,8 +454,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyChaseOff: 0
-  speedMultiplier: 1
-  coords: []
+  speedMultiplier: 2
+  coords:
+  - {x: -1, y: 0.2, z: 1}
+  - {x: 1, y: 0, z: 1}
+  canSeePlayer: 0
+--- !u!54 &374492511
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 374492508}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &374492512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -726,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1185425038
 Light:
   m_ObjectHideFlags: 0
@@ -737,7 +775,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -975,6 +1013,7 @@ GameObject:
   - 65: {fileID: 1331640352}
   - 23: {fileID: 1331640351}
   - 114: {fileID: 1331640349}
+  - 54: {fileID: 1331640350}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -1007,8 +1046,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyChaseOff: 0
-  speedMultiplier: 1
-  coords: []
+  speedMultiplier: 2
+  coords:
+  - {x: -2, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
+  - {x: -3, y: 0, z: -2}
+  - {x: -2, y: 0, z: -2}
+  canSeePlayer: 0
+--- !u!54 &1331640350
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331640347}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &1331640351
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1148,6 +1207,7 @@ GameObject:
   - 65: {fileID: 1836841818}
   - 23: {fileID: 1836841817}
   - 114: {fileID: 1836841815}
+  - 54: {fileID: 1836841816}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -1180,8 +1240,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyChaseOff: 0
-  speedMultiplier: 1
-  coords: []
+  speedMultiplier: 2
+  coords:
+  - {x: 1, y: 0.2, z: 0}
+  - {x: 2, y: 0, z: -1}
+  canSeePlayer: 0
+--- !u!54 &1836841816
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1836841813}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &1836841817
 MeshRenderer:
   m_ObjectHideFlags: 0
