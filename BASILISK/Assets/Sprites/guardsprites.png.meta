@@ -1,0 +1,1487 @@
+fileFormatVersion: 2
+guid: da476ac660d1da847be065fe6d2a880d
+timeCreated: 1477967715
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: G_Idle_S
+    21300002: G_Walking_S1
+    21300004: G_Walking_S2
+    21300006: G_Walking_S3
+    21300008: G_Walking_S4
+    21300010: G_Walking_S5
+    21300012: G_Walking_S6
+    21300014: G_Walking_S7
+    21300016: guardsprites_8
+    21300018: guardsprites_9
+    21300020: G_Walking_S8
+    21300022: guardsprites_11
+    21300024: guardsprites_12
+    21300026: guardsprites_13
+    21300028: guardsprites_14
+    21300030: guardsprites_15
+    21300032: guardsprites_16
+    21300034: guardsprites_17
+    21300036: guardsprites_18
+    21300038: guardsprites_19
+    21300040: guardsprites_20
+    21300042: guardsprites_21
+    21300044: guardsprites_22
+    21300046: guardsprites_23
+    21300048: guardsprites_24
+    21300050: guardsprites_25
+    21300052: G_Idle_N
+    21300054: G_Walking_N1
+    21300056: G_Walking_N2
+    21300058: G_Walking_N3
+    21300060: G_Walking_N4
+    21300062: G_Walking_N5
+    21300064: G_Walking_N6
+    21300066: guardsprites_33
+    21300068: G_Walking_N7
+    21300070: G_Walking_N8
+    21300072: guardsprites_36
+    21300074: guardsprites_37
+    21300076: guardsprites_38
+    21300078: guardsprites_39
+    21300080: guardsprites_40
+    21300082: guardsprites_41
+    21300084: guardsprites_42
+    21300086: guardsprites_43
+    21300088: guardsprites_44
+    21300090: guardsprites_45
+    21300092: guardsprites_46
+    21300094: guardsprites_47
+    21300096: guardsprites_48
+    21300098: guardsprites_49
+    21300100: guardsprites_50
+    21300102: guardsprites_51
+    21300104: guardsprites_52
+    21300106: G_Walking_W8
+    21300108: G_Walking_W3
+    21300110: guardsprites_55
+    21300112: guardsprites_56
+    21300114: guardsprites_57
+    21300116: G_Walking_W6
+    21300118: G_Walking_W7
+    21300120: guardsprites_60
+    21300122: guardsprites_61
+    21300124: G_Walking_W4
+    21300126: G_Walking_W5
+    21300128: G_Idle_W
+    21300130: guardsprites_65
+    21300132: G_Walking_W1
+    21300134: G_Walking_W2
+    21300136: guardsprites_68
+    21300138: guardsprites_69
+    21300140: guardsprites_70
+    21300142: guardsprites_71
+    21300144: guardsprites_72
+    21300146: guardsprites_73
+    21300148: guardsprites_74
+    21300150: guardsprites_75
+    21300152: guardsprites_76
+    21300154: guardsprites_77
+    21300156: G_Walking_E3
+    21300158: guardsprites_79
+    21300160: guardsprites_80
+    21300162: G_Walking_E8
+    21300164: G_Walking_E7
+    21300166: guardsprites_83
+    21300168: G_Walking_E6
+    21300170: guardsprites_85
+    21300172: guardsprites_86
+    21300174: guardsprites_87
+    21300176: G_Walking_E5
+    21300178: G_Walking_E4
+    21300180: G_Walking_E2
+    21300182: guardsprites_91
+    21300184: guardsprites_92
+    21300186: G_Walking_E1
+    21300188: G_Idle_E
+    21300190: guardsprites_95
+    21300192: guardsprites_96
+    21300194: guardsprites_97
+    21300196: guardsprites_98
+    21300198: guardsprites_99
+    21300200: guardsprites_100
+    21300202: guardsprites_101
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: G_Idle_S
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 1893
+        width: 176
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S1
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1903
+        width: 170
+        height: 538
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S2
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1921
+        width: 172
+        height: 514
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S3
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1910
+        width: 173
+        height: 535
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S4
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1906
+        width: 173
+        height: 534
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S5
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1913
+        width: 175
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S6
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 1923
+        width: 177
+        height: 519
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S7
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 1904
+        width: 171
+        height: 541
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_8
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 2291
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_9
+      rect:
+        serializedVersion: 2
+        x: 2162
+        y: 2296
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_S8
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 1895
+        width: 176
+        height: 543
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2155
+        width: 51
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_12
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2177
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_13
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 2177
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_14
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 2180
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_15
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 2180
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_16
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 2180
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_17
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 2177
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_18
+      rect:
+        serializedVersion: 2
+        x: 2109
+        y: 2180
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_19
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 2184
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_20
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2172
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_21
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 2179
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_22
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1865
+        width: 18
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_23
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 1908
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_24
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1898
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_25
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 1921
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Idle_N
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1223
+        width: 171
+        height: 519
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N1
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1197
+        width: 171
+        height: 549
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N2
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 1190
+        width: 174
+        height: 564
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N3
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1198
+        width: 171
+        height: 563
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N4
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 1195
+        width: 177
+        height: 559
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N5
+      rect:
+        serializedVersion: 2
+        x: 1483
+        y: 1200
+        width: 171
+        height: 568
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N6
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 1240
+        width: 171
+        height: 537
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_33
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 1657
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N7
+      rect:
+        serializedVersion: 2
+        x: 1953
+        y: 1224
+        width: 176
+        height: 544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_N8
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 1242
+        width: 171
+        height: 532
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_36
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 1652
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_37
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 1643
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_38
+      rect:
+        serializedVersion: 2
+        x: 2130
+        y: 1648
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_39
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1620
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_40
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1503
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_41
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 1509
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_42
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 1508
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_43
+      rect:
+        serializedVersion: 2
+        x: 2351
+        y: 1506
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_44
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 1501
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_45
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 1489
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_46
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 1486
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_47
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1493
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_48
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1474
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_49
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1200
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_50
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 1156
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_51
+      rect:
+        serializedVersion: 2
+        x: 2262
+        y: 1164
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_52
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 1154
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W8
+      rect:
+        serializedVersion: 2
+        x: 2196
+        y: 653
+        width: 183
+        height: 510
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W3
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 642
+        width: 163
+        height: 503
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_55
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 1144
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_56
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1140
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_57
+      rect:
+        serializedVersion: 2
+        x: 1483
+        y: 1142
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W6
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 654
+        width: 208
+        height: 498
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W7
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 651
+        width: 187
+        height: 503
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_60
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1132
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_61
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1137
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W4
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 645
+        width: 183
+        height: 494
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W5
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 658
+        width: 207
+        height: 485
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Idle_W
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 618
+        width: 163
+        height: 515
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_65
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1130
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W1
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 598
+        width: 235
+        height: 536
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_W2
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 635
+        width: 199
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_68
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 722
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_69
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 712
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_70
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 697
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_71
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 690
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_72
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 679
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_73
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 639
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_74
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 635
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_75
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 634
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_76
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 637
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_77
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 597
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E3
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 48
+        width: 203
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_79
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 573
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_80
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 563
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E8
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 60
+        width: 190
+        height: 510
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E7
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 56
+        width: 192
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_83
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 558
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E6
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 65
+        width: 212
+        height: 493
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_85
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 551
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_86
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 549
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_87
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 551
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E5
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 59
+        width: 208
+        height: 489
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E4
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 55
+        width: 183
+        height: 493
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E2
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 39
+        width: 200
+        height: 508
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_91
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 544
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_92
+      rect:
+        serializedVersion: 2
+        x: 2033
+        y: 541
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Walking_E1
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 5
+        width: 237
+        height: 533
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G_Idle_E
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 24
+        width: 166
+        height: 514
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_95
+      rect:
+        serializedVersion: 2
+        x: 2292
+        y: 536
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_96
+      rect:
+        serializedVersion: 2
+        x: 2196
+        y: 119
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_97
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 53
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_98
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 48
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_99
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 42
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_100
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 43
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: guardsprites_101
+      rect:
+        serializedVersion: 2
+        x: 2172
+        y: 4
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

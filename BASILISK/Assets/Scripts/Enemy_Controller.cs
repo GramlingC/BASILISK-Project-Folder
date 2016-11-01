@@ -11,6 +11,8 @@ public abstract class Enemy_Controller : MonoBehaviour
 
     public float speedMultiplier = 1f; //To allow changing speed in unity editor
 
+	public Animator enemy_sprite;
+
     public Vector3[] coords; //List of coordinates the enemy will travel to, in order.
     protected int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
     protected float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
@@ -94,30 +96,53 @@ public abstract class Enemy_Controller : MonoBehaviour
         
         direction = new Vector3(dest.x, yOffset, dest.z);
 
-        transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
+		if (direction != transform.position)
+			enemy_sprite.SetBool("isWalking", true);
+
+        //transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
         
         
         //Define horizontal and vertical distances
-        float dist_H = Mathf.Abs(transform.position.x - dest.x);
-        float dist_V = Mathf.Abs(transform.position.z - dest.z);
+        float dist_H = transform.position.x - dest.x;
+        float dist_V = transform.position.z - dest.z;
 
-        /*
+        
         //Move horizontally or vertically towards player
-        if (dist_H > dist_V)
+		if (Mathf.Abs (dist_H) > Mathf.Abs (dist_V)) 
+		{
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
+			if (dist_H > 0)
+				enemy_sprite.SetInteger("Direction", 4);
+			else
+				enemy_sprite.SetInteger("Direction", 2);
+		} 
+		else if (dist_V == dist_H) 
+		{
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+			if (dist_H > 0)
+				enemy_sprite.SetInteger("Direction", 4);
+			else
+				enemy_sprite.SetInteger("Direction", 2);
+		}
+		else
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+			if (dist_V > 0)
+				enemy_sprite.SetInteger("Direction", 1);
+			else
+				enemy_sprite.SetInteger("Direction", 3);
         }
-        else if (dist_V> dist_H)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
-        }
-        */
+        
 
         //Code to make enemy face movement
         Vector3 enemy_ray = direction - transform.position;
         enemy_ray.y = 0.0f;
-        Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
-        GetComponent<Rigidbody>().MoveRotation(newRotation);
+		if (enemy_ray != new Vector3(0,0,0))
+		{
+        	Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
+        	GetComponent<Rigidbody>().MoveRotation(newRotation);
+		}
+
 
         //Currently is raycasting in the "forward" direction.  (The enemies will only spot the player if the player walks behind them)
         //The player will need some sort of collider for this to work.
