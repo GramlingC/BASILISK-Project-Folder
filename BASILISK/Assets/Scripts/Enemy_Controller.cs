@@ -11,8 +11,6 @@ public abstract class Enemy_Controller : MonoBehaviour
 
     public float speedMultiplier = 1f; //To allow changing speed in unity editor
 
-	public Animator enemy_sprite;
-
     public Vector3[] coords; //List of coordinates the enemy will travel to, in order.
     protected int nextCoord;  //Index in coords of the next coordinate the enemy will pass through.
     protected float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
@@ -54,29 +52,32 @@ public abstract class Enemy_Controller : MonoBehaviour
             LightReaction();
             isLightTriggered = false;
         }
-		else if (canSeePlayer && !enemyChaseOff)
+        else if (canSeePlayer && !enemyChaseOff)
         {
             RouteEnemy(player.transform.position);
         }
         else
         {
-			if (coords.Length > 1) {
-				//Moves the enemy towards the next point.
-				RouteEnemy (coords [nextCoord]);
+            if (coords.Length > 1)
+            {
+                //Moves the enemy towards the next point.
+                RouteEnemy(coords[nextCoord]);
 
-				//If enemy has reached nextCoord, it updates the next coordinate index so the enemy changes direction.
-				if (transform.position == new Vector3 (coords [nextCoord].x, yOffset, coords [nextCoord].z)) {
-					if (nextCoord < coords.Length - 1)
-						nextCoord++;
-					else
-						nextCoord = 0;
-				}
-			} else if (coords.Length == 1 && transform.position != coords [0]) {
-				//If the enemy's "patrol" is sitting in one place, they are returned to that place after chasing.
-				//If there are no coordinates in coords, the enemy won't return to their original position.
-				RouteEnemy (coords [0]);
-			} else
-				RouteEnemy (transform.position);
+                //If enemy has reached nextCoord, it updates the next coordinate index so the enemy changes direction.
+                if (transform.position == new Vector3(coords[nextCoord].x, yOffset, coords[nextCoord].z))
+                {
+                    if (nextCoord < coords.Length - 1)
+                        nextCoord++;
+                    else
+                        nextCoord = 0;
+                }
+            }
+            else if (coords.Length == 1 && transform.position != coords[0])
+            {
+                //If the enemy's "patrol" is sitting in one place, they are returned to that place after chasing.
+                //If there are no coordinates in coords, the enemy won't return to their original position.
+                RouteEnemy(coords[0]);
+            }
         }
 	}
 
@@ -87,71 +88,89 @@ public abstract class Enemy_Controller : MonoBehaviour
 
     //Routes the enemy to point dest.
     protected void RouteEnemy(Vector3 dest)
-	{
-		//Will likely be changed to allow routing around obstacles.
-		//When sprites are added, code to change the faced direction may go here.
+    {
+        //Will likely be changed to allow routing around obstacles.
+        //When sprites are added, code to change the faced direction may go here.
         
-		direction = new Vector3 (dest.x, yOffset, dest.z);
+        direction = new Vector3(dest.x, yOffset, dest.z);
 
-		if (direction != transform.position) {
-			enemy_sprite.SetBool ("isWalking", true);
+        transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
+        
+        
+        //Define horizontal and vertical distances
+        float dist_H = Mathf.Abs(transform.position.x - dest.x);
+        float dist_V = Mathf.Abs(transform.position.z - dest.z);
 
-			//Define horizontal and vertical distances
-			float dist_H = transform.position.x - dest.x;
-			float dist_V = transform.position.z - dest.z;
+        /*
+        //Move horizontally or vertically towards player
+        if (dist_H > dist_V)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
+        }
+        else if (dist_V> dist_H)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+        }
+        */
 
+        //Code to make enemy face movement
+        Vector3 enemy_ray = direction - transform.position;
+        enemy_ray.y = 0.0f;
+        Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
+        GetComponent<Rigidbody>().MoveRotation(newRotation);
 
-			//Move horizontally or vertically towards player
-			if (Mathf.Abs (dist_H) > Mathf.Abs (dist_V)) {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
-				if (dist_H > 0)
-					enemy_sprite.SetInteger ("Direction", 4);
-				else
-					enemy_sprite.SetInteger ("Direction", 2);
-			} else if (dist_V == dist_H) {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
-				if (dist_H > 0)
-					enemy_sprite.SetInteger ("Direction", 4);
-				else
-					enemy_sprite.SetInteger ("Direction", 2);
-			} else {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
-				if (dist_V > 0)
-					enemy_sprite.SetInteger ("Direction", 1);
-				else
-					enemy_sprite.SetInteger ("Direction", 3);
-			}
-		}
-		else
-			enemy_sprite.SetBool ("isWalking", false);
+        //Currently is raycasting in the "forward" direction.  (The enemies will only spot the player if the player walks behind them)
+        //The player will need some sort of collider for this to work.
+        /*
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, 0.5F))
+        {
+            if (hit.transform.gameObject.tag == "Player")
+                canSeePlayer = true;
+            else
+                canSeePlayer = false;
+        }
+        else
+            canSeePlayer = false;
 
-		//transform.position = Vector3.MoveTowards(transform.position, direction, enemySpeed * speedMultiplier);
+        //Other options for seeing player:
+        
+        //Uses player position as destination
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, player.transform.position, out hit, 0.5F))
+        {
+            if (hit.transform.gameObject.tag == "Player")
+                canSeePlayer = true;
+            else
+                canSeePlayer = false;
+        }
+        else
+            canSeePlayer = false;
+        */
+
+        //The enemies will "give up" and return to their patrol once canSeePlayer becomes false.
+        
+        //Used code from player's light script to make a script that detects the player within the enemy's fov
+        RaycastHit hit;
+        //So that the enemy will follow if ray hits at least once, but won't if none hit
+        bool sawPlayer = false;
+        for (float degree = -30f; degree < 30f; degree += 6f)
+        {
+            Vector3 LookDirection = Quaternion.AngleAxis(degree, Vector3.up) * transform.forward;
+            if (Physics.Raycast(transform.position, LookDirection, out hit, 2F))
+            {
+                //Debug.DrawRay(transform.position, transform.forward, Color.green);
+              //  Debug.Log(hit.transform.gameObject.tag);
+                if (hit.transform.gameObject.tag == "Player")
+                    sawPlayer = true;
+            }
+            if (sawPlayer == true)
+                canSeePlayer = true;
+            else
+                canSeePlayer = false;
+        }
         
 
-		//Code to make enemy face movement
-		Vector3 enemy_ray = direction - transform.position;
-		enemy_ray.y = 0.0f;
-		if (enemy_ray != new Vector3 (0, 0, 0)) {
-			Quaternion newRotation = Quaternion.LookRotation (enemy_ray);
-			GetComponent<Rigidbody> ().MoveRotation (newRotation);
-		}
-
-		RaycastHit hit;
-		//So that the enemy will follow if ray hits at least once, but won't if none hit
-		bool sawPlayer = false;
-		for (float degree = -45f; degree < 45f; degree += 5f) 
-		{
-			Vector3 LookDirection = Quaternion.AngleAxis (degree, Vector3.up) * transform.forward;
-			if (Physics.Raycast (transform.position, LookDirection, out hit, 3F)) {
-				Debug.Log (hit.transform.gameObject.tag);
-				if (hit.transform.gameObject.tag == "Player")
-					sawPlayer = true;
-			}
-		}
-		if (sawPlayer == true)
-			canSeePlayer = true;
-		else
-			canSeePlayer = false;
     }
 }
 

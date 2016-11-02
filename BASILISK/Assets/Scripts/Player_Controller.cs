@@ -175,7 +175,7 @@ public class Player_Controller : MonoBehaviour {
                 //Trigger enemy behavior
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
-                    Debug.Log(hit.transform.gameObject.tag);
+                //    Debug.Log(hit.transform.gameObject.tag);
                     //Get Enemy_Controller script from enemy- will have to change to accept different types of enemies
                     Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
                     //Will have to define LightTrigger() method on all enemy scripts with their corresponding response
