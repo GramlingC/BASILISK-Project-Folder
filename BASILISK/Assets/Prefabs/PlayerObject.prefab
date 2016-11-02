@@ -87,6 +87,7 @@ GameObject:
   - 212: {fileID: 212000010151249316}
   - 95: {fileID: 95000013490174200}
   - 114: {fileID: 114000012339188560}
+  - 114: {fileID: 114000011185126938}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013479062722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1225165, y: -0.44490236, z: 0.5611696}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -141,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013692575114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1225165, y: 0.44490236, z: -3.607}
+  m_LocalPosition: {x: 0, y: 0.69, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014166375068}
   m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: -1.1225165, y: 0.25509763, z: 0.66116965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.1}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
   m_Children:
@@ -283,6 +284,18 @@ MonoBehaviour:
   maxLightAngle: 60
   crankKeyPress: c
   crankingLight: 1
+--- !u!114 &114000011185126938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014166375068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9657368df816645bafde6c0654feb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4000011323286966}
 --- !u!114 &114000012339188560
 MonoBehaviour:
   m_ObjectHideFlags: 1
