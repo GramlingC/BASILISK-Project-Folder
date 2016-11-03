@@ -22,17 +22,13 @@ public class Journal_Tracking
 public class Journal : MonoBehaviour {
 
     public GameObject player;
-    public int Journal_Count;
     private bool journal_held;
     private bool near_journal;
     private bool shouldcontinue;
-    public GameObject[] journal_sprite_list;
-    public GameObject[] journal_object_list;
+    public GameObject sprite;
   
     // Use this for initialization
 	void Start () {
-       
-        Journal_Count = 0;
         journal_held = false;
         near_journal = false;
         shouldcontinue = true;
@@ -42,36 +38,39 @@ public class Journal : MonoBehaviour {
     //***Try making an array of GameObjects that contains all of the journals and using a 
     //for loop instead of having to reference each journal individually***
     // Update is called once per frame
-    void Update() {
-            foreach (GameObject journal in journal_object_list)
-            {
-                var distance_to_journal = Vector3.Distance(player.transform.position, journal.transform.position);
-                if (distance_to_journal < 2)
-                {
-                    near_journal = true;
-                }
-                if (distance_to_journal > 2)
-                {
-                    near_journal = false;
-                }
-
-                if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
-                {
-                    journal.transform.Translate(0, -10, 0);
-                    Journal_Count = Journal_Count + 1;
-                    journal_held = true;
-                }
-
-            }
-      
-        foreach (GameObject sprite in journal_sprite_list)
+    void Update()
+    {
+        var distance_to_journal = Vector3.Distance(player.transform.position, transform.position);
+        if (distance_to_journal < 2)
         {
+            near_journal = true;
+            Debug.Log(near_journal);
+        }
+        else
+        {
+            near_journal = false;
+            Debug.Log(near_journal);
+        }
+
+        if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
+        {
+            transform.Translate(0, -10, 0);
+            Journals journals_script = GameObject.Find("Journals").GetComponent<Journals>();
+            journals_script.Journal_count = journals_script.Journal_count + 1;
+            journal_held = true;
+            Debug.Log(journal_held);
+        }
+
+    
+      
+       
             //Closes the journal when the f key is pressed
             
             if (journal_held == true & Input.GetKeyDown(KeyCode.F))
             {
                 sprite.transform.Translate(0, 0, -.5f);
                 journal_held = false;
+                Debug.Log(journal_held);
                 Debug.Log(sprite.transform.position);
             }
             //Player picks up and opens journal
@@ -81,7 +80,7 @@ public class Journal : MonoBehaviour {
                 Debug.Log(sprite.transform.position);
             }
             
-        }
+        
         
     }
     void OnGUI() {
@@ -97,8 +96,6 @@ public class Journal : MonoBehaviour {
             GUI.Label(new Rect(200, 200, 100, 200), "Press F to close the journal");
         }
         
-            //Displays Journal count
-            GUI.Label(new Rect(200, 10, 100, 200), "Journal Count:");
-        GUI.Label(new Rect(286, 11f, 100, 200), Journal_Count.ToString());
+         
     }
 }

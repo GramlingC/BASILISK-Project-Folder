@@ -737,6 +737,10 @@ Prefab:
       propertyPath: coords.Array.data[3].x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
   m_IsPrefabParent: 0
@@ -898,6 +902,7 @@ GameObject:
   - 33: {fileID: 1199098492}
   - 65: {fileID: 1199098491}
   - 23: {fileID: 1199098490}
+  - 114: {fileID: 1199098494}
   m_Layer: 0
   m_Name: J1
   m_TagString: Journal
@@ -966,6 +971,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1980987095}
   m_RootOrder: 0
+--- !u!114 &1199098494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199098489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2039056442}
+  sprite: {fileID: 2037951844}
 --- !u!1 &1217704942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1136,7 @@ GameObject:
   - 33: {fileID: 1276589930}
   - 65: {fileID: 1276589929}
   - 23: {fileID: 1276589928}
+  - 114: {fileID: 1276589932}
   m_Layer: 0
   m_Name: J2
   m_TagString: Journal
@@ -1186,6 +1205,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1980987095}
   m_RootOrder: 1
+--- !u!114 &1276589932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1276589927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2039056442}
+  sprite: {fileID: 617941267}
 --- !u!1 &1331640347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1605,7 @@ GameObject:
   - 33: {fileID: 1958029488}
   - 65: {fileID: 1958029487}
   - 23: {fileID: 1958029486}
+  - 114: {fileID: 1958029490}
   m_Layer: 0
   m_Name: J3
   m_TagString: Journal
@@ -1641,6 +1674,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1980987095}
   m_RootOrder: 2
+--- !u!114 &1958029490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1958029485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2039056442}
+  sprite: {fileID: 1235057451}
 --- !u!1 &1980987093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,19 +1711,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1980987093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
+  m_Script: {fileID: 11500000, guid: 13478e456e7bb1441bc22402c50c36f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2039056442}
-  Journal_Count: 0
-  journal_sprite_list:
-  - {fileID: 2037951844}
-  - {fileID: 617941267}
-  - {fileID: 1235057451}
-  journal_object_list:
-  - {fileID: 1199098489}
-  - {fileID: 1276589927}
-  - {fileID: 1958029485}
+  Journal_count: 0
 --- !u!4 &1980987095
 Transform:
   m_ObjectHideFlags: 0
@@ -1762,6 +1799,10 @@ Prefab:
         type: 2}
       propertyPath: coords.Array.data[2].z
       value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011110645252, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
