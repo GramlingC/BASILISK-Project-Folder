@@ -16,6 +16,7 @@ public class Journals : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //loops through all journals, and if they are picked up it adds that journal to a list of journals collected.
 	foreach(GameObject journal in journals)
         {
             var distance_to_journal = Vector3.Distance(player.transform.position,journal.transform.position);
