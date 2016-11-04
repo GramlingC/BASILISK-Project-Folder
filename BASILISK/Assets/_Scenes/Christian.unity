@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.022586845, g: 0.022891743, b: 0.02027604, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.030257309, g: 0.035781384, b: 0.045429982, a: 0.2}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
@@ -826,7 +826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1185425038
 Light:
   m_ObjectHideFlags: 0
@@ -837,7 +837,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1715,6 +1715,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Journal_count: 0
+  journals:
+  - {fileID: 1199098489}
+  - {fileID: 1276589927}
+  - {fileID: 1958029485}
+  player: {fileID: 2039056442}
+  collected: []
 --- !u!4 &1980987095
 Transform:
   m_ObjectHideFlags: 0
@@ -1802,7 +1808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011110645252, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}

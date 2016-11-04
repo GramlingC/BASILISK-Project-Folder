@@ -3,22 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 //Will be used to allow player to access previously collected journals when completed
-/*
-public class Journal_Tracking
-{
-    public int JournalNumber;
-    public bool JournalCollected;
-    public string JournalContents;
-
-    public Journal_Tracking(int journalnumber,bool journalcollected,string journalcontents)
-    {
-        JournalNumber = journalnumber;
-        JournalCollected = journalcollected;
-        JournalContents = journalcontents;
-    }
-}
-
-    */
+  
 public class Journal : MonoBehaviour {
 
     public GameObject player;
@@ -44,12 +29,10 @@ public class Journal : MonoBehaviour {
         if (distance_to_journal < 2)
         {
             near_journal = true;
-            Debug.Log(near_journal);
         }
         else
         {
             near_journal = false;
-            Debug.Log(near_journal);
         }
 
         if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
@@ -58,7 +41,6 @@ public class Journal : MonoBehaviour {
             Journals journals_script = GameObject.Find("Journals").GetComponent<Journals>();
             journals_script.Journal_count = journals_script.Journal_count + 1;
             journal_held = true;
-            Debug.Log(journal_held);
         }
 
     
@@ -70,14 +52,11 @@ public class Journal : MonoBehaviour {
             {
                 sprite.transform.Translate(0, 0, -.5f);
                 journal_held = false;
-                Debug.Log(journal_held);
-                Debug.Log(sprite.transform.position);
             }
             //Player picks up and opens journal
             if (near_journal == true & Input.GetKeyDown(KeyCode.E))
             {
                 sprite.transform.Translate(0, 0, .5f);
-                Debug.Log(sprite.transform.position);
             }
             
         
