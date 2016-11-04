@@ -1721,6 +1721,8 @@ MonoBehaviour:
   - {fileID: 1958029485}
   player: {fileID: 2039056442}
   collected: []
+  number: 1
+  contains_journal: 0
 --- !u!4 &1980987095
 Transform:
   m_ObjectHideFlags: 0

@@ -9,15 +9,12 @@ public class Journal : MonoBehaviour {
     public GameObject player;
     private bool journal_held;
     private bool near_journal;
-    private bool shouldcontinue;
     public GameObject sprite;
   
     // Use this for initialization
 	void Start () {
         journal_held = false;
-        near_journal = false;
-        shouldcontinue = true;
-        
+        near_journal = false;        
        
     }
     //***Try making an array of GameObjects that contains all of the journals and using a 
