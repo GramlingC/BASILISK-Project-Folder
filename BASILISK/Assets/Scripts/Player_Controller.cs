@@ -20,10 +20,13 @@ public class Player_Controller : MonoBehaviour {
     private float secondsCrankUntilDiminish;
     public string crankKeyPress = "c";
     public bool crankingLight;
+    public bool lightIsOn;
+    public string lightSwitching = "z";
 
     
     // Use this for initialization
     void Start () {
+        lightIsOn = true;
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         crankTime = 0;
@@ -41,12 +44,14 @@ public class Player_Controller : MonoBehaviour {
     }
     void Update() {
 
+        if (lightIsOn) { 
         //Call CastLight
-        CastLight();
-        crankLight();
-        gradualLightDiminish();
-
+            CastLight();
+            crankLight();
+            gradualLightDiminish();
+        }
         //Player Movement
+        playerActivateDeactivateLight();
         if (!crankingLight) 
             playerMovement();
         else
@@ -71,6 +76,12 @@ public class Player_Controller : MonoBehaviour {
     }
 
     //Light's spotAngle can't go lower than 1, so if it is 1, then turn the light object off
+    private void playerActivateDeactivateLight() {
+        if (Input.GetKey(lightSwitching)) {
+            lightIsOn = !lightIsOn;
+        }
+    }
+
     private void activatateOrDisableLight() {
         player_light.gameObject.SetActive(player_light.spotAngle <= 1 ? false : true);
     }

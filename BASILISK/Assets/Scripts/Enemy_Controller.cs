@@ -34,7 +34,7 @@ public abstract class Enemy_Controller : MonoBehaviour
         //Sets nextCoord to element 1 of coords (0 is the starting position)
         if (coords.Length > 1)
             nextCoord = 1;
-        enemySpeed = .05F;
+        enemySpeed = 1F;
 
         //May add some code to ensure that the enemy's orignal position is included in the set of coordiantes.
 
@@ -103,19 +103,19 @@ public abstract class Enemy_Controller : MonoBehaviour
 
 			//Move horizontally or vertically towards player
 			if (Mathf.Abs (dist_H) > Mathf.Abs (dist_V)) {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier * Time.deltaTime);
 				if (dist_H > 0)
 					enemy_sprite.SetInteger ("Direction", 4);
 				else
 					enemy_sprite.SetInteger ("Direction", 2);
 			} else if (dist_V == dist_H) {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier * Time.deltaTime);
 				if (dist_H > 0)
 					enemy_sprite.SetInteger ("Direction", 4);
 				else
 					enemy_sprite.SetInteger ("Direction", 2);
 			} else {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier * Time.deltaTime);
 				if (dist_V > 0)
 					enemy_sprite.SetInteger ("Direction", 1);
 				else
@@ -137,8 +137,16 @@ public abstract class Enemy_Controller : MonoBehaviour
 		}
 
 		RaycastHit hit;
-		//So that the enemy will follow if ray hits at least once, but won't if none hit
+        //So that the enemy will follow if ray hits at least once, but won't if none hit
+        float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
 		bool sawPlayer = false;
+
+        if (distanceFromPlayer < 3f) {
+            Vector3 lookDirection = transform.forward;
+            float angleBetween = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
+            float angleLooking = Mathf.Atan2(lookDirection.y, lookDirection.x);
+            print("Angle between: " + ((angleBetween - angleLooking) * 180 / Mathf.PI));
+        }
 		for (float degree = -45f; degree < 45f; degree += 5f) 
 		{
 			Vector3 LookDirection = Quaternion.AngleAxis (degree, Vector3.up) * transform.forward;
