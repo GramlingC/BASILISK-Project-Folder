@@ -145,13 +145,13 @@ public abstract class Enemy_Controller : MonoBehaviour
             Vector3 lookDirection = transform.forward;
             float angleBetween = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
             float angleLooking = Mathf.Atan2(lookDirection.y, lookDirection.x);
-            print("Angle between: " + ((angleBetween - angleLooking) * 180 / Mathf.PI));
+// print("Angle between: " + ((angleBetween - angleLooking) * 180 / Mathf.PI));
         }
 		for (float degree = -45f; degree < 45f; degree += 5f) 
 		{
 			Vector3 LookDirection = Quaternion.AngleAxis (degree, Vector3.up) * transform.forward;
 			if (Physics.Raycast (transform.position, LookDirection, out hit, 3F)) {
-				Debug.Log (hit.transform.gameObject.tag);
+				//Debug.Log (hit.transform.gameObject.tag);
 				if (hit.transform.gameObject.tag == "Player")
 					sawPlayer = true;
 			}
