@@ -33,7 +33,11 @@ public class A_Pathfinding : MonoBehaviour
         foreach(Vector3 rVec in restrictedNodes)
         {
             int[] rNode = ConvertToGridCoord(rVec);
-            nodes[rNode[0], rNode[1]].SetIllegal();
+            //Debugging check - make sure each restricted node is on the grid.
+            if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
+                Debug.Log(rVec + " is off the grid.");
+            else
+                nodes[rNode[0], rNode[1]].SetIllegal();
         }
 
         //nodes[1, 0].SetIllegal(); //Tests
@@ -46,6 +50,21 @@ public class A_Pathfinding : MonoBehaviour
 
         int[] start = ConvertToGridCoord(startVec);
         int[] finish = ConvertToGridCoord(finishVec);
+
+        //Debugging check
+        if (start[0] < 0 || start[1] < 0 || start[0] >= width || start[1] >= length)
+        {
+            Debug.Log(startVec + " is not on the grid");
+            List<Vector3> dummyList = new List<Vector3>();
+            dummyList.Add(Vector3.zero);
+        }
+        else if (finish[0] < 0 || finish[1] < 0 || finish[0] >= width || finish[1] >= length)
+        {
+            Debug.Log(finishVec + " is not on the grid");
+            List<Vector3> dummyList = new List<Vector3>();
+            dummyList.Add(Vector3.zero);
+            return dummyList;
+        }
 
         //The starting position is added to the open list, and its G and H values are set.
         open.Add(start);
