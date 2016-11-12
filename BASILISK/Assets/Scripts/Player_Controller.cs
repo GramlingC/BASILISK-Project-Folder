@@ -184,12 +184,14 @@ public class Player_Controller : MonoBehaviour {
             if(Physics.Raycast(transform.position, LightDirection, out hit, light_length))
             {
                 //Trigger enemy behavior
-                if (hit.transform.gameObject.tag == "Enemy")
+                if (hit.transform.gameObject.tag == "Guard")
                 {
-                //    Debug.Log(hit.transform.gameObject.tag);
-                    //Get Enemy_Controller script from enemy- will have to change to accept different types of enemies
-                    Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
-                    //Will have to define LightTrigger() method on all enemy scripts with their corresponding response
+                    Guard_Controller_v2 enemy = (Guard_Controller_v2)hit.transform.gameObject.GetComponent(typeof(Guard_Controller_v2));
+                    enemy.LightTrigger();
+                }
+                else if (hit.transform.gameObject.tag == "Bat")
+                {
+                    Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
                     enemy.LightTrigger();
                 }
             }

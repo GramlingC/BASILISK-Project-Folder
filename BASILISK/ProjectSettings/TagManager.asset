@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Journal
+  - Light_Hitbox
+  - Guard
+  - Bat
   layers:
   - Default
   - TransparentFX

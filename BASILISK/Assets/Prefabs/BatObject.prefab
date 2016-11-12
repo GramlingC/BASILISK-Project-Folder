@@ -25,7 +25,7 @@ GameObject:
   - 54: {fileID: 54000012706660954}
   m_Layer: 0
   m_Name: Bat
-  m_TagString: Enemy
+  m_TagString: Bat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,10 @@ MonoBehaviour:
   enemyChaseOff: 0
   speedMultiplier: 1
   enemy_sprite: {fileID: 95000010001921808}
-  coords: []
+  coords:
+  - {x: 3, y: 0, z: -3}
+  - {x: 3, y: 0, z: -6}
+  - {x: 0, y: 0, z: -6}
   canSeePlayer: 0
 --- !u!212 &212000011385190560
 SpriteRenderer:

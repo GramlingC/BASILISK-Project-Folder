@@ -159,9 +159,11 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //Move enemy in direction closest to player position.
             //Debug.Log("Entering chase");
             //Debug.Log(nextChasePos);
-            RouteEnemy(nextChasePos);
+            
             if (transform.position == nextChasePos)
                 atRoundCoord = true;
+            else
+                RouteEnemy(nextChasePos);
 
             //Once they reach a round coordinate, check for light and player.  If neither, guard will return using pathfinding.
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
@@ -299,8 +301,8 @@ public class Guard_Controller_v2 : MonoBehaviour {
         if (distanceFromPlayer < 3f)
         {
             Vector3 lookDirection = transform.forward;
-            float angleBetween = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
-            float angleLooking = Mathf.Atan2(lookDirection.y, lookDirection.x);
+            float angleBetween = Mathf.Atan2(player.transform.position.z - transform.position.z, player.transform.position.x - transform.position.x);
+            float angleLooking = Mathf.Atan2(lookDirection.z, lookDirection.x);
             //print("Angle between: " + ((angleBetween - angleLooking) * 180 / Mathf.PI));
         }
         for (float degree = -45f; degree < 45f; degree += 5f)
@@ -323,14 +325,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
     {
         Debug.Log("Setting chasePos...");
         //May need to check for restricted coordinates.  Maybe.
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < Mathf.Abs(player.transform.position.z - transform.position.z))
+        if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
         {
             if (player.transform.position.x - transform.position.x > 0)
             {
-                nextChasePos = transform.position + Vector3.right;
+                nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
             }
             else
-                nextChasePos = transform.position + Vector3.left;
+                nextChasePos = transform.position + Vector3.left;//new Vector3(-.5f, 0f, 0f);
             //move in x direction
             //Need to find way to get guard to detect when he has completed one unit of movement.
         }
@@ -339,10 +341,10 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //route in z direction
             if (player.transform.position.z - transform.position.z > 0)
             {
-                nextChasePos = transform.position + Vector3.forward;
+                nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
             }
             else
-                nextChasePos = transform.position + Vector3.back;
+                nextChasePos = transform.position + Vector3.back;//new Vector3(0f, 0f, -.5f);
         }
         Debug.Log("Chase pos successfully set");
     }
