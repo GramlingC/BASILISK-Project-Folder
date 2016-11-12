@@ -16,6 +16,10 @@ public class Guard_Controller_v2 : MonoBehaviour {
     public Vector3[] coords; //Array of coordinates the enemy will travel to, in order.
     private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
+    public float chaseTimerMax = 3f; //Seconds till give up chase
+    private float chaseTimer;
+    private bool isChasing;
+
     private List<Vector3> patrolPath; //List of all coordinates the enemy will pass through during patrol - includes coordinates
     //between those in coords
     private int nextPatrolCoord;  //Index in coords of the next coordinate the enemy will pass through.
@@ -143,6 +147,8 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 //Debug.Log("Going to chasing...");
                 enemyState = 1;
+                chaseTimer = chaseTimerMax;
+                isChasing = true;
                 canSeePlayer = false;
                 isLightTriggered = false;
                 setChasePos();
@@ -165,13 +171,24 @@ public class Guard_Controller_v2 : MonoBehaviour {
             else
                 RouteEnemy(nextChasePos);
 
+            if (chaseTimer > 0)
+                isChasing = true;
+            else
+                isChasing = false;
+
             //Once they reach a round coordinate, check for light and player.  If neither, guard will return using pathfinding.
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
             {
                 //Debug.Log("Round " + enemyState + " " + transform.position);
                 //Debug.Log(transform.position);
+                chaseTimer = chaseTimerMax;
                 canSeePlayer = false;
                 isLightTriggered = false;
+                setChasePos();
+            }
+            else if (atRoundCoord && isChasing)
+            {
+                chaseTimer -= 1;
                 setChasePos();
             }
             else if (atRoundCoord && patrolPath.Contains(transform.position))  //Can save from running the pathfinding algorithm.
