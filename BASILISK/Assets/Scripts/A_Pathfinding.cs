@@ -35,7 +35,7 @@ public class A_Pathfinding : MonoBehaviour
             int[] rNode = ConvertToGridCoord(rVec);
             //Debugging check - make sure each restricted node is on the grid.
             if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
-                Debug.Log(rVec + " is off the grid.");
+                Debug.Log(rVec + ": restricted node is off the grid.");
             else
                 nodes[rNode[0], rNode[1]].SetIllegal();
         }
@@ -51,18 +51,19 @@ public class A_Pathfinding : MonoBehaviour
         int[] start = ConvertToGridCoord(startVec);
         int[] finish = ConvertToGridCoord(finishVec);
 
-        //Debugging check
+        //Debugging check.  Will route enemy back to finishVec if startVec or finishVec is not on the grid.
         if (start[0] < 0 || start[1] < 0 || start[0] >= width || start[1] >= length)
         {
-            Debug.Log(startVec + " is not on the grid");
+            Debug.Log(startVec + ": start is not on the grid");
             List<Vector3> dummyList = new List<Vector3>();
-            dummyList.Add(Vector3.zero);
+            dummyList.Add(finishVec);
+            return dummyList;
         }
         else if (finish[0] < 0 || finish[1] < 0 || finish[0] >= width || finish[1] >= length)
         {
-            Debug.Log(finishVec + " is not on the grid");
+            Debug.Log(finishVec + ": finish is not on the grid");
             List<Vector3> dummyList = new List<Vector3>();
-            dummyList.Add(Vector3.zero);
+            dummyList.Add(finishVec);
             return dummyList;
         }
 
