@@ -36,7 +36,7 @@ public class Journals2 : MonoBehaviour
         }
         else
         {
-            print("Invalid input");
+            //print("Invalid input");
         }
     }
     public void PickUp()

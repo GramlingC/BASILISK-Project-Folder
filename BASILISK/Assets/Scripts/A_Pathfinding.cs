@@ -30,27 +30,30 @@ public class A_Pathfinding : MonoBehaviour
     {
         Grid grid = new Grid(width, length);
         Node[,] nodes = grid.GetGridNodes();
-        foreach(Vector3 rVec in restrictedNodes)
+
+        int[] start = ConvertToGridCoord(startVec);
+        int[] finish = ConvertToGridCoord(finishVec);
+
+        foreach (Vector3 rVec in restrictedNodes)
         {
             int[] rNode = ConvertToGridCoord(rVec);
-            //Debugging check - make sure each restricted node is on the grid.
+
+            //Debugging check - make sure each restricted node is on the grid, make sure finishing point is not a restricted node.
             if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
                 Debug.Log(rVec + ": restricted node is off the grid.");
+            else if(rNode[0] == finish[0] && rNode[1] == finish[1])
+                Debug.Log(finishVec + " is also a restricted node.");
             else
                 nodes[rNode[0], rNode[1]].SetIllegal();
         }
 
-        //nodes[1, 0].SetIllegal(); //Tests
-        //nodes[1, 1].SetIllegal();//Tests
 
         //Lists of node coordinates
         List<int[]> open = new List<int[]>();
         List<int[]> closed = new List<int[]>();
         
 
-        int[] start = ConvertToGridCoord(startVec);
-        int[] finish = ConvertToGridCoord(finishVec);
-
+        
         //Debugging check.  Will route enemy back to finishVec if startVec or finishVec is not on the grid.
         if (start[0] < 0 || start[1] < 0 || start[0] >= width || start[1] >= length)
         {
@@ -74,6 +77,7 @@ public class A_Pathfinding : MonoBehaviour
 
         //This will keep track of the current node coordinates
         int[] current = new int[2];
+        //int whileTracker = 0;
         while (true)
         {
             //Keeps track of the lowest F count
@@ -99,11 +103,12 @@ public class A_Pathfinding : MonoBehaviour
                 }
                 currDex++;
             }
-            //Debug.Log(removeDex);
-            if(removeDex > -1)
+
+            if (removeDex > -1)
+            {
                 open.RemoveAt(removeDex);
-            open.Remove(current);
-            closed.Add(current);
+                closed.Add(current);
+            }
             
             if (current[0] == finish[0] && current[1] == finish[1])
                 break;  //path has been found
@@ -136,13 +141,12 @@ public class A_Pathfinding : MonoBehaviour
                         break;
                     }
                 }
-                //nodes[neighbor[0], neighbor[1]].SetParentNode(current);//???
+                
                 if (!openContainsNeighbor || nodes[current[0], current[1]].GetGDist() < nodes[neighbor[0], neighbor[1]].GetGDist())
                 {
                     nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + 1);
                     nodes[neighbor[0], neighbor[1]].SetParentNode(current);
-                    //Debug.Log("current: " + current[0] + " " + current[1]);
-                    //Debug.Log("Parent: " + nodes[neighbor[0], neighbor[1]].GetParentNode()[0] + " " + nodes[neighbor[0], neighbor[1]].GetParentNode()[1]);
+
                     if (!openContainsNeighbor)
                     {
                         open.Add(neighbor);
@@ -155,11 +159,8 @@ public class A_Pathfinding : MonoBehaviour
         List<int[]> path = new List<int[]>();
         int[] curr = finish;
 
-        //int test = 0;
-        //List.Reverse() is a thing
         while (true)
         {
-            //Debug.Log(curr[0] + " " + curr[1]);
             //Adds the node index to the front of the list - the list is being filled in reverse, after all.
             path.Add(curr);
             if(curr[0] == start[0] && curr[1] == start[1])
@@ -167,10 +168,6 @@ public class A_Pathfinding : MonoBehaviour
                 break;
             }
             curr = nodes[curr[0], curr[1]].GetParentNode();//Something is wrong with the parent relationship.
-            
-            //if (test == 8)
-             //   break; //temp
-            //test++;
         }
 
         path.Reverse();

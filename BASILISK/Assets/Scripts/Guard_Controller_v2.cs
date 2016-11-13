@@ -198,11 +198,9 @@ public class Guard_Controller_v2 : MonoBehaviour {
             }
             else if (atRoundCoord)
             {
-                //Debug.Log("Going to return...");
                 enemyState = 2;
                 returnPath = pathfinder.FindPath(transform.position, patrolPath[nextPatrolCoord]);
                 nextReturnCoord = 0;
-                //Debug.Log("Successfully gone to return.");
             }
             //Debug.Log("Ending chase movement");
             //It doesn't always happen, but the game seems to crash after the "Ending chase movement" statement is executed.
