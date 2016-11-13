@@ -1,0 +1,4 @@
+GuardA: Top of the morning to you
+GuardB: Good day.
+GuardB: How have things been going with the wife?
+GuardA: More of the same really.
