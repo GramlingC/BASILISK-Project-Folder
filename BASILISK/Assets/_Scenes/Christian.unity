@@ -1261,10 +1261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef07635fce772be48b581ba4b222c53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restrictedNodes:
-  - {x: 0, y: 0, z: 2}
+  restrictedNodes: []
   width: 20
-  length: 10
+  length: 20
   lowerLeft: {x: -10, y: 0, z: -10}
 --- !u!1 &1331640347
 GameObject:

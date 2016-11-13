@@ -363,4 +363,80 @@ public class Guard_Controller_v2 : MonoBehaviour {
         }
         Debug.Log("Chase pos successfully set");
     }
+    /*
+    private void setChasePos()
+    {
+        Debug.Log("Setting chasePos...");
+        Dictionary<Vector3, int> preferences = new Dictionary<Vector3, int>();
+        preferences.Add(Vector3.right, 2);
+        preferences.Add(Vector3.left, 2);
+        preferences.Add(Vector3.forward, 2);
+        preferences.Add(Vector3.back, 2);
+        //May need to check for restricted coordinates.  Maybe.
+        if (player.transform.position.x - transform.position.x > 0)
+        {
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            {
+                preferences[Vector3.right] += 2;
+                preferences[Vector3.left]--;
+                //nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
+            }
+            else
+                preferences[Vector3.right]++;
+            //nextChasePos = transform.position + Vector3.left;//new Vector3(-.5f, 0f, 0f);
+            //move in x direction
+            //Need to find way to get guard to detect when he has completed one unit of movement.
+        }
+        else
+        {
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            {
+                preferences[Vector3.left] += 2;
+                preferences[Vector3.right]--;
+                //nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
+            }
+            else
+                preferences[Vector3.left]++;
+        }
+        if (player.transform.position.z - transform.position.z > 0)
+        {
+            //route in z direction
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            {
+                preferences[Vector3.forward] += 2;
+                preferences[Vector3.back]--;
+                //nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
+            }
+            else
+                preferences[Vector3.forward]++;
+            //nextChasePos = transform.position + Vector3.back;//new Vector3(0f, 0f, -.5f);
+        }
+        else
+        {
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            {
+                preferences[Vector3.back] += 2;
+                preferences[Vector3.forward]--;
+                //nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
+            }
+            else
+                preferences[Vector3.back]++;
+        }
+        Vector3 l = Vector3.zero;
+        preferences.Add(l, 0);
+        foreach (KeyValuePair<Vector3, int> entry in preferences)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, entry.Key, out hit, 1F))
+            {
+                if (hit.transform.gameObject.tag != "Player")
+                    preferences[entry.Key] = 0;
+            }
+            else if (entry.Value > preferences[l])
+                l = entry.Key;
+        }
+        nextChasePos = transform.position + l;
+        Debug.Log(preferences[l]);
+    }
+    */
 }
