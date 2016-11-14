@@ -338,54 +338,24 @@ public class Guard_Controller_v2 : MonoBehaviour {
 
     private void setChasePos()
     {
-        Debug.Log("Setting chasePos...");
-        //May need to check for restricted coordinates.  Maybe.
-        if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
-        {
-            if (player.transform.position.x - transform.position.x > 0)
-            {
-                nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
-            }
-            else
-                nextChasePos = transform.position + Vector3.left;//new Vector3(-.5f, 0f, 0f);
-            //move in x direction
-            //Need to find way to get guard to detect when he has completed one unit of movement.
-        }
-        else
-        {
-            //route in z direction
-            if (player.transform.position.z - transform.position.z > 0)
-            {
-                nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
-            }
-            else
-                nextChasePos = transform.position + Vector3.back;//new Vector3(0f, 0f, -.5f);
-        }
-        Debug.Log("Chase pos successfully set");
-    }
-    /*
-    private void setChasePos()
-    {
-        Debug.Log("Setting chasePos...");
+        //Creates dictionary of preferences regarding which direction to go
         Dictionary<Vector3, int> preferences = new Dictionary<Vector3, int>();
         preferences.Add(Vector3.right, 2);
         preferences.Add(Vector3.left, 2);
         preferences.Add(Vector3.forward, 2);
         preferences.Add(Vector3.back, 2);
-        //May need to check for restricted coordinates.  Maybe.
+
+        //Higher preference for closer horizontal direction
         if (player.transform.position.x - transform.position.x > 0)
         {
             if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
             {
+                //Even higher if farther away horizontally than vertically
                 preferences[Vector3.right] += 2;
                 preferences[Vector3.left]--;
-                //nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
             }
             else
                 preferences[Vector3.right]++;
-            //nextChasePos = transform.position + Vector3.left;//new Vector3(-.5f, 0f, 0f);
-            //move in x direction
-            //Need to find way to get guard to detect when he has completed one unit of movement.
         }
         else
         {
@@ -393,23 +363,20 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 preferences[Vector3.left] += 2;
                 preferences[Vector3.right]--;
-                //nextChasePos = transform.position + Vector3.right;//new Vector3(.5f,0f,0f);
             }
             else
                 preferences[Vector3.left]++;
         }
+        //Same but vertically
         if (player.transform.position.z - transform.position.z > 0)
         {
-            //route in z direction
             if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.forward] += 2;
                 preferences[Vector3.back]--;
-                //nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
             }
             else
                 preferences[Vector3.forward]++;
-            //nextChasePos = transform.position + Vector3.back;//new Vector3(0f, 0f, -.5f);
         }
         else
         {
@@ -417,26 +384,24 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 preferences[Vector3.back] += 2;
                 preferences[Vector3.forward]--;
-                //nextChasePos = transform.position + Vector3.forward;//new Vector3(0f, 0f, .5f);
             }
             else
                 preferences[Vector3.back]++;
         }
-        Vector3 l = Vector3.zero;
-        preferences.Add(l, 0);
+        //To find the vector with the highest preference
+        KeyValuePair<Vector3, int> l = new KeyValuePair<Vector3, int>(Vector3.zero,0);
         foreach (KeyValuePair<Vector3, int> entry in preferences)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, entry.Key, out hit, 1F))
+            if (Physics.Raycast(transform.position, entry.Key, out hit, 1.5F))
             {
-                if (hit.transform.gameObject.tag != "Player")
-                    preferences[entry.Key] = 0;
+                if (hit.transform.gameObject.tag == "Player")
+                    if (entry.Value > l.Value)
+                        l = entry;
             }
-            else if (entry.Value > preferences[l])
-                l = entry.Key;
+            else if (entry.Value > l.Value)
+                l = entry;
         }
-        nextChasePos = transform.position + l;
-        Debug.Log(preferences[l]);
+        nextChasePos = transform.position + l.Key;
     }
-    */
 }
