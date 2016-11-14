@@ -23,7 +23,14 @@ public class Player_Controller : MonoBehaviour {
     public bool lightIsOn;
     public string lightSwitching = "z";
 
-    
+    //Used to access methods from A_Pathfinding to constrain movement
+    private A_Pathfinding pathfinder;
+    private float leftBound;
+    private float rightBound;
+    private float bottomBound;
+    private float topBound;
+
+
     // Use this for initialization
     void Start () {
         lightIsOn = true;
@@ -31,7 +38,14 @@ public class Player_Controller : MonoBehaviour {
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
-	}
+
+        //Sets boundaries
+        pathfinder = GameObject.Find("PathfindingObj").GetComponent<A_Pathfinding>();
+        leftBound = pathfinder.GetLeftBound();
+        rightBound = pathfinder.GetRightBound();
+        bottomBound = pathfinder.GetBottomBound();
+        topBound = pathfinder.GetTopBound();
+    }
     void Awake () {
 		speedMultiplier = 2f;
         floorMask = LayerMask.GetMask("Floor");
@@ -122,7 +136,10 @@ public class Player_Controller : MonoBehaviour {
         else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H))
         {
             player_sprite.SetBool("isWalking", true);
+
             transform.Translate(0, 0, mov_V, Space.World);
+            //Code added to keep the player from wandering off the grid
+            transform.position = new Vector3 (transform.position.x, transform.position.y, Mathf.Clamp(transform.position.z, bottomBound, topBound));
 
             if (mov_V > 0)
                 player_sprite.SetInteger("Direction", 3);
@@ -133,7 +150,8 @@ public class Player_Controller : MonoBehaviour {
         {
             player_sprite.SetBool("isWalking", true);
             transform.Translate(mov_H, 0, 0, Space.World);
-            
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftBound, rightBound), transform.position.y, transform.position.z);
+
             if (mov_H > 0)
                 player_sprite.SetInteger("Direction", 2);
             else

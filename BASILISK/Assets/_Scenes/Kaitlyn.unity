@@ -1998,8 +1998,8 @@ MonoBehaviour:
   - {x: -2.5, y: 0, z: 1.5}
   - {x: -1.5, y: 0, z: 0.5}
   - {x: -0.5, y: 0, z: 1.5}
-  width: 10
-  length: 10
+  width: 9
+  length: 9
   lowerLeft: {x: -4.5, y: 0, z: -4.5}
 --- !u!4 &2120458071
 Transform:
