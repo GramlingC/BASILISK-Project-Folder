@@ -9,15 +9,12 @@ public class Journal : MonoBehaviour {
     public GameObject player;
     private bool journal_held;
     private bool near_journal;
-    private bool shouldcontinue;
     public GameObject sprite;
   
     // Use this for initialization
 	void Start () {
         journal_held = false;
-        near_journal = false;
-        shouldcontinue = true;
-        
+        near_journal = false;        
        
     }
     //***Try making an array of GameObjects that contains all of the journals and using a 
@@ -37,10 +34,12 @@ public class Journal : MonoBehaviour {
 
         if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
         {
-            transform.Translate(0, -10, 0);
-            Journals journals_script = GameObject.Find("Journals").GetComponent<Journals>();
+           
+            Journals2 journals_script = GameObject.Find("Journals").GetComponent<Journals2>();
             journals_script.Journal_count = journals_script.Journal_count + 1;
+            journals_script.PickUp();
             journal_held = true;
+            transform.Translate(0, -10, 0);
         }
 
     

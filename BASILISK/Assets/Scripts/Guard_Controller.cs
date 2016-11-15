@@ -7,7 +7,7 @@ public class Guard_Controller : Enemy_Controller
 
     public override void LightTrigger()
     {
-        Debug.Log("Guard triggered.  Will apprehend/chase player.");
+        //Debug.Log("Guard triggered.  Will apprehend/chase player.");
 
         canSeePlayer = true; //Guard can see player once shined with light
     }
