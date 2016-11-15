@@ -29,8 +29,7 @@ public class Player_Controller : MonoBehaviour {
     private float rightBound;
     private float bottomBound;
     private float topBound;
-
-
+	//Used for Gameover condition
     // Use this for initialization
     void Start () {
         lightIsOn = true;
@@ -45,7 +44,7 @@ public class Player_Controller : MonoBehaviour {
         rightBound = pathfinder.GetRightBound();
         bottomBound = pathfinder.GetBottomBound();
         topBound = pathfinder.GetTopBound();
-    }
+		    }
     void Awake () {
 		speedMultiplier = 2f;
         floorMask = LayerMask.GetMask("Floor");
@@ -57,6 +56,7 @@ public class Player_Controller : MonoBehaviour {
         Turning();
     }
     void Update() {
+		
 
         if (lightIsOn) { 
         //Call CastLight
@@ -71,7 +71,16 @@ public class Player_Controller : MonoBehaviour {
         else
             player_sprite.SetBool("isWalking", false);
     }
+	void OnCollisionEnter (Collision col)
+	{
+		Debug.Log ("Col");
+		if (col.gameObject.tag == "Enemy") {
+		Game_Controller script = GameObject.Find ("GameController").GetComponent<Game_Controller> ();
+		//script.RestartGame ();
+		print("Collided");
+		}
 
+	}
     //Functions dealing wih diminishing light. Public functions are so that other scripts can call it also
     public void diminishLight(float angleAmount) {
         player_light.spotAngle -= angleAmount;
