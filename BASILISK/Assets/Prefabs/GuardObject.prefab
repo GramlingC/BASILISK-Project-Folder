@@ -263,7 +263,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.01
-    m_NormalBias: 0.4
+    m_NormalBias: 0.2
     m_NearPlane: 0.4
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -274,7 +274,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.5
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!114 &114000010179865466
@@ -307,6 +307,7 @@ MonoBehaviour:
   coords:
   - {x: -3, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
+  chaseTimerMax: 3
 --- !u!114 &114000013203975416
 MonoBehaviour:
   m_ObjectHideFlags: 1
