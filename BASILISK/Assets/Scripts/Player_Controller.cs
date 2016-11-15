@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player_Controller : MonoBehaviour {
     
-	public float speedMultiplier;
+	public float speedMultiplier = 5f;
     public int numberOfRays = 10;
 
 	int floorMask;
@@ -26,6 +26,7 @@ public class Player_Controller : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
+        player_rb = GetComponent<Rigidbody>();
         lightIsOn = true;
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
@@ -33,9 +34,7 @@ public class Player_Controller : MonoBehaviour {
         secondsCrankUntilDiminish = 1;
 	}
     void Awake () {
-		speedMultiplier = 2f;
         floorMask = LayerMask.GetMask("Floor");
-        player_rb = GetComponent<Rigidbody>();
         player_light = GetComponentInChildren<Light>();
 	}
     void FixedUpdate()
@@ -113,32 +112,35 @@ public class Player_Controller : MonoBehaviour {
     //For controlling player movement
     private void playerMovement() {
         
-        var mov_V = Input.GetAxis("Vertical") * getSpeed();
-        var mov_H = Input.GetAxis("Horizontal") * getSpeed();
+        float mov_V = Input.GetAxis("Vertical") * speedMultiplier;
+        float mov_H = Input.GetAxis("Horizontal") * speedMultiplier;
 
-        if (mov_V == 0 & mov_H == 0)
+        if (mov_V == 0 & mov_H == 0) {
             player_sprite.SetBool("isWalking", false);
-
-        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H))
-        {
+            player_rb.velocity = Vector3.zero;
+        }
+        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H)) {
             player_sprite.SetBool("isWalking", true);
-            transform.Translate(0, 0, mov_V, Space.World);
+            player_rb.velocity = new Vector3(0, 0, mov_V);
+            //transform.Translate(0, 0, mov_V, Space.World);
 
             if (mov_V > 0)
                 player_sprite.SetInteger("Direction", 3);
             else
                 player_sprite.SetInteger("Direction", 1);
         }
-        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
-        {
+        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H)) {
             player_sprite.SetBool("isWalking", true);
-            transform.Translate(mov_H, 0, 0, Space.World);
-            
+            player_rb.velocity = new Vector3(mov_H, 0, 0);
+            //transform.Translate(mov_H, 0, 0, Space.World);
+
             if (mov_H > 0)
                 player_sprite.SetInteger("Direction", 2);
             else
                 player_sprite.SetInteger("Direction", 4);
         }
+
+        print("Player Vel: " + player_rb.velocity);
         
     }
 	
