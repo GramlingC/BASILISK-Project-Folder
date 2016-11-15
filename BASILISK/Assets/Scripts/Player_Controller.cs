@@ -74,9 +74,9 @@ public class Player_Controller : MonoBehaviour {
 	void OnCollisionEnter (Collision col)
 	{
 		Debug.Log ("Col");
-		if (col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Guard" || col.gameObject.tag == "Bat") {
 		Game_Controller script = GameObject.Find ("GameController").GetComponent<Game_Controller> ();
-		//script.RestartGame ();
+		script.RestartGame ();
 		print("Collided");
 		}
 
