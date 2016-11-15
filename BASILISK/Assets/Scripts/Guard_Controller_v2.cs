@@ -99,7 +99,19 @@ public class Guard_Controller_v2 : MonoBehaviour {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z));
                     }
                 }
-                nextPatrolCoord = 1;
+                else if (coords[i].z != tempNext.z)
+                {
+                    for (int j = 0; j < Mathf.Abs(tempNext.z - coords[i].z); j++)
+                    {
+                        if (coords[i].z < tempNext.z)
+                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z + j));
+                        else
+                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z - j));
+                    }
+                }
+                else
+                    Debug.Log("There are two of the same coordinate in a row.");
+                nextPatrolCoord = 0;
             }
         }
         //nextPatrolCoord = 1;
