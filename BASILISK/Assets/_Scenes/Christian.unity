@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.022586806, g: 0.02289171, b: 0.020276021, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.022586845, g: 0.022891743, b: 0.02027604, a: 0.2}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -702,6 +702,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012344403832, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
+      propertyPath: m_TagString
+      value: Guard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
   m_IsPrefabParent: 0
@@ -781,7 +789,7 @@ GameObject:
   - 4: {fileID: 1092233561}
   - 114: {fileID: 1092233560}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1824,6 +1832,10 @@ Prefab:
     - target: {fileID: 4000010571753648, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010961188814, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
+      propertyPath: m_TagString
+      value: Bat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9fad2fb384a4f843ac521fa45bf43ee, type: 2}
