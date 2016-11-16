@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor.SceneManagement;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -7,27 +8,30 @@ public class Game_Controller : MonoBehaviour {
 //    public string pauseButton = "escape";
     public bool paused;
     public string sceneName;
+    public string firstLevel;
     private GameObject pauseCanvas;
 
 	// Use this for initialization
 	void Start () {
         paused = false;
 
-        pauseCanvas = GameObject.Find("PauseMenu");
-        pauseCanvas.SetActive(false);
-
-        //pauseCanvas = GameObject.Find("PauseMenu");
+        pauseCanvas = transform.GetChild(0).gameObject;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
         playerPauseGame();
-		if (Input.GetKeyDown (KeyCode.R)) {
-			RestartGame ();
-		}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            restartLevel();
+        }
         runGame();
 	}
+
+    public void restartLevel() {
+        EditorSceneManager.LoadScene(sceneName);
+    }
 
     private void playerPauseGame() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -37,8 +41,9 @@ public class Game_Controller : MonoBehaviour {
     }
 	public void RestartGame ()
 	{		
-			SceneManager.LoadScene(sceneName);
+			SceneManager.LoadScene(firstLevel);
 	}
+
     private void runGame() {
         if (paused && Time.timeScale != 0) {
             Time.timeScale = 0;
