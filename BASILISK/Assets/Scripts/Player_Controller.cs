@@ -23,14 +23,15 @@ public class Player_Controller : MonoBehaviour {
     public bool lightIsOn;
     public string lightSwitching = "z";
 
-
-
+	public GameObject loss_screen;
+	private bool loss;
     //Used to access methods from A_Pathfinding to constrain movement
     private A_Pathfinding pathfinder;
     private float leftBound;
     private float rightBound;
     private float bottomBound;
     private float topBound;
+
 	//Used for Gameover condition
 
     // Use this for initialization
@@ -41,6 +42,7 @@ public class Player_Controller : MonoBehaviour {
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
+		loss = false;
 
         //Sets boundaries
         pathfinder = GameObject.Find("PathfindingObj").GetComponent<A_Pathfinding>();
@@ -59,7 +61,6 @@ public class Player_Controller : MonoBehaviour {
         Turning();
     }
     void Update() {
-		
 
         if (lightIsOn) { 
         //Call CastLight
@@ -78,15 +79,20 @@ public class Player_Controller : MonoBehaviour {
 	{
 		print("Collided");
 		if (col.gameObject.tag == "Guard" || col.gameObject.tag == "Bat") {
-		Game_Controller script = GameObject.Find ("GameController").GetComponent<Game_Controller> ();
-		script.RestartGame ();
-<<<<<<< HEAD
-		
-=======
+		loss_screen.transform.Translate(0f,0f,.5f);
+		loss = true;
+		Time.timeScale = 0;
 		//print("Collided");
->>>>>>> origin/master
+
 		}
 
+	}
+	void OnGUI(){
+		if (loss == true) 
+		{
+			GUI.Label (new Rect (200, 200, 300, 400), "Game Over press R to restart");
+		}
+		
 	}
     //Functions dealing wih diminishing light. Public functions are so that other scripts can call it also
     public void diminishLight(float angleAmount) {
