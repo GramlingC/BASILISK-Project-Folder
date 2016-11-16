@@ -33,7 +33,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
 
     private int enemyState; //0 for patrol, 1 for chase, 2 for return
     private bool isLightTriggered;  //True if enemy is reacting to light.  Affects enemyState.
-    private bool canSeePlayer;  //Becomes true when the enemy has spotted the player.  Affects enemy state.
+    public bool canSeePlayer;  //Becomes true when the enemy has spotted the player.  Affects enemy state.
     private bool atRoundCoord; //True if enemy is at a position that exactly corresponds to a grid node.
     private GameObject player;  //Used to keep tabs on the players' position.
 

@@ -48,9 +48,9 @@ public class DialogueController : MonoBehaviour {
     {
         for (int i = 0; i < targets.Length; i++)
         {
-            if (targets[i].GetType() == typeof(Enemy_Controller))
+            if (targets[i].GetType() == typeof(Guard_Controller_v2))
             {
-                Enemy_Controller target = targets[i].gameObject.GetComponent<Enemy_Controller>() as Enemy_Controller;
+                Guard_Controller_v2 target = targets[i].gameObject.GetComponent<Guard_Controller_v2>() as Guard_Controller_v2;
                 if (target.canSeePlayer)
                 {
                     return true;

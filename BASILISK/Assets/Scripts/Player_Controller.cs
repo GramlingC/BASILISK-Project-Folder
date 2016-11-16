@@ -74,6 +74,8 @@ public class Player_Controller : MonoBehaviour {
             playerMovement();
         else
             player_sprite.SetBool("isWalking", false);
+            //player_rb.velocity = new Vector3(0, 0, 0);
+
     }
 	void OnCollisionEnter (Collision col)
 	{
@@ -176,8 +178,6 @@ public class Player_Controller : MonoBehaviour {
             else
                 player_sprite.SetInteger("Direction", 4);
         }
-
-        print("Player Vel: " + player_rb.velocity);
         
     }
 	
@@ -222,13 +222,16 @@ public class Player_Controller : MonoBehaviour {
             RaycastHit hit;
             if(Physics.Raycast(transform.position, LightDirection, out hit, light_length))
             {
+                print(hit.transform.gameObject.tag);
                 //Trigger enemy behavior
-                if (hit.transform.gameObject.tag == "Enemy")
+                if (hit.transform.gameObject.tag == "Guard")
                 {
-                //    Debug.Log(hit.transform.gameObject.tag);
-                    //Get Enemy_Controller script from enemy- will have to change to accept different types of enemies
+                    Guard_Controller_v2 enemy = (Guard_Controller_v2)hit.transform.gameObject.GetComponent(typeof(Guard_Controller_v2));
+                    enemy.LightTrigger();
+                }
+                else if (hit.transform.gameObject.tag == "Bat")
+                {
                     Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
-                    //Will have to define LightTrigger() method on all enemy scripts with their corresponding response
                     enemy.LightTrigger();
                 }
             }
