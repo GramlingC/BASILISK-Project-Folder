@@ -458,27 +458,7 @@ Prefab:
       propertyPath: loss_screen
       value: 
       objectReference: {fileID: 283093491}
-    - target: {fileID: 114000010470337588, guid: d106531ed9cd2ce4ea5666456f7eb104,
-        type: 2}
-      propertyPath: crankingLight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 136000012761544060, guid: d106531ed9cd2ce4ea5666456f7eb104,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013479062722, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 136000012761544060, guid: d106531ed9cd2ce4ea5666456f7eb104,
-        type: 2}
-      propertyPath: m_Radius
-      value: 0.3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011185126938, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &597726973 stripped

@@ -138,6 +138,7 @@ public class Player_Controller : MonoBehaviour {
             crankingLight = true;
             crankTime = Mathf.Clamp(crankTime += Time.deltaTime, 0, secondsCrankUntilDiminish);
             increaseLight(lightCrankedPerSecond * Time.deltaTime);
+            player_rb.velocity = Vector3.zero;
         }
         else {
             crankingLight = false;
