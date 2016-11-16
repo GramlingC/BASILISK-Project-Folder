@@ -12,10 +12,7 @@ public class Game_Controller : MonoBehaviour {
 	void Start () {
         paused = false;
 
-        pauseCanvas = GameObject.Find("PauseMenu");
-        pauseCanvas.SetActive(false);
-
-        //pauseCanvas = GameObject.Find("PauseMenu");
+        pauseCanvas = transform.GetChild(0).gameObject;
 
 	}
 	
