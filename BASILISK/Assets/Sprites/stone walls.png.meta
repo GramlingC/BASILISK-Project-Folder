@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1ad3ee275f3ba1142ab5fbcb34586cfb
-timeCreated: 1479290756
+timeCreated: 1479328198
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -76,7 +76,7 @@ TextureImporter:
         serializedVersion: 2
         x: 327
         y: 585
-        width: 391
+        width: 385
         height: 722
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ TextureImporter:
         serializedVersion: 2
         x: 965
         y: 588
-        width: 417
+        width: 413
         height: 731
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -100,9 +100,9 @@ TextureImporter:
       name: stone walls_right
       rect:
         serializedVersion: 2
-        x: 1587
+        x: 1588
         y: 586
-        width: 523
+        width: 522
         height: 733
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

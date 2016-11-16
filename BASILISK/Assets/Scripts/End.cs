@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour {
 
 	public GameObject player;
+    public string nextScene;
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +23,8 @@ public class End : MonoBehaviour {
 		}
 	}
 	void victory(){
-		Application.LoadLevel ("Victory");
-	}
+        //Application.LoadLevel ("Victory");
+        SceneManager.LoadScene(nextScene);
+
+    }
 }

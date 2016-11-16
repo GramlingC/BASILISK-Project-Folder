@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Game_Controller : MonoBehaviour {
 
 //    public string pauseButton = "escape";
     public bool paused;
+    public string sceneName;
     private GameObject pauseCanvas;
 
 	// Use this for initialization
@@ -35,7 +37,7 @@ public class Game_Controller : MonoBehaviour {
     }
 	public void RestartGame ()
 	{		
-			Application.LoadLevel ("Christian");
+			SceneManager.LoadScene(sceneName);
 	}
     private void runGame() {
         if (paused && Time.timeScale != 0) {
