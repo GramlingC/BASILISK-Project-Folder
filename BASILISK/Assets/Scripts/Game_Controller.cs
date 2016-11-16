@@ -10,7 +10,12 @@ public class Game_Controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         paused = false;
+
+        pauseCanvas = GameObject.Find("PauseMenu");
+        pauseCanvas.SetActive(false);
+
         //pauseCanvas = GameObject.Find("PauseMenu");
+
 	}
 	
 	// Update is called once per frame
