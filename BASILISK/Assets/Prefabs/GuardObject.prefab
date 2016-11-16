@@ -70,7 +70,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011649230496}
   - 65: {fileID: 65000010329958492}
-  - 114: {fileID: 114000013588226672}
   - 54: {fileID: 54000013221266254}
   - 114: {fileID: 114000011669394796}
   m_Layer: 0
@@ -263,7 +262,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.01
-    m_NormalBias: 0.4
+    m_NormalBias: 0.2
     m_NearPlane: 0.4
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -274,7 +273,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.5
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!114 &114000010179865466
@@ -307,6 +306,7 @@ MonoBehaviour:
   coords:
   - {x: -3, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
+  chaseTimerMax: 3
 --- !u!114 &114000013203975416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,26 +319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4000011649230496}
---- !u!114 &114000013588226672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012344403832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db524bee27bfd5948a147a836aeb754d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyChaseOff: 0
-  speedMultiplier: 0.75
-  enemy_sprite: {fileID: 95000012276445530}
-  coords:
-  - {x: -3, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
-  - {x: 3, y: 0, z: -3}
-  - {x: -3, y: 0, z: -3}
-  canSeePlayer: 0
 --- !u!212 &212000010792526270
 SpriteRenderer:
   m_ObjectHideFlags: 1

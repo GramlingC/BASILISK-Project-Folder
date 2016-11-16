@@ -4,26 +4,14 @@ using System.Collections.Generic;
 
 public class A_Pathfinding : MonoBehaviour
 {
-    //Grid (includes which places are blocked-blocked does not go into open
-
-    //open set (Nodes)
-    //closed set (Nodes and parents)
-
-    //current
-
-    //Need to find way to add restricted nodes.
-    //This may work, if they're converted into Nodes.
     public Vector3[] restrictedNodes;
 
-    public int width;//???
+    public int width;
     public int length;
 
     public Vector3 lowerLeft;  //In-game location of lowest and leftmost grid coordinate
 
-    //Make driver monobehavior for this?
-
     private Grid grid;
-    //private List<Node> illegalNodes;
 
     //Computes the shortest path from startVec to finishVec.  A* algorithm.
     public List<Vector3> FindPath(Vector3 startVec, Vector3 finishVec)
@@ -188,8 +176,8 @@ public class A_Pathfinding : MonoBehaviour
         int[] coords = new int[2];
 
         //Converts the vector coordinates into grid coordinates.  Also rounds them, since grid coordinates must be ints.
-        coords[0] = (int)(Mathf.Round(pos.x) - Mathf.Round(lowerLeft.x));
-        coords[1] = (int)(Mathf.Round(pos.z) - Mathf.Round(lowerLeft.z));
+        coords[0] = (int)(Mathf.Round(pos.x - lowerLeft.x));
+        coords[1] = (int)(Mathf.Round(pos.z - lowerLeft.z));
         return coords;
     }
 
@@ -198,5 +186,27 @@ public class A_Pathfinding : MonoBehaviour
     {
         return new Vector3(nodeCoords[0] + lowerLeft.x, 0, nodeCoords[1] + lowerLeft.z);
         //The y of the vector shouldn't matter, due to the use of a y offset
+    }
+
+
+    //Functions that calculate the boundaries of the grid.  Can be used to constrain the player and the enemies to the grid.
+    public float GetLeftBound()
+    {
+        return lowerLeft.x;
+    }
+
+    public float GetRightBound()
+    {
+        return lowerLeft.x + width;
+    }
+
+    public float GetBottomBound()
+    {
+        return lowerLeft.z;
+    }
+
+    public float GetTopBound()
+    {
+        return lowerLeft.z + length;
     }
 }
