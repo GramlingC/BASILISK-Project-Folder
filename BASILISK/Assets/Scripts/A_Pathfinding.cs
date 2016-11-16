@@ -176,8 +176,8 @@ public class A_Pathfinding : MonoBehaviour
         int[] coords = new int[2];
 
         //Converts the vector coordinates into grid coordinates.  Also rounds them, since grid coordinates must be ints.
-        coords[0] = (int)(Mathf.Round(pos.x) - Mathf.Round(lowerLeft.x));
-        coords[1] = (int)(Mathf.Round(pos.z) - Mathf.Round(lowerLeft.z));
+        coords[0] = (int)(Mathf.Round(pos.x - lowerLeft.x));
+        coords[1] = (int)(Mathf.Round(pos.z - lowerLeft.z));
         return coords;
     }
 

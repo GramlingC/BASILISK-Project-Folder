@@ -112,7 +112,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 else
                     Debug.Log("There are two of the same coordinate in a row.");
                 nextPatrolCoord = 0;
-            }
+            }//End of loop adding coordinates
         }
         //nextPatrolCoord = 1;
         enemySpeed = 1F;
@@ -210,8 +210,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
             }
             else if (atRoundCoord)
             {
+                //Debug.Log("Next patrol coord: " + patrolPath[nextPatrolCoord]);
                 enemyState = 2;
                 returnPath = pathfinder.FindPath(transform.position, patrolPath[nextPatrolCoord]);
+                //Debug.Log("Last coord in Return Path: " + returnPath[returnPath.Count - 1]);
+                foreach(Vector3 vec in returnPath)
+                {
+                    Debug.Log("Return path: " + vec);
+                }
                 nextReturnCoord = 0;
             }
             //Debug.Log("Ending chase movement");
@@ -220,6 +226,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Return
         else if (enemyState == 2)
         {
+            //Debug.Log("Enemy position: " + transform.position);
             //Debug.Log("Starting return movement");
             //Debug.Log("Return path length: " + returnPath.Count);
             //Moves enemy to next coordinate in returnPath list.
@@ -246,11 +253,11 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 setChasePos();
                 //Debug.Log("Successfully gone to chase.");
             }
-            else if (atRoundCoord && patrolPath.Contains(transform.position))
+            else if (atRoundCoord && patrolPath.Contains(new Vector3(transform.position.x, yOffset, transform.position.z)))
             {
                 //Debug.Log("Going to patrol...");
                 enemyState = 0;
-                nextPatrolCoord = patrolPath.IndexOf(transform.position);
+                nextPatrolCoord = patrolPath.IndexOf(new Vector3(transform.position.x, yOffset, transform.position.z));
                 //Debug.Log("Successfully gone to patrol.");
             }
             //Debug.Log("Ending return movement");
