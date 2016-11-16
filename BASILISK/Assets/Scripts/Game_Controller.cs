@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor.SceneManagement;
 using System.Collections;
 
 public class Game_Controller : MonoBehaviour {
@@ -21,11 +22,12 @@ public class Game_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         playerPauseGame();
-		if (Input.GetKeyDown (KeyCode.R)) {
-			RestartGame ();
-		}
         runGame();
 	}
+
+    public void restartLevel() {
+        EditorSceneManager.LoadScene("Jeffrey");
+    }
 
     private void playerPauseGame() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -33,10 +35,7 @@ public class Game_Controller : MonoBehaviour {
             pauseCanvas.SetActive(!pauseCanvas.activeSelf);
         }
     }
-	public void RestartGame ()
-	{		
-			Application.LoadLevel ("Christian");
-	}
+
     private void runGame() {
         if (paused && Time.timeScale != 0) {
             Time.timeScale = 0;
