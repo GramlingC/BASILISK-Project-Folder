@@ -76,7 +76,7 @@ public class Player_Controller : MonoBehaviour
     }
     void Update()
     {
-
+        
         if (lightIsOn)
         {
             //Call CastLight
@@ -302,7 +302,7 @@ public class Player_Controller : MonoBehaviour
     }
     private void restMovement()
     {
-        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        if (player_rb.velocity == Vector3.zero)
         {
             increaseStamina(RestPerSecond * Time.deltaTime);
         }
@@ -321,8 +321,8 @@ public class Player_Controller : MonoBehaviour
     }
     private float speedKeys()
     {
-        if (Input.GetAxis("Run") > 0)
-            return 1.0f * (stamina + 50) / 50;
+        if (Input.GetAxis("Run") > 0 && stamina > 0)
+            return 1.5f * (stamina + 50) / 50;
         else if (Input.GetAxis("Run") < 0)
             return 0.5f;
         else

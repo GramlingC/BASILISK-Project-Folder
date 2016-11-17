@@ -21,7 +21,8 @@ public class Game_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         playerPauseGame();
-        
+        if (Input.GetKeyDown(KeyCode.R))
+            restartLevel();
         runGame();
 	}
 
