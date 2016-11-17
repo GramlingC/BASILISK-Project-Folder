@@ -285,12 +285,16 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //Define horizontal and vertical distances
             float dist_H = transform.position.x - dest.x;
             float dist_V = transform.position.z - dest.z;
-
+            float speed;
+            if (isChasing)
+                speed = runMultiplier;
+            else
+                speed = speedMultiplier;
 
             //Move horizontally or vertically towards player
             if (Mathf.Abs(dist_H) > Mathf.Abs(dist_V))
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, transform.position.z), enemySpeed * speedMultiplier * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(dest.x, yOffset, transform.position.z), enemySpeed * speed * Time.deltaTime);
                 if (dist_H > 0)
                     enemy_sprite.SetInteger("Direction", 4);
                 else
@@ -298,14 +302,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
             }
             else if (dist_V == dist_H)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speed * Time.deltaTime);
                 if (dist_H > 0)
                     enemy_sprite.SetInteger("Direction", 4);
                 else
                     enemy_sprite.SetInteger("Direction", 2);
             }
             else {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speedMultiplier * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, yOffset, dest.z), enemySpeed * speed * Time.deltaTime);
                 if (dist_V > 0)
                     enemy_sprite.SetInteger("Direction", 1);
                 else

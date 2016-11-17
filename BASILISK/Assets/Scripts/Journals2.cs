@@ -45,7 +45,6 @@ public class Journals2 : MonoBehaviour
         //loops through all journals, and if they are picked up it adds that journal to a list of journals collected.
         foreach (GameObject journal in journals)
         {
-            print("looped");
             var distance_to_journal = Vector3.Distance(player.transform.position, journal.transform.position);
             if (distance_to_journal < 2)
             {

@@ -79,12 +79,11 @@ public class Player_Controller : MonoBehaviour {
     }
 	void OnCollisionEnter (Collision col)
 	{
-		print("Collided");
 		if (col.gameObject.tag == "Guard" || col.gameObject.tag == "Bat") {
-		loss_screen.transform.Translate(0f,0f,.5f);
-		loss = true;
-		Time.timeScale = 0;
-		//print("Collided");
+		    loss_screen.transform.Translate(0f,0f,.5f);
+		    loss = true;
+		    Time.timeScale = 0;
+		    //print("Collided");
 
 		}
 
@@ -223,7 +222,6 @@ public class Player_Controller : MonoBehaviour {
             RaycastHit hit;
             if(Physics.Raycast(transform.position, LightDirection, out hit, light_length))
             {
-                print(hit.transform.gameObject.tag);
                 //Trigger enemy behavior
                 if (hit.transform.gameObject.tag == "Guard")
                 {
@@ -232,7 +230,7 @@ public class Player_Controller : MonoBehaviour {
                 }
                 else if (hit.transform.gameObject.tag == "Bat")
                 {
-                    Enemy_Controller enemy = (Enemy_Controller)hit.transform.gameObject.GetComponent(typeof(Enemy_Controller));
+                    Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
                     enemy.LightTrigger();
                 }
             }
