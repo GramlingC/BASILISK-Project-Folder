@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class Player_Controller : MonoBehaviour {
-    
-	public float speedMultiplier = 5f;
+public class Player_Controller : MonoBehaviour
+{
+
+    public float speedMultiplier = 5f;
     public int numberOfRays = 10;
 
-	int floorMask;
+    int floorMask;
     Rigidbody player_rb;
     Light player_light;
     public Animator player_sprite;
@@ -23,8 +25,16 @@ public class Player_Controller : MonoBehaviour {
     public bool lightIsOn;
     public string lightSwitching = "z";
 
-	public GameObject loss_screen;
-	private bool loss;
+    public float maxStamina = 5;
+    private float stamina;
+    public float TirePerSecond = 5f;
+    public float RestPerSecond = 5f;
+
+    private GUIStyle LightBoxStyle;
+    private GUIStyle StaminaBoxStyle;
+
+    public GameObject loss_screen;
+    private bool loss;
     //Used to access methods from A_Pathfinding to constrain movement
     private A_Pathfinding pathfinder;
     private float leftBound;
@@ -32,17 +42,20 @@ public class Player_Controller : MonoBehaviour {
     private float bottomBound;
     private float topBound;
 
-	//Used for Gameover condition
+    //Used for Gameover condition
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         player_rb = GetComponent<Rigidbody>();
         lightIsOn = true;
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
-		loss = false;
+        stamina = maxStamina;
+        loss = false;
+        InitStyle();
 
         //Sets boundaries
         pathfinder = GameObject.Find("PathfindingObj").GetComponent<A_Pathfinding>();
@@ -50,57 +63,83 @@ public class Player_Controller : MonoBehaviour {
         rightBound = pathfinder.GetRightBound();
         bottomBound = pathfinder.GetBottomBound();
         topBound = pathfinder.GetTopBound();
-	}
-    
-    void Awake () {
+    }
+
+    void Awake()
+    {
         floorMask = LayerMask.GetMask("Floor");
         player_light = GetComponentInChildren<Light>();
-	}
+    }
     void FixedUpdate()
     {
         Turning();
     }
-    void Update() {
+    void Update()
+    {
 
-        if (lightIsOn) { 
-        //Call CastLight
+        if (lightIsOn)
+        {
+            //Call CastLight
             CastLight();
             crankLight();
             gradualLightDiminish();
         }
         //Player Movement
+        restMovement();
         playerActivateDeactivateLight();
-        if (!crankingLight) 
+        if (!crankingLight)
             playerMovement();
         else
             player_sprite.SetBool("isWalking", false);
-            //player_rb.velocity = new Vector3(0, 0, 0);
+        //player_rb.velocity = new Vector3(0, 0, 0);
 
     }
-	void OnCollisionEnter (Collision col)
-	{
-		if (col.gameObject.tag == "Guard" || col.gameObject.tag == "Bat") {
-		    loss_screen.transform.Translate(0f,0f,.5f);
-		    loss = true;
-		    Time.timeScale = 0;
-		    //print("Collided");
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Guard" || col.gameObject.tag == "Bat")
+        {
+            loss_screen.transform.Translate(0f, 0f, .5f);
+            loss = true;
+            Time.timeScale = 0;
+            //print("Collided");
 
-		}
+        }
 
-	}
-	void OnGUI(){
-		if (loss == true) 
-		{
-			GUI.Label (new Rect (200, 200, 300, 400), "Game Over press R to restart");
-		}
-		
-	}
+    }
+    void OnGUI()
+    {
+        if (loss == true)
+        {
+            GUI.Label(new Rect(200, 200, 300, 400), "Game Over press R to restart");
+        }
+
+        GUI.Box(new Rect(10, Screen.height - 20, (stamina / maxStamina) * Screen.width / 6, 20), ((int)stamina * 100 / maxStamina) + "/" + 100, StaminaBoxStyle);
+        GUI.Box(new Rect(10, Screen.height - 50, ((player_light.spotAngle - 1) / (maxLightAngle - 1)) * Screen.width / 6, 20), ((int)player_light.spotAngle - 1) * 100 / 59 + "/" + 100, LightBoxStyle);
+
+
+    }
+    private void InitStyle()
+    {
+        LightBoxStyle = new GUIStyle();
+        StaminaBoxStyle = new GUIStyle();
+        Texture2D ltexture = new Texture2D(1, 1);
+        Texture2D stexture = new Texture2D(1, 1);
+        ltexture.SetPixel(0, 0, new Color(1f, 1f, 0.5f, 0.5f));
+        stexture.SetPixel(0, 0, new Color(0.8f, 0f, 0f, 0.5f));
+        ltexture.Apply();
+        stexture.Apply();
+        LightBoxStyle.normal.background = ltexture;
+        StaminaBoxStyle.normal.background = stexture;
+    }
+
     //Functions dealing wih diminishing light. Public functions are so that other scripts can call it also
-    public void diminishLight(float angleAmount) {
+    public void diminishLight(float angleAmount)
+    {
         player_light.spotAngle -= angleAmount;
     }
 
-    private void gradualLightDiminish() {
+    private void gradualLightDiminish()
+    {
         currentSecondsBeforeDiminish -= Time.deltaTime;
         if (currentSecondsBeforeDiminish > 0)
             return;
@@ -113,52 +152,64 @@ public class Player_Controller : MonoBehaviour {
     }
 
     //Light's spotAngle can't go lower than 1, so if it is 1, then turn the light object off
-    private void playerActivateDeactivateLight() {
-        if (Input.GetKey(lightSwitching)) {
+    private void playerActivateDeactivateLight()
+    {
+        if (Input.GetKey(lightSwitching))
+        {
             lightIsOn = !lightIsOn;
         }
     }
 
-    private void activatateOrDisableLight() {
+    private void activatateOrDisableLight()
+    {
         player_light.gameObject.SetActive(player_light.spotAngle <= 1 ? false : true);
     }
 
-    public bool lightIsDisabled() {
+    public bool lightIsDisabled()
+    {
         return !player_light.gameObject.activeSelf;
     }
 
-    public void increaseLight(float angleAmount) {
+    public void increaseLight(float angleAmount)
+    {
         if (player_light.spotAngle < maxLightAngle)
             player_light.spotAngle += angleAmount;
     }
 
-    private void crankLight() {
-        if (Input.GetKey(crankKeyPress)) {
+    private void crankLight()
+    {
+        if (Input.GetKey(crankKeyPress))
+        {
             crankingLight = true;
             crankTime = Mathf.Clamp(crankTime += Time.deltaTime, 0, secondsCrankUntilDiminish);
             increaseLight(lightCrankedPerSecond * Time.deltaTime);
             player_rb.velocity = Vector3.zero;
         }
-        else {
+        else
+        {
             crankingLight = false;
         }
-        if (Input.GetKeyUp(crankKeyPress)) {
+        if (Input.GetKeyUp(crankKeyPress))
+        {
             currentSecondsBeforeDiminish = crankTime * secondsCrankUntilDiminish;
             crankTime = 0;
         }
     }
 
     //For controlling player movement
-    private void playerMovement() {
-        
-        float mov_V = Input.GetAxis("Vertical") * speedMultiplier;
-        float mov_H = Input.GetAxis("Horizontal") * speedMultiplier;
+    private void playerMovement()
+    {
 
-        if (mov_V == 0 & mov_H == 0) {
+        float mov_V = Input.GetAxis("Vertical") * speedMultiplier * speedKeys();
+        float mov_H = Input.GetAxis("Horizontal") * speedMultiplier * speedKeys();
+
+        if (mov_V == 0 & mov_H == 0)
+        {
             player_sprite.SetBool("isWalking", false);
             player_rb.velocity = Vector3.zero;
         }
-        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H)) {
+        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H))
+        {
             player_sprite.SetBool("isWalking", true);
             player_rb.velocity = new Vector3(0, 0, mov_V);
             //transform.Translate(0, 0, mov_V, Space.World);
@@ -168,7 +219,8 @@ public class Player_Controller : MonoBehaviour {
             else
                 player_sprite.SetInteger("Direction", 1);
         }
-        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H)) {
+        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
+        {
             player_sprite.SetBool("isWalking", true);
             player_rb.velocity = new Vector3(mov_H, 0, 0);
             //transform.Translate(mov_H, 0, 0, Space.World);
@@ -178,17 +230,17 @@ public class Player_Controller : MonoBehaviour {
             else
                 player_sprite.SetInteger("Direction", 4);
         }
-        
+
     }
-	
-	// Update is called once per frame
-    void Turning ()
+
+    // Update is called once per frame
+    void Turning()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit cursor;
 
-        if (Physics.Raycast(ray,out cursor,20f,floorMask )) 
+        if (Physics.Raycast(ray, out cursor, 20f, floorMask))
         {
             Vector3 player_ray = cursor.point - transform.position;
 
@@ -203,7 +255,7 @@ public class Player_Controller : MonoBehaviour {
     }
     //Prototype method for player light casting: Raycasts in a fan, Raycasts trigger enemy behavior
     //It doesn't seem to be working well, though...
-    void CastLight ()
+    void CastLight()
     {
         //Only when light is enabled
         if (lightIsDisabled())
@@ -220,7 +272,7 @@ public class Player_Controller : MonoBehaviour {
 
             //Cast ray
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, LightDirection, out hit, light_length))
+            if (Physics.Raycast(transform.position, LightDirection, out hit, light_length))
             {
                 //Trigger enemy behavior
                 if (hit.transform.gameObject.tag == "Guard")
@@ -238,18 +290,42 @@ public class Player_Controller : MonoBehaviour {
 
     }
 
-	private float getSpeed () {
-		float speed = Time.deltaTime;
-		speed *= speedMultiplier;
-		speed *= speedKeys();
-		return speed;
-	}
-	private float speedKeys () {
-		if (Input.GetAxis ("Run") > 0)
-			return 2.0f;
-		else if (Input.GetAxis ("Run") < 0)
-			return 0.5f;
-		else
-			return 1f;
-	}
+    public void increaseStamina(float amount)
+    {
+        if (stamina < maxStamina)
+            stamina += amount;
+    }
+    public void decreaseStamina(float amount)
+    {
+        if (stamina > 0)
+            stamina -= amount;
+    }
+    private void restMovement()
+    {
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            increaseStamina(RestPerSecond * Time.deltaTime);
+        }
+        else if (Input.GetAxis("Run") > 0)
+        {
+            decreaseStamina(TirePerSecond * Time.deltaTime);
+        }
+    }
+
+    private float getSpeed()
+    {
+        float speed = Time.deltaTime;
+        speed *= speedMultiplier;
+        speed *= speedKeys();
+        return speed;
+    }
+    private float speedKeys()
+    {
+        if (Input.GetAxis("Run") > 0)
+            return 1.0f * (stamina + 50) / 50;
+        else if (Input.GetAxis("Run") < 0)
+            return 0.5f;
+        else
+            return 1f;
+    }
 }
