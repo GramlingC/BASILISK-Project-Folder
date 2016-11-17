@@ -127,6 +127,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
         isLightTriggered = false;
     }
 
+    // accessed by DialogueController
+    public bool detectsPlayer()
+    {
+        if (isChasing || enemyState > 0)
+            return true;
+        return false;
+    }
+
     // Update is called once per frame
     void Update()
     {

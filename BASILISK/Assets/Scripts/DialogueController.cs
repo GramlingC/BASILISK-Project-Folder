@@ -52,7 +52,7 @@ public class DialogueController : MonoBehaviour {
             if (targets[i].GetType() == typeof(Guard_Controller_v2))
             {
                 Guard_Controller_v2 target = targets[i].gameObject.GetComponent<Guard_Controller_v2>() as Guard_Controller_v2;
-                if (target.canSeePlayer)
+                if (target.detectsPlayer())
                 {
                     return true;
                 }
