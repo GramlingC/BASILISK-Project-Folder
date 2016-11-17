@@ -38,6 +38,7 @@ public class DialogueController : MonoBehaviour {
                 DialogueLabel label = gameObject.AddComponent<DialogueLabel>() as DialogueLabel;
                 label.message = segments[1];
                 label.target = target;
+                label.obscurable = true;
                 yield return new WaitForSeconds(1.0f + 0.08f * segments[1].Length);
                 Destroy(label);
             }

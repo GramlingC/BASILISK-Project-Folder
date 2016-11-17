@@ -6,6 +6,7 @@ public class DialogueLabel : MonoBehaviour {
     GUIStyle style;
     protected GameObject player;
     public MonoBehaviour target;
+    public bool obscurable;
 
     // Use this for initialization
 
@@ -22,8 +23,9 @@ public class DialogueLabel : MonoBehaviour {
     void OnGUI () {
         var point = Camera.main.WorldToScreenPoint(target.transform.position);
         if (withinDistance (4))
-            GUI.Label(new Rect(point.x - 4 * message.Length, Screen.currentResolution.height - point.y - 600, 90, 150), message, style);
-        //GUI.Label(new Rect(point.x - 4 * message.Length, Screen.currentResolution.height - point.y - 600, 90, 150), obscureMessage(message), style);
+            GUI.Label(new Rect(point.x - 4 * message.Length, (Screen.height * 0.8f) - point.y, 90, 150), message, style);
+        else if (obscurable)
+            GUI.Label(new Rect(point.x - 4 * message.Length, (Screen.height * 0.8f) - point.y, 90, 150), obscureMessage(message), style);
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class DialogueLabel : MonoBehaviour {
         char[] newMessage = message.ToCharArray();
         for (int i = 0; i < message.Length; i++)
         {
-            if (Random.value > (3.5 / player_distance))
+            if (Random.value > (4.5 / player_distance))
             {
                 if (Random.value > 0.4)
                     newMessage[i] = '.';
