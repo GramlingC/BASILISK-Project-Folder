@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.SceneManagement;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +29,7 @@ public class Game_Controller : MonoBehaviour {
 	}
 
     public void restartLevel() {
-        EditorSceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void playerPauseGame() {
