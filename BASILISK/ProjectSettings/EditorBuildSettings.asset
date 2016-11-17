@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Christian.unity
   - enabled: 1
     path: Assets/_Scenes/Victory.unity
+  - enabled: 1
+    path: Assets/_Scenes/Jeffrey.unity
+  - enabled: 1
+    path: Assets/_Scenes/Playtesting level.unity
