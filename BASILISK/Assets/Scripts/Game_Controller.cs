@@ -3,17 +3,30 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Game_Controller : MonoBehaviour {
-
+	public static Game_Controller control;
 //    public string pauseButton = "escape";
     public bool paused;
-    public string sceneName;
-    public string firstLevel;
     private GameObject pauseCanvas;
+	private Scene CurrentLevel;
 
 	// Use this for initialization
+	void Awake(){
+		if (control == null) 
+		{
+			DontDestroyOnLoad (gameObject);
+			control = this;
+		}
+		else if(control != this)
+		{
+			Destroy (gameObject);
+		}
+	}
 	void Start () {
+		CurrentLevel = SceneManager.GetActiveScene();
         paused = false;
-
+		Journals2 journals_script = GameObject.Find("Journals").GetComponent<Journals2>();
+		//journals_script = journals_script.collected<>();
+		CurrentLevel = SceneManager.GetActiveScene();
         pauseCanvas = transform.GetChild(0).gameObject;
 
 	}
@@ -27,7 +40,9 @@ public class Game_Controller : MonoBehaviour {
 	}
 
     public void restartLevel() {
-        SceneManager.LoadScene(sceneName);
+		CurrentLevel = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(CurrentLevel.name);
+
     }
 
     private void playerPauseGame() {
@@ -36,9 +51,13 @@ public class Game_Controller : MonoBehaviour {
             pauseCanvas.SetActive(!pauseCanvas.activeSelf);
         }
     }
+	public void SaveGame()
+	{
+	
+	}
 	public void RestartGame ()
-	{		
-			SceneManager.LoadScene(firstLevel);
+	{	
+		
 	}
 
     private void runGame() {
