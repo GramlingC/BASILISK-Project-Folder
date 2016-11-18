@@ -1,4 +1,5 @@
-Tooltip: Use "WASD" to move
-Tooltip:Hold "c" to crank your light
+Tooltip:Use "WASD" to move
+Tooltip:Hold left click to crank your light
+Tooltip:Hold shift to sprint
 Tooltip:Use your light to scare away bats
 Tooltip:Don't get spotted by guards

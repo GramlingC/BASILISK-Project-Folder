@@ -12,8 +12,9 @@ public class DialogueActivator : MonoBehaviour {
 	void Update () {
 	
 	}
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
+        Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "Player")
         {
             DialogueController script = (DialogueController)GetComponent(typeof(DialogueController));

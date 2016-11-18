@@ -510,7 +510,7 @@ Prefab:
     - target: {fileID: 114000010470337588, guid: d106531ed9cd2ce4ea5666456f7eb104,
         type: 2}
       propertyPath: crankKeyPress
-      value: space
+      value: KeyCode.Mouse0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010470337588, guid: d106531ed9cd2ce4ea5666456f7eb104,
         type: 2}
@@ -1196,7 +1196,7 @@ Transform:
   m_GameObject: {fileID: 617941267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 543895423}
@@ -1769,7 +1769,7 @@ Transform:
   m_GameObject: {fileID: 887790116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 543895423}
@@ -1960,6 +1960,8 @@ MonoBehaviour:
   - {fileID: 1140252736}
   - {fileID: 861104310}
   dialogue: GuardDialogue1
+  distance: 6
+  obscurable: 0
 --- !u!65 &1003727945
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2457,7 +2459,7 @@ Transform:
   m_GameObject: {fileID: 1235057451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 543895423}
@@ -3935,7 +3937,7 @@ Transform:
   m_GameObject: {fileID: 2037951844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 543895423}

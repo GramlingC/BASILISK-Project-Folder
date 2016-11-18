@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class DialogueController : MonoBehaviour {
     public MonoBehaviour[] targets;
     public string dialogue;
+    public int distance = 6;
+    public bool obscurable = false;
 
     private List<string> names;
     StreamReader sr;
@@ -38,7 +40,8 @@ public class DialogueController : MonoBehaviour {
                 DialogueLabel label = gameObject.AddComponent<DialogueLabel>() as DialogueLabel;
                 label.message = segments[1];
                 label.target = target;
-                label.obscurable = true;
+                label.obscurable = obscurable;
+                label.distance = distance;
                 yield return new WaitForSeconds(1.0f + 0.08f * segments[1].Length);
                 Destroy(label);
             }

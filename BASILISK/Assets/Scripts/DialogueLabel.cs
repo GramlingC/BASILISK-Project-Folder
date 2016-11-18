@@ -6,6 +6,7 @@ public class DialogueLabel : MonoBehaviour {
     GUIStyle style;
     protected GameObject player;
     public MonoBehaviour target;
+    public int distance;
     public bool obscurable;
 
     // Use this for initialization
@@ -22,7 +23,7 @@ public class DialogueLabel : MonoBehaviour {
 
     void OnGUI () {
         var point = Camera.main.WorldToScreenPoint(target.transform.position);
-        if (withinDistance (4))
+        if (withinDistance (distance))
             GUI.Label(new Rect(point.x - 4 * message.Length, (Screen.height * 0.8f) - point.y, 90, 150), message, style);
         else if (obscurable)
             GUI.Label(new Rect(point.x - 4 * message.Length, (Screen.height * 0.8f) - point.y, 90, 150), obscureMessage(message), style);

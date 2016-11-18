@@ -20,7 +20,7 @@ public class Player_Controller : MonoBehaviour
 
     private float crankTime;
     private float secondsCrankUntilDiminish;
-    public string crankKeyPress = "c";
+    private KeyCode crankKeyPress;
     public bool crankingLight;
     public bool lightIsOn;
     public string lightSwitching = "z";
@@ -54,6 +54,7 @@ public class Player_Controller : MonoBehaviour
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
         stamina = maxStamina;
+        crankKeyPress = KeyCode.Mouse0;
         loss = false;
         InitStyle();
 
