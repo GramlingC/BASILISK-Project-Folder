@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class A_Pathfinding : MonoBehaviour
 {
-    public Vector3[] restrictedNodes;
+    //public Vector3[] restrictedNodes;
+    public GameObject restrictedVecObj;
+    private List<int[]> restrictedNodes = new List<int[]>();
 
     public int width;
     public int length;
@@ -13,16 +15,32 @@ public class A_Pathfinding : MonoBehaviour
 
     private Grid grid;
 
+    void Start()
+    {
+        //List<Vector3> restrictedVecs = new List<Vector3>();
+        foreach(Transform child in restrictedVecObj.GetComponentInChildren<Transform>())
+        {
+            int[] rNode = ConvertToGridCoord(child.position);
+            //Debugging check - make sure each restricted node is on the grid
+            if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
+                Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
+            else
+                restrictedNodes.Add(ConvertToGridCoord(child.position));
+        }
+    }//end Start
+
     //Computes the shortest path from startVec to finishVec.  A* algorithm.
     public List<Vector3> FindPath(Vector3 startVec, Vector3 finishVec)
     {
         Grid grid = new Grid(width, length);
         Node[,] nodes = grid.GetGridNodes();
+        Debug.Log("To vector" + ConvertToVector(new int[] { width-1, length-1 }));
 
         int[] start = ConvertToGridCoord(startVec);
         int[] finish = ConvertToGridCoord(finishVec);
 
-        foreach (Vector3 rVec in restrictedNodes)
+        //OLD CODE.  Being kept around in case.
+        /*foreach (Vector3 rVec in restrictedNodes)
         {
             int[] rNode = ConvertToGridCoord(rVec);
 
@@ -31,6 +49,15 @@ public class A_Pathfinding : MonoBehaviour
                 Debug.Log(rVec + ": restricted node is off the grid.");
             else if(rNode[0] == finish[0] && rNode[1] == finish[1])
                 Debug.Log(finishVec + " is also a restricted node.");
+            else
+                nodes[rNode[0], rNode[1]].SetIllegal();
+        }*/
+
+        foreach (int[] rNode in restrictedNodes)
+        {
+            //Debugging check - make sure finishing point is not a restricted node.
+            if (rNode[0] == finish[0] && rNode[1] == finish[1])
+                Debug.Log(finishVec + " is also a restricted node.  Not setting that restricted node to illegal to avoid crash.");
             else
                 nodes[rNode[0], rNode[1]].SetIllegal();
         }
