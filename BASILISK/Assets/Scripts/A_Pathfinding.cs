@@ -21,24 +21,40 @@ public class A_Pathfinding : MonoBehaviour
     {
         //Debug.Log("Starting");
         //List<Vector3> restrictedVecs = new List<Vector3>();
-        foreach(Transform child in restrictedVecObj.GetComponentInChildren<Transform>())
+        foreach(Transform obj in restrictedVecObj.GetComponentInChildren<Transform>())
         {
-            //This only reads the transform.positions of gameObjects that have "collider" in their names
-            if (child.name.Contains("collider"))
+            //Looks for children in children(for prefabs)
+            foreach (Transform child in obj.GetComponentInChildren<Transform>())
             {
-                Debug.Log(child.position);
-                int[] rNode = ConvertToGridCoord(child.transform.position);
+                //This only reads the transform.positions of gameObjects that have "collider" in their names
+                if (child.name.Contains("collider"))
+                {
+                    //Get dimensions of object
+                    float c_length = child.transform.lossyScale.z;
+                    float c_width = child.transform.lossyScale.x;
 
-                //Debugging check - make sure each restricted node is on the grid
-                if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
-                    Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
-                else
-                    restrictedNodes.Add(ConvertToGridCoord(child.position));
+                    //iterate through dimensions
+                    for (float l = -.5F * (c_length); l < .5F * (c_length); l++)
+                    {
+                        for (float w = -.5F * (c_width); w < .5F * (c_width); w++)
+                        {
+                            //Debug.Log(obj.name);
+                            int[] rNode = ConvertToGridCoord(child.transform.position + new Vector3(w, 0f, l)); 
+                            //Debug.Log(rNode[0] + " " + rNode[1]); //Shows all the right coordinates
+                            //Debugging check - make sure each restricted node is on the grid
+                            if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
+                                Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
+                            else
+                                restrictedNodes.Add(ConvertToGridCoord(child.position));
+                        }
+                    }
+                }
                 //May try to find way to prevent duplicate restricted nodes from being added.  Is not top priority.
             }
         }
         //Debugging code.  Can be uncommented out to print which nodes are in the restricted list.
-        /*foreach(int[] node in restrictedNodes)
+        /*
+        foreach(int[] node in restrictedNodes)
         {
             Debug.Log(node[0] + " " + node[1]);
         }*/
@@ -50,6 +66,7 @@ public class A_Pathfinding : MonoBehaviour
         Grid grid = new Grid(width, length);
         Node[,] nodes = grid.GetGridNodes();
         Debug.Log("To vector" + ConvertToVector(new int[] { width-1, length-1 }));
+
 
         int[] start = ConvertToGridCoord(startVec);
         int[] finish = ConvertToGridCoord(finishVec);
@@ -74,9 +91,9 @@ public class A_Pathfinding : MonoBehaviour
             if (rNode[0] == finish[0] && rNode[1] == finish[1])
                 Debug.Log(finishVec + " is also a restricted node.  Not setting that restricted node to illegal to avoid crash.");
             else
-                nodes[rNode[0], rNode[1]].SetIllegal();
+                Debug.Log(rNode[0]+' '+ rNode[1]);
+                nodes[rNode[0], rNode[1]].SetIllegal(); //problem- the game keeps saying that this array index is out of range
         }
-
 
         //Lists of node coordinates
         List<int[]> open = new List<int[]>();
