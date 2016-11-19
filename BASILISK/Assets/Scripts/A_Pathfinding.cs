@@ -5,11 +5,13 @@ using System.Collections.Generic;
 public class A_Pathfinding : MonoBehaviour
 {
     //public Vector3[] restrictedNodes;
+
+    //restrictedVecObj can be an object that has all prefab obstacles attached (their children and all)
     public GameObject restrictedVecObj;
     private List<int[]> restrictedNodes = new List<int[]>();
 
-    public int width;
-    public int length;
+    public int width;  //x direction
+    public int length;  //z direction
 
     public Vector3 lowerLeft;  //In-game location of lowest and leftmost grid coordinate
 
@@ -17,16 +19,29 @@ public class A_Pathfinding : MonoBehaviour
 
     void Start()
     {
+        //Debug.Log("Starting");
         //List<Vector3> restrictedVecs = new List<Vector3>();
         foreach(Transform child in restrictedVecObj.GetComponentInChildren<Transform>())
         {
-            int[] rNode = ConvertToGridCoord(child.position);
-            //Debugging check - make sure each restricted node is on the grid
-            if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
-                Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
-            else
-                restrictedNodes.Add(ConvertToGridCoord(child.position));
+            //This only reads the transform.positions of gameObjects that have "collider" in their names
+            if (child.name.Contains("collider"))
+            {
+                Debug.Log(child.position);
+                int[] rNode = ConvertToGridCoord(child.transform.position);
+
+                //Debugging check - make sure each restricted node is on the grid
+                if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
+                    Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
+                else
+                    restrictedNodes.Add(ConvertToGridCoord(child.position));
+                //May try to find way to prevent duplicate restricted nodes from being added.  Is not top priority.
+            }
         }
+        //Debugging code.  Can be uncommented out to print which nodes are in the restricted list.
+        /*foreach(int[] node in restrictedNodes)
+        {
+            Debug.Log(node[0] + " " + node[1]);
+        }*/
     }//end Start
 
     //Computes the shortest path from startVec to finishVec.  A* algorithm.
