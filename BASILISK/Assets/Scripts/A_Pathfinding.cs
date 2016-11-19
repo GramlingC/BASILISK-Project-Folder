@@ -45,7 +45,7 @@ public class A_Pathfinding : MonoBehaviour
                             if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
                                 Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
                             else
-                                restrictedNodes.Add(ConvertToGridCoord(child.position));
+                                restrictedNodes.Add(rNode);
                         }
                     }
                 }
@@ -53,11 +53,11 @@ public class A_Pathfinding : MonoBehaviour
             }
         }
         //Debugging code.  Can be uncommented out to print which nodes are in the restricted list.
-        /*
+        
         foreach(int[] node in restrictedNodes)
         {
             Debug.Log(node[0] + " " + node[1]);
-        }*/
+        }
     }//end Start
 
     //Computes the shortest path from startVec to finishVec.  A* algorithm.
@@ -91,8 +91,10 @@ public class A_Pathfinding : MonoBehaviour
             if (rNode[0] == finish[0] && rNode[1] == finish[1])
                 Debug.Log(finishVec + " is also a restricted node.  Not setting that restricted node to illegal to avoid crash.");
             else
-                Debug.Log(rNode[0]+' '+ rNode[1]);
+            {
+                Debug.Log(rNode[0] + ' ' + rNode[1]);
                 nodes[rNode[0], rNode[1]].SetIllegal(); //problem- the game keeps saying that this array index is out of range
+            }
         }
 
         //Lists of node coordinates
