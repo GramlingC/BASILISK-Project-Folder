@@ -14,7 +14,6 @@ public class Game_Controller : MonoBehaviour {
     private GameObject pauseCanvas;
 	private Scene CurrentLevel;
     private int level;
-	public float number;
 
 	// Use this for initialization
 	//void Awake(){
@@ -29,6 +28,8 @@ public class Game_Controller : MonoBehaviour {
 		//}
 	//}
 	void Start () {
+        print(Application.persistentDataPath);
+        print(SceneManager.GetActiveScene().buildIndex);
         level = 0;
 		CurrentLevel = SceneManager.GetActiveScene();
         paused = false;
@@ -40,11 +41,12 @@ public class Game_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         level = SceneManager.GetActiveScene().buildIndex;
-		if (Input.GetKeyDown (KeyCode.K)) {
+		if (Input.GetKeyDown (KeyCode.I)) {
 			SaveGame ();
 		}
-		if (Input.GetKeyDown (KeyCode.L)) {
-			LoadGame ();
+		if (Input.GetKeyDown (KeyCode.O)) {
+            LoadGame ();
+            restartLevel();
 		}
         playerPauseGame();
         if (Input.GetKeyDown(KeyCode.R))
@@ -53,7 +55,6 @@ public class Game_Controller : MonoBehaviour {
 	}
 
     public void restartLevel() {
-		CurrentLevel = SceneManager.GetActiveScene();
 		SceneManager.LoadScene(level);
 
     }
