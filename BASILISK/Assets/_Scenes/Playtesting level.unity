@@ -1304,6 +1304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+  number: 0
 --- !u!4 &651854471
 Transform:
   m_ObjectHideFlags: 0
