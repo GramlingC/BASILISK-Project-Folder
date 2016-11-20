@@ -118,7 +118,7 @@ public class Game_Controller : MonoBehaviour {
         //Journals2 jc = GameObject.Find("Journals").GetComponent<Journals2>();
         //data.collected = jc.collected;
         data.lvl_id = level;
-
+        data.collected = collected;
 		bf.Serialize (save, data);
 		save.Close ();
 	}
@@ -130,6 +130,7 @@ public class Game_Controller : MonoBehaviour {
             Saves data = (Saves)bf.Deserialize(save);
 			save.Close ();
 			level = data.lvl_id;
+            collected = data.collected;
             //Journals2 jc = GameObject.Find("Journals").GetComponent<Journals2>();
             //jc.collected = data.collected;
 		
