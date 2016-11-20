@@ -43,6 +43,7 @@ public class Game_Controller : MonoBehaviour {
         level = SceneManager.GetActiveScene().buildIndex;
 		if (Input.GetKeyDown (KeyCode.I)) {
 			SaveGame ();
+            print("saved");
 		}
 		if (Input.GetKeyDown (KeyCode.O)) {
             LoadGame ();
