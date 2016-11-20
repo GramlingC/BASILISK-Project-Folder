@@ -15,19 +15,26 @@ public class Game_Controller : MonoBehaviour {
 	private Scene CurrentLevel;
     private int level;
 
-	// Use this for initialization
-	//void Awake(){
-		//if (control == null) 
-		//{
-			//DontDestroyOnLoad (gameObject);
-			//control = this;
-		//}
-		//else if(control != this)
-		//{
-			//Destroy (gameObject);
-		//}
-	//}
-	void Start () {
+    public int Journal_count;
+    public GameObject[] journals;
+    public GameObject player;
+    public List<GameObject> collected;
+    public int number;
+    public bool contains_journal;
+
+    // Use this for initialization
+    //void Awake(){
+    //if (control == null) 
+    //{
+    //DontDestroyOnLoad (gameObject);
+    //control = this;
+    //}
+    //else if(control != this)
+    //{
+    //Destroy (gameObject);
+    //}
+    //}
+    void Start () {
         print(Application.persistentDataPath);
         print(SceneManager.GetActiveScene().buildIndex);
         level = 0;
@@ -36,16 +43,33 @@ public class Game_Controller : MonoBehaviour {
 		CurrentLevel = SceneManager.GetActiveScene();
         pauseCanvas = transform.GetChild(0).gameObject;
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
+       // if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    collected.Remove(journals[0]);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha2))
+       // {
+         //   collected.Remove(journals[1]);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+         //   collected.Remove(journals[2]);
+        //}
+        //else
+        //{
+            //print("Invalid input");
+        //}
         level = SceneManager.GetActiveScene().buildIndex;
 		if (Input.GetKeyDown (KeyCode.I)) {
 			SaveGame ();
             print("saved");
 		}
 		if (Input.GetKeyDown (KeyCode.O)) {
+            print("loaded");
             LoadGame ();
             restartLevel();
 		}
@@ -54,7 +78,25 @@ public class Game_Controller : MonoBehaviour {
             restartLevel();
         runGame();
 	}
+    public void PickUp()
+    {
 
+        //loops through all journals, and if they are picked up it adds that journal to a list of journals collected.
+        foreach (GameObject journal in journals)
+        {
+            var distance_to_journal = Vector3.Distance(player.transform.position, journal.transform.position);
+            if (distance_to_journal < 2)
+            {
+                print("about to add journal");
+                collected.Add(journal);
+                print("added journal");
+                collected = collected.OrderBy(tile => tile.name).ToList();
+            }
+
+        }
+        //Removes specific journal based on which key is pressed, will change to display journal later
+
+    }
     public void restartLevel() {
 		SceneManager.LoadScene(level);
 
@@ -73,9 +115,9 @@ public class Game_Controller : MonoBehaviour {
 
 		FileStream save = File.Open (Application.persistentDataPath + "/save.dat", FileMode.Open);
 		Saves data = new Saves();
-
-		data.lvl_id = level;
-		//data.level = CurrentLevel;
+        //Journals2 jc = GameObject.Find("Journals").GetComponent<Journals2>();
+        //data.collected = jc.collected;
+        data.lvl_id = level;
 
 		bf.Serialize (save, data);
 		save.Close ();
@@ -88,7 +130,8 @@ public class Game_Controller : MonoBehaviour {
             Saves data = (Saves)bf.Deserialize(save);
 			save.Close ();
 			level = data.lvl_id;
-		//	CurrentLevel = data.level;
+            //Journals2 jc = GameObject.Find("Journals").GetComponent<Journals2>();
+            //jc.collected = data.collected;
 		
 		} 
 		else 
@@ -105,7 +148,17 @@ public class Game_Controller : MonoBehaviour {
             Time.timeScale = 1;
         }
     }
-	[Serializable]
+    void OnGUI()
+    {
+        GUI.Label(new Rect(200, 10, 100, 200), "Journal Count:");
+        GUI.Label(new Rect(286, 11f, 100, 200), Journal_count.ToString());
+        if (Input.GetKey(KeyCode.K))
+        {
+            GUI.Label(new Rect(300, 200, 100, 200), "Press number to select journal");
+        }
+    }
+
+    [Serializable]
 	class Saves
 	{
 

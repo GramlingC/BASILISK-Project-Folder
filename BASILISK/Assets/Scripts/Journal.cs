@@ -35,7 +35,7 @@ public class Journal : MonoBehaviour {
         if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
         {
            
-            Journals2 journals_script = GameObject.Find("Journals").GetComponent<Journals2>();
+            Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
             journals_script.Journal_count = journals_script.Journal_count + 1;
             journals_script.PickUp();
             journal_held = true;
