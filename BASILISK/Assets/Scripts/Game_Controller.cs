@@ -43,6 +43,7 @@ public class Game_Controller : MonoBehaviour
         //print(SceneManager.GetActiveScene().buildIndex);
         paused = false;
         pauseCanvas = transform.GetChild(0).gameObject;
+        pauseCanvas.SetActive(false);
         collected = collected;
 
     }
@@ -115,9 +116,12 @@ public class Game_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            paused = !paused;
-            pauseCanvas.SetActive(!pauseCanvas.activeSelf);
+            togglePause();
         }
+    }
+    public void togglePause() {
+        paused = !paused;
+        pauseCanvas.SetActive(!pauseCanvas.activeSelf);
     }
     public void SaveGame()
     {

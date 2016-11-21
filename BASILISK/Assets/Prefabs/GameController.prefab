@@ -158,8 +158,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 1
-  sceneName: Playtesting level
-  firstLevel: Playtesting level
+  Journal_count: 0
+  journals: []
+  player: {fileID: 0}
+  collected: 
+  contains_journal: 0
 --- !u!222 &222000013779462768
 CanvasRenderer:
   m_ObjectHideFlags: 1
