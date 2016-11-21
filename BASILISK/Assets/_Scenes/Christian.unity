@@ -702,8 +702,7 @@ MonoBehaviour:
   - {fileID: 1276589927}
   - {fileID: 1958029485}
   player: {fileID: 2039056442}
-  collected: []
-  number: 0
+  collected: 
   contains_journal: 0
 --- !u!4 &1092233561
 Transform:
@@ -891,7 +890,7 @@ GameObject:
   - 23: {fileID: 1199098490}
   - 114: {fileID: 1199098494}
   m_Layer: 0
-  m_Name: J1
+  m_Name: 1
   m_TagString: Journal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1234,7 +1233,7 @@ GameObject:
   - 23: {fileID: 1276589928}
   - 114: {fileID: 1276589932}
   m_Layer: 0
-  m_Name: J2
+  m_Name: 2
   m_TagString: Journal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,7 +1638,7 @@ GameObject:
   - 23: {fileID: 1958029486}
   - 114: {fileID: 1958029490}
   m_Layer: 0
-  m_Name: J3
+  m_Name: 3
   m_TagString: Journal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
