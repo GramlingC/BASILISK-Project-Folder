@@ -469,7 +469,7 @@ Prefab:
     - target: {fileID: 108000012064397348, guid: d106531ed9cd2ce4ea5666456f7eb104,
         type: 2}
       propertyPath: m_BounceIntensity
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010470337588, guid: d106531ed9cd2ce4ea5666456f7eb104,
         type: 2}
@@ -478,19 +478,19 @@ Prefab:
       objectReference: {fileID: 283093491}
     - target: {fileID: 4000012356542822, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000012356542822, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.13052616
+      value: 0.2588191
       objectReference: {fileID: 0}
     - target: {fileID: 4000012356542822, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9914449
+      value: 0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 4000012356542822, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114000010470337588, guid: d106531ed9cd2ce4ea5666456f7eb104,
         type: 2}
@@ -526,6 +526,16 @@ Prefab:
         type: 2}
       propertyPath: RestPerSecond
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 108000012064397348, guid: d106531ed9cd2ce4ea5666456f7eb104,
+        type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 108000012064397348, guid: d106531ed9cd2ce4ea5666456f7eb104,
+        type: 2}
+      propertyPath: m_Range
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
