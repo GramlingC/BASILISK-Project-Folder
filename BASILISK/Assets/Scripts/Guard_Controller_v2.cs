@@ -376,12 +376,27 @@ public class Guard_Controller_v2 : MonoBehaviour {
         preferences.Add(Vector3.forward, 2);
         preferences.Add(Vector3.back, 2);
 
+        bool close = false;
+
+        RaycastHit p;
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position, out p, 1F))
+        {
+            if (p.transform.tag == "Player")
+               close = true;
+        }
+
         //Higher preference for closer horizontal direction
         if (player.transform.position.x - transform.position.x > 0)
         {
             if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 //Even higher if farther away horizontally than vertically
+                if (close)
+                {
+                    nextChasePos = transform.position + new Vector3(player.transform.position.x - transform.position.x, 0F, 0F);
+                    return;
+                }
+                    
                 preferences[Vector3.right] += 2;
                 preferences[Vector3.left]--;
             }
@@ -392,6 +407,12 @@ public class Guard_Controller_v2 : MonoBehaviour {
         {
             if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
             {
+                if (close)
+                {
+                    nextChasePos = transform.position + new Vector3(player.transform.position.x - transform.position.x, 0F, 0F);
+                    return;
+                }
+
                 preferences[Vector3.left] += 2;
                 preferences[Vector3.right]--;
             }
@@ -403,6 +424,11 @@ public class Guard_Controller_v2 : MonoBehaviour {
         {
             if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
             {
+                if (close)
+                {
+                    nextChasePos = transform.position + new Vector3(0F, 0F, player.transform.position.z - transform.position.z);
+                    return;
+                }
                 preferences[Vector3.forward] += 2;
                 preferences[Vector3.back]--;
             }
@@ -413,6 +439,11 @@ public class Guard_Controller_v2 : MonoBehaviour {
         {
             if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
             {
+                if (close)
+                {
+                    nextChasePos = transform.position + new Vector3(0F, 0F, player.transform.position.z - transform.position.z);
+                    return;
+                }
                 preferences[Vector3.back] += 2;
                 preferences[Vector3.forward]--;
             }
@@ -424,15 +455,16 @@ public class Guard_Controller_v2 : MonoBehaviour {
         foreach (KeyValuePair<Vector3, int> entry in preferences)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, entry.Key, out hit, 1.5F))
+            if (Physics.Raycast(transform.position, entry.Key, out hit, 1F))
             {
                 if (hit.transform.gameObject.tag == "Player")
-                    if (entry.Value > l.Value)
-                        l = entry;
+                    nextChasePos = transform.position + entry.Key;
+
             }
             else if (entry.Value > l.Value)
                 l = entry;
         }
+        
         nextChasePos = transform.position + l.Key;
     }
 }

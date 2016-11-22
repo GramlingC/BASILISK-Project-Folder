@@ -413,7 +413,7 @@ public class Bat_Controller : MonoBehaviour
         //Higher preference for closer horizontal direction
         if (player.transform.position.x - transform.position.x < 0)
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 //Even higher if farther away horizontally than vertically
                 preferences[Vector3.right] += 2;
@@ -424,7 +424,7 @@ public class Bat_Controller : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.left] += 2;
                 preferences[Vector3.right]--;
@@ -435,7 +435,7 @@ public class Bat_Controller : MonoBehaviour
         //Same but vertically
         if (player.transform.position.z - transform.position.z < 0)
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.forward] += 2;
                 preferences[Vector3.back]--;
@@ -445,7 +445,7 @@ public class Bat_Controller : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.back] += 2;
                 preferences[Vector3.forward]--;
@@ -458,17 +458,15 @@ public class Bat_Controller : MonoBehaviour
         foreach (KeyValuePair<Vector3, int> entry in preferences)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, entry.Key, out hit, 1.5F))
+            if (!Physics.Raycast(transform.position, entry.Key, out hit, 1.5F))
             {
-                if (hit.transform.gameObject.tag == "Player")
-                    if (entry.Value > l.Value)
-                        l = entry;
+                if (entry.Value > l.Value)
+                    l = entry;
             }
-            else if (entry.Value > l.Value)
-                l = entry;
         }
         nextChasePos = transform.position + l.Key;
     }
+
     private void setChasePos()
     {
         //Creates dictionary of preferences regarding which direction to go
@@ -526,7 +524,7 @@ public class Bat_Controller : MonoBehaviour
         foreach (KeyValuePair<Vector3, int> entry in preferences)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, entry.Key, out hit, 1.5F))
+            if (Physics.Raycast(transform.position, entry.Key, out hit, 1F))
             {
                 if (hit.transform.gameObject.tag == "Player")
                     if (entry.Value > l.Value)
