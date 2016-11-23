@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Guard_Controller_v2 : MonoBehaviour {
 
+    public DialogueActivator dialogAct;
+
     public bool enemyChaseOff; //Temporary testing variable.  Setting this to true will prevent the enemy from chasing the player.
 
     private float enemySpeed; //How fast the enemy moves
@@ -34,6 +36,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
     private int enemyState; //0 for patrol, 1 for chase, 2 for return
     private bool isLightTriggered;  //True if enemy is reacting to light.  Affects enemyState.
     public bool canSeePlayer;  //Becomes true when the enemy has spotted the player.  Affects enemy state.
+    private bool hasSeenPlayer = false;     //True if enemy has spotted the player
     private bool atRoundCoord; //True if enemy is at a position that exactly corresponds to a grid node.
     private GameObject player;  //Used to keep tabs on the players' position.
 
@@ -166,6 +169,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
             {
                 //Debug.Log("Going to chasing...");
+                dialogAct = new DialogueActivator();
+                dialogAct.targets[0] = this as MonoBehaviour;
+                if (hasSeenPlayer)
+                    dialogAct.dialogue = "GuardDetectSeen";
+                else
+                    dialogAct.dialogue = "GuardDetect";
+                dialogAct.dialogue_type = 1;
+
                 enemyState = 1;
                 chaseTimer = chaseTimerMax;
                 isChasing = true;
@@ -185,7 +196,15 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //Move enemy in direction closest to player position.
             //Debug.Log("Entering chase");
             //Debug.Log(nextChasePos);
-            
+            dialogAct = new DialogueActivator();
+            dialogAct.targets[0] = this as MonoBehaviour;
+            if (hasSeenPlayer)
+                dialogAct.dialogue = "GuardChasingSeen";
+            else
+                dialogAct.dialogue = "GuardChasing";
+            dialogAct.dialogue_type = 1;
+
+
             if (transform.position == nextChasePos)
                 atRoundCoord = true;
             else
@@ -201,6 +220,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 //Debug.Log("Round " + enemyState + " " + transform.position);
                 //Debug.Log(transform.position);
+
                 chaseTimer = chaseTimerMax;
                 canSeePlayer = false;
                 isLightTriggered = false;
@@ -234,6 +254,14 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Return
         else if (enemyState == 2)
         {
+            dialogAct = new DialogueActivator();
+            dialogAct.targets[0] = this as MonoBehaviour;
+            if (hasSeenPlayer)
+                dialogAct.dialogue = "GuardReturnSeen";
+            else
+                dialogAct.dialogue = "GuardReturn";
+            dialogAct.dialogue_type = 1;
+
             //Debug.Log("Enemy position: " + transform.position);
             //Debug.Log("Starting return movement");
             //Debug.Log("Return path length: " + returnPath.Count);
@@ -358,7 +386,10 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 //Debug.Log(hit.transform.gameObject.tag);
                 if (hit.transform.gameObject.tag == "Player")
+                {
                     canSeePlayer = true;
+                    hasSeenPlayer = true;
+                }
             }
         }
         /*if (sawPlayer == true)

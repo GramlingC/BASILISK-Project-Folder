@@ -28,7 +28,7 @@ public class Player_Controller : MonoBehaviour
     public float maxStamina = 5;
     private float stamina;
     public float TirePerSecond = 5f;
-    public float RestPerSecond = 5f;
+    public float RestPerSecond = 4f;
 
     private GUIStyle LightBoxStyle;
     private GUIStyle StaminaBoxStyle;
@@ -118,8 +118,8 @@ public class Player_Controller : MonoBehaviour
             GUI.Label(new Rect(200, 200, 300, 400), "Game Over press R to restart");
         }
 
-        GUI.Box(new Rect(10, Screen.height - 20, (stamina / maxStamina) * Screen.width / 6, 20), ((int)stamina * 100 / maxStamina) + "/" + 100, StaminaBoxStyle);
-        GUI.Box(new Rect(10, Screen.height - 50, ((player_light.spotAngle - 1) / (maxLightAngle - 1)) * Screen.width / 6, 20), ((int)player_light.spotAngle - 1) * 100 / 59 + "/" + 100, LightBoxStyle);
+        GUI.Box(new Rect(10, Screen.height - 20, (stamina / maxStamina) * Screen.width / 6, 20), (int)(stamina * 100 / maxStamina) + "/" + 100, StaminaBoxStyle);
+        GUI.Box(new Rect(10, Screen.height - 50, ((player_light.spotAngle - 1) / (maxLightAngle - 1)) * Screen.width / 6, 20), (int)(player_light.spotAngle - 1) * 100 / 59 + "/" + 100, LightBoxStyle);
 
 
     }
@@ -213,27 +213,25 @@ public class Player_Controller : MonoBehaviour
             player_sprite.SetBool("isWalking", false);
             player_rb.velocity = Vector3.zero;
         }
-        else if (Mathf.Abs(mov_V) >= Mathf.Abs(mov_H))
+        else
         {
             player_sprite.SetBool("isWalking", true);
-            player_rb.velocity = new Vector3(0, 0, mov_V);
-            //transform.Translate(0, 0, mov_V, Space.World);
-
-            if (mov_V > 0)
-                player_sprite.SetInteger("Direction", 3);
-            else
-                player_sprite.SetInteger("Direction", 1);
-        }
-        else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
-        {
-            player_sprite.SetBool("isWalking", true);
-            player_rb.velocity = new Vector3(mov_H, 0, 0);
-            //transform.Translate(mov_H, 0, 0, Space.World);
-
-            if (mov_H > 0)
-                player_sprite.SetInteger("Direction", 2);
-            else
-                player_sprite.SetInteger("Direction", 4);
+            player_rb.velocity = new Vector3(mov_H, 0, mov_V);
+            if (Mathf.Abs(mov_V) > Mathf.Abs(mov_H))
+            {
+                if (mov_V > 0)
+                    player_sprite.SetInteger("Direction", 3);
+                else
+                    player_sprite.SetInteger("Direction", 1);
+            }
+            else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
+            {
+                if (mov_H > 0)
+                    player_sprite.SetInteger("Direction", 2);
+                else
+                    player_sprite.SetInteger("Direction", 4);
+            }
+            else { }        //If vertical and horizontal speeds are equal, keep the previous sprite
         }
 
     }
