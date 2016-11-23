@@ -10,9 +10,14 @@ public class Journal : MonoBehaviour {
     private bool journal_held;
     private bool near_journal;
     public GameObject sprite;
+    private GameObject journal;
   
     // Use this for initialization
 	void Start () {
+        journal = gameObject;
+        Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
+        journals_script.journals.Add(journal);
+        journals_script.journals.RemoveAll(item => item == null);        
         journal_held = false;
         near_journal = false;        
        
@@ -37,7 +42,7 @@ public class Journal : MonoBehaviour {
            
             Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
             journals_script.Journal_count = journals_script.Journal_count + 1;
-            journals_script.PickUp();
+            journals_script.PickUp();            
             journal_held = true;
             transform.Translate(0, -10, 0);
         }

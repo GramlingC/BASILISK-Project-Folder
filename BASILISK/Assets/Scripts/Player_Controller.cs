@@ -42,11 +42,15 @@ public class Player_Controller : MonoBehaviour
     private float bottomBound;
     private float topBound;
 
+    private GameObject player;
     //Used for Gameover condition
 
     // Use this for initialization
     void Start()
     {
+        player = gameObject;
+        Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
+        journals_script.player = player;
         player_rb = GetComponent<Rigidbody>();
         lightIsOn = true;
         crankingLight = false;

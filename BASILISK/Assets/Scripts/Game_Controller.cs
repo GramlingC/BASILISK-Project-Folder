@@ -17,7 +17,8 @@ public class Game_Controller : MonoBehaviour
     private int level;
 
     public int Journal_count;
-    public GameObject[] journals;
+    //public GameObject[] journals;
+    public List<GameObject> journals;
     public GameObject player;
     public List<int> collected;
 
@@ -36,21 +37,24 @@ public class Game_Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     void Start()
     {
-
+        print("started");
         //print(Application.persistentDataPath);
         //print(SceneManager.GetActiveScene().buildIndex);
         paused = false;
-        pauseCanvas = transform.GetChild(0).gameObject;
-        pauseCanvas.SetActive(false);
-        collected = collected;
-
+        //pauseCanvas = transform.GetChild(0).gameObject;
+        //pauseCanvas.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         // if (Input.GetKeyDown(KeyCode.Alpha1))
         //{
         //    collected.Remove(journals[0]);
@@ -84,6 +88,7 @@ public class Game_Controller : MonoBehaviour
             restartLevel();
         runGame();
     }
+   
     public void PickUp()
     {
 
@@ -104,14 +109,8 @@ public class Game_Controller : MonoBehaviour
     public void restartLevel()
     {
         SceneManager.LoadScene(level);
-
     }
-    IEnumerator wait()
-    {
-        print("startedwait");
-        yield return new WaitForSeconds(5);
-        print("waited");
-    }
+   
     private void playerPauseGame()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -147,7 +146,6 @@ public class Game_Controller : MonoBehaviour
             save.Close();
             level = data.lvl_id;
             restartLevel();
-            StartCoroutine(wait());
             collected = data.collected;
 
 
