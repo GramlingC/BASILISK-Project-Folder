@@ -697,11 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   Journal_count: 0
-  journals:
-  - {fileID: 1199098489}
-  - {fileID: 1276589927}
-  - {fileID: 1958029485}
-  player: {fileID: 2039056442}
+  journals: []
+  player: {fileID: 0}
   collected: 
   contains_journal: 0
 --- !u!4 &1092233561
