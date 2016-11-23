@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class Guard_Controller_v2 : MonoBehaviour {
 
-    public DialogueActivator dialogAct;
+    DialogueController dialogContr;
+    private bool dialogueFinished = true;
 
     public bool enemyChaseOff; //Temporary testing variable.  Setting this to true will prevent the enemy from chasing the player.
 
@@ -149,6 +150,21 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Debug.Log(enemyState);
         if (enemyState == 0)
         {
+            //If the guard is within range of the DialogueController, then it will appear as if the guard has detected the player
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardDetectSeen";
+                else
+                    dialogContr.dialogue = "GuardDetect";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 6;
+            }
+            else
+                dialogueFinished = dialogContr.finished;
             //Debug.Log("Starting patrol movement");
             //Moves enemy to next coordinate in the patrolPath list
             RouteEnemy(patrolPath[nextPatrolCoord]);
@@ -169,13 +185,6 @@ public class Guard_Controller_v2 : MonoBehaviour {
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
             {
                 //Debug.Log("Going to chasing...");
-                dialogAct = new DialogueActivator();
-                dialogAct.targets[0] = this as MonoBehaviour;
-                if (hasSeenPlayer)
-                    dialogAct.dialogue = "GuardDetectSeen";
-                else
-                    dialogAct.dialogue = "GuardDetect";
-                dialogAct.dialogue_type = 1;
 
                 enemyState = 1;
                 chaseTimer = chaseTimerMax;
@@ -196,13 +205,20 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //Move enemy in direction closest to player position.
             //Debug.Log("Entering chase");
             //Debug.Log(nextChasePos);
-            dialogAct = new DialogueActivator();
-            dialogAct.targets[0] = this as MonoBehaviour;
-            if (hasSeenPlayer)
-                dialogAct.dialogue = "GuardChasingSeen";
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardChasingSeen";
+                else
+                    dialogContr.dialogue = "GuardChasing";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 20;
+            }
             else
-                dialogAct.dialogue = "GuardChasing";
-            dialogAct.dialogue_type = 1;
+                dialogueFinished = dialogContr.finished;
 
 
             if (transform.position == nextChasePos)
@@ -254,13 +270,20 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Return
         else if (enemyState == 2)
         {
-            dialogAct = new DialogueActivator();
-            dialogAct.targets[0] = this as MonoBehaviour;
-            if (hasSeenPlayer)
-                dialogAct.dialogue = "GuardReturnSeen";
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardReturnSeen";
+                else
+                    dialogContr.dialogue = "GuardReturn";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 20;
+            }
             else
-                dialogAct.dialogue = "GuardReturn";
-            dialogAct.dialogue_type = 1;
+                dialogueFinished = dialogContr.finished;
 
             //Debug.Log("Enemy position: " + transform.position);
             //Debug.Log("Starting return movement");
@@ -292,6 +315,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             else if (atRoundCoord && patrolPath.Contains(new Vector3(transform.position.x, yOffset, transform.position.z)))
             {
                 //Debug.Log("Going to patrol...");
+                hasSeenPlayer = true;
                 enemyState = 0;
                 nextPatrolCoord = patrolPath.IndexOf(new Vector3(transform.position.x, yOffset, transform.position.z));
                 //Debug.Log("Successfully gone to patrol.");
@@ -388,7 +412,6 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 if (hit.transform.gameObject.tag == "Player")
                 {
                     canSeePlayer = true;
-                    hasSeenPlayer = true;
                 }
             }
         }
