@@ -29,6 +29,7 @@ public class A_Pathfinding : MonoBehaviour
                 //This only reads the transform.positions of gameObjects that have "collider" in their names
                 if (child.name.Contains("collider"))
                 {
+                    //Debug.Log(child.name);
                     //Get dimensions of object
                     float c_length = child.transform.lossyScale.z;
                     float c_width = child.transform.lossyScale.x;
@@ -39,7 +40,7 @@ public class A_Pathfinding : MonoBehaviour
                         for (float w = -.5F * (c_width); w < .5F * (c_width); w++)
                         {
                             //Debug.Log(obj.name);
-                            int[] rNode = ConvertToGridCoord(child.transform.position + new Vector3(w, 0f, l)); 
+                            int[] rNode = ConvertToGridCoord(child.transform.position + new Vector3(w, 0f, l)); //???
                             //Debug.Log(rNode[0] + " " + rNode[1]); //Shows all the right coordinates
                             //Debugging check - make sure each restricted node is on the grid
                             if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
@@ -54,10 +55,10 @@ public class A_Pathfinding : MonoBehaviour
         }
         //Debugging code.  Can be uncommented out to print which nodes are in the restricted list.
         
-        foreach(int[] node in restrictedNodes)
+        /*foreach(int[] node in restrictedNodes)
         {
-            Debug.Log(node[0] + " " + node[1]);
-        }
+            Debug.Log("Restricted node: " + node[0] + " " + node[1]);
+        }*/
     }//end Start
 
     //Computes the shortest path from startVec to finishVec.  A* algorithm.
@@ -65,7 +66,7 @@ public class A_Pathfinding : MonoBehaviour
     {
         Grid grid = new Grid(width, length);
         Node[,] nodes = grid.GetGridNodes();
-        Debug.Log("To vector" + ConvertToVector(new int[] { width-1, length-1 }));
+        //Debug.Log("To vector" + ConvertToVector(new int[] { width-1, length-1 }));
 
 
         int[] start = ConvertToGridCoord(startVec);
@@ -92,7 +93,7 @@ public class A_Pathfinding : MonoBehaviour
                 Debug.Log(finishVec + " is also a restricted node.  Not setting that restricted node to illegal to avoid crash.");
             else
             {
-                Debug.Log(rNode[0] + ' ' + rNode[1]);
+                //Debug.Log(rNode[0] + " " + rNode[1]);
                 nodes[rNode[0], rNode[1]].SetIllegal(); //problem- the game keeps saying that this array index is out of range
             }
         }
@@ -122,7 +123,7 @@ public class A_Pathfinding : MonoBehaviour
         //The starting position is added to the open list, and its G and H values are set.
         open.Add(start);
         nodes[start[0], start[1]].SetGDist(0);
-        nodes[start[0], start[1]].SetHDist(grid.ManhattenDist(start[0], start[1], finish[0], finish[1]));
+        nodes[start[0], start[1]].SetHDist(grid.DiagDist(start[0], start[1], finish[0], finish[1]));
 
         //This will keep track of the current node coordinates
         int[] current = new int[2];
@@ -162,6 +163,7 @@ public class A_Pathfinding : MonoBehaviour
             if (current[0] == finish[0] && current[1] == finish[1])
                 break;  //path has been found
 
+            //Will also need to find diagonal neighbors
             List<int[]> neighbors = grid.GetNeighborNodes(current[0], current[1]);
 
             foreach (int[] neighbor in neighbors)
@@ -193,13 +195,13 @@ public class A_Pathfinding : MonoBehaviour
                 
                 if (!openContainsNeighbor || nodes[current[0], current[1]].GetGDist() < nodes[neighbor[0], neighbor[1]].GetGDist())
                 {
-                    nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + 1);
+                    nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + neighbor[2]);
                     nodes[neighbor[0], neighbor[1]].SetParentNode(current);
 
                     if (!openContainsNeighbor)
                     {
-                        open.Add(neighbor);
-                        nodes[neighbor[0], neighbor[1]].SetHDist(grid.ManhattenDist(neighbor[0], neighbor[1], finish[0], finish[1]));
+                        open.Add(new int[] { neighbor[0], neighbor[1] });
+                        nodes[neighbor[0], neighbor[1]].SetHDist(grid.DiagDist(neighbor[0], neighbor[1], finish[0], finish[1]));
                     }
                 }
             }
@@ -216,7 +218,7 @@ public class A_Pathfinding : MonoBehaviour
             {
                 break;
             }
-            curr = nodes[curr[0], curr[1]].GetParentNode();//Something is wrong with the parent relationship.
+            curr = nodes[curr[0], curr[1]].GetParentNode();
         }
 
         path.Reverse();

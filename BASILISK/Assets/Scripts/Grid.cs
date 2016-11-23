@@ -37,15 +37,17 @@ public class Grid
     //Returns a list of neighbor indexes.  GetNeighborIndices?
     public List<int[]> GetNeighborNodes(int x, int y)
     {
+        //Each int[] in the list will contain the x index, the y/z index, and the weight (up/down is 2, diagonal is 3)
+
         //The list that will contain the coords of the neighboring nodes.
         List<int[]> neighbors = new List<int[]>();
 
-        //Checks in four directions.  Could be modified to check eight.
+        //Checks in four directions.
         if(x - 1 >= 0)
         {
             if (gridNodes[x-1, y].GetIsLegal())
             {
-                neighbors.Add(new int[] { x - 1, y });
+                neighbors.Add(new int[] { x - 1, y, 2 });
                 //neighbors.Add(gridNodes[x - 1, y].GetNodePos()
             }
         }
@@ -53,24 +55,55 @@ public class Grid
         {
             if (gridNodes[x + 1, y].GetIsLegal())
             {
-                neighbors.Add(new int[] { x + 1, y });
+                neighbors.Add(new int[] { x + 1, y, 2 });
             }
         }
         if (y - 1 >= 0)
         {
             if (gridNodes[x, y - 1].GetIsLegal())
             {
-                neighbors.Add(new int[] { x, y - 1 });
+                neighbors.Add(new int[] { x, y - 1, 2 });
             }
         }
         if (y + 1 < length)
         {
             if (gridNodes[x, y + 1].GetIsLegal())
             {
-                neighbors.Add(new int[] { x, y + 1});
+                neighbors.Add(new int[] { x, y + 1, 2});
             }
         }
-        
+
+        //Checks diagonals
+        if (x - 1 >= 0 && y - 1 >= 0)
+        {
+            if (gridNodes[x - 1, y - 1].GetIsLegal())
+            {
+                neighbors.Add(new int[] { x - 1, y - 1, 3 });
+                //neighbors.Add(gridNodes[x - 1, y].GetNodePos()
+            }
+        }
+        if (x + 1 < width && y - 1 >= 0)
+        {
+            if (gridNodes[x + 1, y - 1].GetIsLegal())
+            {
+                neighbors.Add(new int[] { x + 1, y - 1, 3 });
+            }
+        }
+        if (x - 1 >= 0 && y + 1 < length)
+        {
+            if (gridNodes[x - 1, y + 1].GetIsLegal())
+            {
+                neighbors.Add(new int[] { x - 1, y + 1, 3 });
+            }
+        }
+        if (x + 1 < width && y + 1 < length)
+        {
+            if (gridNodes[x + 1, y + 1].GetIsLegal())
+            {
+                neighbors.Add(new int[] { x + 1, y + 1, 3 });
+            }
+        }
+
         return neighbors;
     }
 
@@ -80,8 +113,15 @@ public class Grid
         return gridNodes;
     }
 
+    //Likely depricated with change from 4 to 8 direction movement
     public int ManhattenDist(int x1, int y1, int x2, int y2)
     {
         return (Mathf.Abs(x1 - x2) + Mathf.Abs(y1 - y2));
+    }
+
+    //Roughly approximates distance between two points
+    public int DiagDist(int x1, int y1, int x2, int y2)
+    {
+        return 2 * Mathf.Max(Mathf.Abs(x1 - x2), Mathf.Abs(y1 - y2));
     }
 }
