@@ -12,9 +12,9 @@ public class Player_Controller : MonoBehaviour
     Rigidbody player_rb;
     Light player_light;
     public Animator player_sprite;
-    public float lightDiminishPerSecond = 5f;
+    public float lightDiminishPerSecond = 3f;
     public float lightCrankedPerSecond = 5f;
-    public float secondsUntilStartDiminish = 3f;
+    public float secondsUntilStartDiminish = 5f;
     public float maxLightAngle = 60;
     private float currentSecondsBeforeDiminish;
 
@@ -55,6 +55,7 @@ public class Player_Controller : MonoBehaviour
         lightIsOn = true;
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
+        maxLightAngle = Mathf.Max(player_light.spotAngle, maxLightAngle);
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
         stamina = maxStamina;
