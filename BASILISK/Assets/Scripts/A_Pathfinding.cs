@@ -44,7 +44,7 @@ public class A_Pathfinding : MonoBehaviour
                             //Debug.Log(rNode[0] + " " + rNode[1]); //Shows all the right coordinates
                             //Debugging check - make sure each restricted node is on the grid
                             if (rNode[0] < 0 || rNode[1] < 0 || rNode[0] >= width || rNode[1] >= length)
-                                Debug.Log(child.position + ": restricted node is off the grid.  It will not be added.");
+                                Debug.Log(obj.name + child.position + ": restricted node is off the grid.  It will not be added.");
                             else
                                 restrictedNodes.Add(rNode);
                         }

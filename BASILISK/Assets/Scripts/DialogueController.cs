@@ -55,7 +55,7 @@ public class DialogueController : MonoBehaviour {
         {
             string readline = sr.ReadToEnd();
             string[] lines = readline.Split('\n');
-            string randomline = lines[(int)Random.Range(0f, (float)lines.Length + 0.99f)];
+            string randomline = lines[(int)Random.Range(0f, lines.Length + 0.99f)];
             MonoBehaviour target = targets[0];
             DialogueLabel label = gameObject.AddComponent<DialogueLabel>() as DialogueLabel;
             label.message = randomline;
