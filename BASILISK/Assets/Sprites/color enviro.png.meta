@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: cbab2141053786c4db0254bdb0c333c2
+timeCreated: 1479947520
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Big Mushroom
+    21300002: color enviro_1
+    21300004: ExitLampSide
+    21300006: ExitLampFront
+    21300008: color enviro_4
+    21300010: color enviro_5
+    21300012: BrownStalagmite
+    21300014: MushroomBlue1
+    21300016: MushroomBlue2
+    21300018: MushroomBlue3
+    21300020: color enviro_10
+    21300022: Pool
+    21300024: Puddle
+    21300026: BrownStalagmite2
+    21300028: BrownStalagmite3
+    21300030: MushroomBlue4
+    21300032: color enviro_16
+    21300034: MushroomGreen1
+    21300036: MushroomGreen2
+    21300038: color enviro_19
+    21300040: MushroomGreen3
+    21300042: MushroomGreen4
+    21300044: Post1
+    21300046: Post2
+    21300048: color enviro_24
+    21300050: color enviro_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Big Mushroom
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1762
+        width: 223
+        height: 637
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_1
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1836
+        width: 170
+        height: 524
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ExitLampSide
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 2236
+        width: 105
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ExitLampFront
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 2236
+        width: 55
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_4
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 2235
+        width: 105
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 2183
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BrownStalagmite
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 1762
+        width: 115
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomBlue1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1854
+        width: 92
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomBlue2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1849
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomBlue3
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 1855
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_10
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1897
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Pool
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1800
+        width: 576
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Puddle
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 1894
+        width: 69
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BrownStalagmite2
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 1743
+        width: 94
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BrownStalagmite3
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 1747
+        width: 66
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomBlue4
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 1855
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_16
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 1844
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomGreen1
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1730
+        width: 43
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomGreen2
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1729
+        width: 35
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_19
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 1783
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomGreen3
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1732
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MushroomGreen4
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1730
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Post1
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 884
+        width: 150
+        height: 636
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Post2
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 897
+        width: 105
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_24
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 1492
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: color enviro_25
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1469
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

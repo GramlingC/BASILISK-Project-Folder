@@ -217,7 +217,10 @@ public class Player_Controller : MonoBehaviour
         else
         {
             player_sprite.SetBool("isWalking", true);
-            player_rb.velocity = new Vector3(mov_H, 0, mov_V);
+            Vector3 move = new Vector3(mov_H, 0, mov_V);
+            player_rb.velocity = Vector3.ClampMagnitude(move, speedMultiplier * speedKeys());
+
+
             if (Mathf.Abs(mov_V) > Mathf.Abs(mov_H))
             {
                 if (mov_V > 0)
