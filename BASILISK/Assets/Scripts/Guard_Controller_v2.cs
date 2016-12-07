@@ -79,10 +79,10 @@ public class Guard_Controller_v2 : MonoBehaviour {
                     tempNext = coords[0];
                 }
 
-                //Debugging check for diagonal (non-four-direction) patrol path
-                if (tempNext.x != coords[i].x && tempNext.z != coords[i].z)
+                //Debugging check for non-eight-direction patrol path
+                if (tempNext.x != coords[i].x && tempNext.z != coords[i].z && ((int)Mathf.Abs(tempNext.x-coords[i].x) != (int)Mathf.Abs(tempNext.z-coords[i].z)))
                 {
-                    Debug.Log("Diagonal path: " + coords[i] + " " + tempNext);
+                    Debug.Log("Non-eight-direction path: " + coords[i] + " " + tempNext);
                     break;
                 }
                 //Debugging check
@@ -93,30 +93,61 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 }
                 //Need debugging to check for coordinates not placed on grid nodes.
 
-                if (coords[i].x != tempNext.x)
+                //Will keep track of the direction the guard is traveling between coords
+                bool left = false;
+                bool right = false;
+                bool up = false;
+                bool down = false;
+
+                if (tempNext.x - coords[i].x > 0)
+                    right = true;
+                else if (tempNext.x - coords[i].x < 0)
+                    left = true;
+
+                if (tempNext.z - coords[i].z > 0)
+                    up = true;
+                else if (tempNext.z - coords[i].z < 0)
+                    down = true;
+
+                if(!(left || right || up || down))
+                    Debug.Log("There are two of the same coordinate in a row in " + gameObject.name);
+
+                //Sets up the list of coordinates on the patrol path
+                for (int j = 0; j < Mathf.Max(Mathf.Abs(tempNext.x - coords[i].x), Mathf.Abs(tempNext.z - coords[i].z)); j++)
                 {
-                    for (int j = 0; j < Mathf.Abs(tempNext.x - coords[i].x); j++)
+                    if (left)
                     {
-                        if (coords[i].x < tempNext.x)
-                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
+                        if (up)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z + j));
+                        }
+                        else if(down)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z - j));
+                        }
                         else
+                        {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z));
+                        }
                     }
-                }
-                else if (coords[i].z != tempNext.z)
-                {
-                    for (int j = 0; j < Mathf.Abs(tempNext.z - coords[i].z); j++)
+                    else if (right)
                     {
-                        if (coords[i].z < tempNext.z)
-                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z + j));
+                        if (up)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z + j));
+                        }
+                        else if (down)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z - j));
+                        }
                         else
-                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z - j));
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
+                        }
                     }
                 }
-                else
-                    Debug.Log("There are two of the same coordinate in a row.");
-                nextPatrolCoord = 0;
             }//End of loop adding coordinates
+            nextPatrolCoord = 0;
         }
         //nextPatrolCoord = 1;
         enemySpeed = 1F;
