@@ -11,11 +11,12 @@ public class Journal : MonoBehaviour {
     private bool near_journal;
     public GameObject sprite;
     private GameObject journal;
+    private Game_Controller journals_script;
   
     // Use this for initialization
 	void Start () {
         journal = gameObject;
-        Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
+        journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
         journals_script.journals.Add(journal);
         journals_script.journals.RemoveAll(item => item == null);        
         journal_held = false;
@@ -39,46 +40,22 @@ public class Journal : MonoBehaviour {
 
         if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
         {
-           
-            Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
             journals_script.Journal_count = journals_script.Journal_count + 1;
-            journals_script.PickUp();            
-            journal_held = true;
+            sprite.transform.Translate(0, 0, .5f);
             transform.Translate(0, -10, 0);
+            journal_held = true;
+            journals_script.PickUp(this);
         }
-
-    
-      
-       
-            //Closes the journal when the f key is pressed
-            
-            if (journal_held == true & Input.GetKeyDown(KeyCode.F))
-            {
-                sprite.transform.Translate(0, 0, -.5f);
-                journal_held = false;
-            }
-            //Player picks up and opens journal
-            if (near_journal == true & Input.GetKeyDown(KeyCode.E))
-            {
-                sprite.transform.Translate(0, 0, .5f);
-            }
             
         
         
     }
     void OnGUI() {
-      
+
         //Displays "Press E to pick up when player is near journal
-        if (near_journal==true)
+        if (near_journal == true)
         {
             GUI.Label(new Rect(10, 10, 100, 200), "Press 'E' to pick up");
-        }
-        //Displays press f to close journal
-        if (journal_held == true)
-        {
-            GUI.Label(new Rect(200, 200, 100, 200), "Press F to close the journal");
-        }
-        
-         
+        }        
     }
 }

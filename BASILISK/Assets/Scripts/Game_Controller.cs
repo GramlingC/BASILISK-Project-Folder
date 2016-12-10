@@ -15,6 +15,8 @@ public class Game_Controller : MonoBehaviour
     private GameObject pauseCanvas;
     private Scene CurrentLevel;
     private int level;
+    private bool holding_journal;
+    private Journal journal_held;
 
     public int Journal_count;
     //public GameObject[] journals;
@@ -46,9 +48,9 @@ public class Game_Controller : MonoBehaviour
         //print(Application.persistentDataPath);
         //print(SceneManager.GetActiveScene().buildIndex);
         paused = false;
-        //pauseCanvas = transform.GetChild(0).gameObject;
-        //pauseCanvas.SetActive(false);
-        
+        pauseCanvas = transform.GetChild(0).gameObject;
+        pauseCanvas.SetActive(false);
+        holding_journal = false;
     }
 
     // Update is called once per frame
@@ -89,9 +91,10 @@ public class Game_Controller : MonoBehaviour
         runGame();
     }
    
-    public void PickUp()
+    public void PickUp(Journal J)
     {
-
+        holding_journal = true;
+        journal_held = J;
         //loops through all journals, and if they are picked up it adds that journal to a list of journals collected.
         foreach (GameObject journal in journals)
         {
@@ -118,9 +121,23 @@ public class Game_Controller : MonoBehaviour
             togglePause();
         }
     }
+    private void journal_drop()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            holding_journal = false;
+            togglePause();
+            journal_held.sprite.transform.Translate(0, 0, -.5f);
+        }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            holding_journal = false;
+            journal_held.sprite.transform.Translate(0, 0, -.5f);
+        }
+    }
     public void togglePause() {
         paused = !paused;
-        pauseCanvas.SetActive(!pauseCanvas.activeSelf);
+        pauseCanvas.SetActive(paused);
     }
     public void SaveGame()
     {
@@ -158,7 +175,12 @@ public class Game_Controller : MonoBehaviour
 
     private void runGame()
     {
-        if (paused && Time.timeScale != 0)
+        journal_drop();
+        if (holding_journal)
+        {
+            Time.timeScale = 0;
+        }
+        else if (paused && Time.timeScale != 0)
         {
             Time.timeScale = 0;
         }
@@ -174,6 +196,10 @@ public class Game_Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.K))
         {
             GUI.Label(new Rect(300, 200, 100, 200), "Press number to select journal");
+        }
+        if (holding_journal == true)
+        {
+            GUI.Label(new Rect(200, 200, 100, 200), "Press 'F' to close the journal");
         }
     }
 

@@ -270,7 +270,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
       propertyPath: m_TagString
@@ -442,6 +442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+  Journal_count: 0
+  journals: []
+  player: {fileID: 0}
+  collected: 
+  contains_journal: 0
 --- !u!4 &156523308
 Transform:
   m_ObjectHideFlags: 0
@@ -1878,7 +1883,7 @@ Prefab:
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[1].x
-      value: -3.5
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
@@ -1893,7 +1898,7 @@ Prefab:
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[1].z
-      value: -1.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
       propertyPath: m_IsActive
@@ -1902,22 +1907,22 @@ Prefab:
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[2].x
-      value: -4.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[2].z
-      value: -1.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[3].x
-      value: -4.5
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011669394796, guid: 66cccd12da0b4d8408033381338f78fe,
         type: 2}
       propertyPath: coords.Array.data[3].z
-      value: -0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1000011702410880, guid: 66cccd12da0b4d8408033381338f78fe, type: 2}
       propertyPath: m_TagString
@@ -2595,7 +2600,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012777047316, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012777047316, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2644,6 +2649,10 @@ Prefab:
         type: 2}
       propertyPath: speedMultiplier
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013692575114, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d106531ed9cd2ce4ea5666456f7eb104, type: 2}

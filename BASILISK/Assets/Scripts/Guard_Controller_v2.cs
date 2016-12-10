@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class Guard_Controller_v2 : MonoBehaviour {
 
+    DialogueController dialogContr;
+    private bool dialogueFinished = true;
+
     public bool enemyChaseOff; //Temporary testing variable.  Setting this to true will prevent the enemy from chasing the player.
 
     private float enemySpeed; //How fast the enemy moves
@@ -34,6 +37,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
     private int enemyState; //0 for patrol, 1 for chase, 2 for return
     private bool isLightTriggered;  //True if enemy is reacting to light.  Affects enemyState.
     public bool canSeePlayer;  //Becomes true when the enemy has spotted the player.  Affects enemy state.
+    private bool hasSeenPlayer = false;     //True if enemy has spotted the player
     private bool atRoundCoord; //True if enemy is at a position that exactly corresponds to a grid node.
     private GameObject player;  //Used to keep tabs on the players' position.
 
@@ -75,10 +79,10 @@ public class Guard_Controller_v2 : MonoBehaviour {
                     tempNext = coords[0];
                 }
 
-                //Debugging check for diagonal (non-four-direction) patrol path
-                if (tempNext.x != coords[i].x && tempNext.z != coords[i].z)
+                //Debugging check for non-eight-direction patrol path
+                if (tempNext.x != coords[i].x && tempNext.z != coords[i].z && ((int)Mathf.Abs(tempNext.x-coords[i].x) != (int)Mathf.Abs(tempNext.z-coords[i].z)))
                 {
-                    Debug.Log("Diagonal path: " + coords[i] + " " + tempNext);
+                    Debug.Log("Non-eight-direction path: " + coords[i] + " " + tempNext);
                     break;
                 }
                 //Debugging check
@@ -89,30 +93,61 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 }
                 //Need debugging to check for coordinates not placed on grid nodes.
 
-                if (coords[i].x != tempNext.x)
+                //Will keep track of the direction the guard is traveling between coords
+                bool left = false;
+                bool right = false;
+                bool up = false;
+                bool down = false;
+
+                if (tempNext.x - coords[i].x > 0)
+                    right = true;
+                else if (tempNext.x - coords[i].x < 0)
+                    left = true;
+
+                if (tempNext.z - coords[i].z > 0)
+                    up = true;
+                else if (tempNext.z - coords[i].z < 0)
+                    down = true;
+
+                if(!(left || right || up || down))
+                    Debug.Log("There are two of the same coordinate in a row in " + gameObject.name);
+
+                //Sets up the list of coordinates on the patrol path
+                for (int j = 0; j < Mathf.Max(Mathf.Abs(tempNext.x - coords[i].x), Mathf.Abs(tempNext.z - coords[i].z)); j++)
                 {
-                    for (int j = 0; j < Mathf.Abs(tempNext.x - coords[i].x); j++)
+                    if (left)
                     {
-                        if (coords[i].x < tempNext.x)
-                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
+                        if (up)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z + j));
+                        }
+                        else if(down)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z - j));
+                        }
                         else
+                        {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z));
+                        }
                     }
-                }
-                else if (coords[i].z != tempNext.z)
-                {
-                    for (int j = 0; j < Mathf.Abs(tempNext.z - coords[i].z); j++)
+                    else if (right)
                     {
-                        if (coords[i].z < tempNext.z)
-                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z + j));
+                        if (up)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z + j));
+                        }
+                        else if (down)
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z - j));
+                        }
                         else
-                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z - j));
+                        {
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
+                        }
                     }
                 }
-                else
-                    Debug.Log("There are two of the same coordinate in a row.");
-                nextPatrolCoord = 0;
             }//End of loop adding coordinates
+            nextPatrolCoord = 0;
         }
         //nextPatrolCoord = 1;
         enemySpeed = 1F;
@@ -146,6 +181,21 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Debug.Log(enemyState);
         if (enemyState == 0)
         {
+            //If the guard is within range of the DialogueController, then it will appear as if the guard has detected the player
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardDetectSeen";
+                else
+                    dialogContr.dialogue = "GuardDetect";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 6;
+            }
+            else
+                dialogueFinished = dialogContr.finished;
             //Debug.Log("Starting patrol movement");
             //Moves enemy to next coordinate in the patrolPath list
             RouteEnemy(patrolPath[nextPatrolCoord]);
@@ -166,6 +216,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
             {
                 //Debug.Log("Going to chasing...");
+
                 enemyState = 1;
                 chaseTimer = chaseTimerMax;
                 isChasing = true;
@@ -185,7 +236,22 @@ public class Guard_Controller_v2 : MonoBehaviour {
             //Move enemy in direction closest to player position.
             //Debug.Log("Entering chase");
             //Debug.Log(nextChasePos);
-            
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardChasingSeen";
+                else
+                    dialogContr.dialogue = "GuardChasing";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 20;
+            }
+            else
+                dialogueFinished = dialogContr.finished;
+
+
             if (transform.position == nextChasePos)
                 atRoundCoord = true;
             else
@@ -201,6 +267,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 //Debug.Log("Round " + enemyState + " " + transform.position);
                 //Debug.Log(transform.position);
+
                 chaseTimer = chaseTimerMax;
                 canSeePlayer = false;
                 isLightTriggered = false;
@@ -234,6 +301,21 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Return
         else if (enemyState == 2)
         {
+            if (dialogueFinished == true)
+            {
+                dialogueFinished = false;
+                dialogContr = gameObject.AddComponent<DialogueController>() as DialogueController;
+                dialogContr.targets = new MonoBehaviour[1] { this };
+                if (hasSeenPlayer)
+                    dialogContr.dialogue = "GuardReturnSeen";
+                else
+                    dialogContr.dialogue = "GuardReturn";
+                dialogContr.dialogue_type = 1;
+                dialogContr.distance = 20;
+            }
+            else
+                dialogueFinished = dialogContr.finished;
+
             //Debug.Log("Enemy position: " + transform.position);
             //Debug.Log("Starting return movement");
             //Debug.Log("Return path length: " + returnPath.Count);
@@ -264,6 +346,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             else if (atRoundCoord && patrolPath.Contains(new Vector3(transform.position.x, yOffset, transform.position.z)))
             {
                 //Debug.Log("Going to patrol...");
+                hasSeenPlayer = true;
                 enemyState = 0;
                 nextPatrolCoord = patrolPath.IndexOf(new Vector3(transform.position.x, yOffset, transform.position.z));
                 //Debug.Log("Successfully gone to patrol.");
@@ -358,7 +441,9 @@ public class Guard_Controller_v2 : MonoBehaviour {
             {
                 //Debug.Log(hit.transform.gameObject.tag);
                 if (hit.transform.gameObject.tag == "Player")
+                {
                     canSeePlayer = true;
+                }
             }
         }
         /*if (sawPlayer == true)
