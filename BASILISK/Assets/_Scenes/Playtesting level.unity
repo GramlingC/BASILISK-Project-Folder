@@ -262,27 +262,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.2499998
+      value: -2.56
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -17.900002
+      value: -17.59
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.2588191
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4000010090400820, guid: 06df5b8a81b612e4f911a1f7d83464f8, type: 2}
       propertyPath: m_RootOrder
@@ -1978,6 +1978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480138ebeae7fa54f8b4e18720aedbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targets: []
+  dialogue: 
+  distance: 0
+  obscurable: 0
+  dialogue_type: 0
 --- !u!114 &1003727944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,6 +2000,8 @@ MonoBehaviour:
   dialogue: GuardDialogue1
   distance: 6
   obscurable: 0
+  finished: 0
+  dialogue_type: 0
 --- !u!65 &1003727945
 BoxCollider:
   m_ObjectHideFlags: 0
