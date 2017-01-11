@@ -47,7 +47,8 @@ public class Grid
         {
             if (gridNodes[x-1, y].GetIsLegal())
             {
-                neighbors.Add(new int[] { x - 1, y, 2 });
+                //neighbors.Add(new int[] { x - 1, y, 2 });
+                neighbors.Add(new int[] { x - 1, y});
                 //neighbors.Add(gridNodes[x - 1, y].GetNodePos()
             }
         }
@@ -55,24 +56,27 @@ public class Grid
         {
             if (gridNodes[x + 1, y].GetIsLegal())
             {
-                neighbors.Add(new int[] { x + 1, y, 2 });
+                //neighbors.Add(new int[] { x + 1, y, 2 });
+                neighbors.Add(new int[] { x + 1, y});
             }
         }
         if (y - 1 >= 0)
         {
             if (gridNodes[x, y - 1].GetIsLegal())
             {
-                neighbors.Add(new int[] { x, y - 1, 2 });
+                //neighbors.Add(new int[] { x, y - 1, 2 });
+                neighbors.Add(new int[] { x, y - 1});
             }
         }
         if (y + 1 < length)
         {
             if (gridNodes[x, y + 1].GetIsLegal())
             {
-                neighbors.Add(new int[] { x, y + 1, 2});
+                //neighbors.Add(new int[] { x, y + 1, 2});
+                neighbors.Add(new int[] { x, y + 1});
             }
         }
-
+        /*
         //Checks diagonals
         if (x - 1 >= 0 && y - 1 >= 0)
         {
@@ -103,7 +107,7 @@ public class Grid
                 neighbors.Add(new int[] { x + 1, y + 1, 3 });
             }
         }
-
+        */
         return neighbors;
     }
 

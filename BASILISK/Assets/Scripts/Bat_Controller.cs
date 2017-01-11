@@ -92,6 +92,7 @@ public class Bat_Controller : MonoBehaviour
                 //Need debugging to check for coordinates not placed on grid nodes.
 
                 //Will keep track of the direction the guard is traveling between coords
+                /*
                 bool left = false;
                 bool right = false;
                 bool up = false;
@@ -112,9 +113,13 @@ public class Bat_Controller : MonoBehaviour
 
                 //Sets up the list of coordinates on the patrol path
                 for (int j = 0; j < Mathf.Max(Mathf.Abs(tempNext.x - coords[i].x), Mathf.Abs(tempNext.z - coords[i].z)); j++)
+                */
+                if (coords[i].x != tempNext.x)
                 {
-                    if (left)
+                    for (int j = 0; j < Mathf.Abs(tempNext.x - coords[i].x); j++)
+                    //if (left)
                     {
+                        /*
                         if (up)
                         {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z + j));
@@ -123,13 +128,21 @@ public class Bat_Controller : MonoBehaviour
                         {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z - j));
                         }
+                        */
+                        if (coords[i].x < tempNext.x)
+                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
                         else
                         {
                             patrolPath.Add(new Vector3(coords[i].x - j, yOffset, coords[i].z));
                         }
                     }
-                    else if (right)
+                }
+                else if (coords[i].z != tempNext.z)
+                {
+                    for (int j = 0; j < Mathf.Abs(tempNext.z - coords[i].z); j++)
+                    //else if (right)
                     {
+                        /*
                         if (up)
                         {
                             patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z + j));
@@ -138,14 +151,21 @@ public class Bat_Controller : MonoBehaviour
                         {
                             patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z - j));
                         }
+                        */
+                        if (coords[i].z < tempNext.z)
+                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z + j));
                         else
                         {
-                            patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
+                            patrolPath.Add(new Vector3(coords[i].x, yOffset, coords[i].z - j));
+                            //patrolPath.Add(new Vector3(coords[i].x + j, yOffset, coords[i].z));
                         }
                     }
                 }
+                else
+                    Debug.Log("There are two of the same coordinate in a row.");
+                nextPatrolCoord = 0;
             }//End of loop adding coordinates
-            nextPatrolCoord = 0;
+            //nextPatrolCoord = 0;
         }
         //nextPatrolCoord = 1;
         enemySpeed = 1F;

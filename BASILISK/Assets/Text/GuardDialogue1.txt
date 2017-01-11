@@ -1,6 +1,12 @@
-GUARD1: Geoff, you remember those guys who passed through here a few days ago?
+GUARD1: Geoff, you remember those guys who 
+GUARD1: passed through here a few days ago?
 GUARD2: The ones who acquired that woman? Yeah.
 GUARD1: You know what happened to her?
-GUARD2: If we were important enough to know that, we wouldn’t be stuck out here guarding the tunnels.
-GUARD1: Point. But, doesn’t it seem strange? What does the Board want with her?
-GUARD2: She probably just crossed the Institute or something. I don’t know, man.
+GUARD2: If we were important enough to know that,
+GUARD2: we wouldn’t be stuck out here
+GUARD2: guarding the tunnels.
+GUARD1: Point. But, doesn’t it seem strange?
+GUARD1: What does the Board want with her?
+GUARD2: She probably just crossed
+GUARD2: the Institute or something.
+GUARD2: I don’t know, man.

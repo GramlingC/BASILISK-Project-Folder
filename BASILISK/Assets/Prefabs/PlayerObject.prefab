@@ -155,10 +155,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014166375068}
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.1}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012308226860}
   m_Father: {fileID: 4000012777047316}
@@ -281,10 +281,12 @@ MonoBehaviour:
   lightCrankedPerSecond: 5
   secondsUntilStartDiminish: 3
   maxLightAngle: 60
-  crankKeyPress: c
   crankingLight: 0
   lightIsOn: 1
   lightSwitching: z
+  maxStamina: 5
+  TirePerSecond: 5
+  RestPerSecond: 4
   loss_screen: {fileID: 0}
 --- !u!114 &114000012339188560
 MonoBehaviour:

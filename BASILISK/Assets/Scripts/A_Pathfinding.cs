@@ -123,7 +123,8 @@ public class A_Pathfinding : MonoBehaviour
         //The starting position is added to the open list, and its G and H values are set.
         open.Add(start);
         nodes[start[0], start[1]].SetGDist(0);
-        nodes[start[0], start[1]].SetHDist(grid.DiagDist(start[0], start[1], finish[0], finish[1]));
+        //nodes[start[0], start[1]].SetHDist(grid.DiagDist(start[0], start[1], finish[0], finish[1]));
+        nodes[start[0], start[1]].SetHDist(grid.ManhattenDist(start[0], start[1], finish[0], finish[1]));
 
         //This will keep track of the current node coordinates
         int[] current = new int[2];
@@ -195,13 +196,16 @@ public class A_Pathfinding : MonoBehaviour
                 
                 if (!openContainsNeighbor || nodes[current[0], current[1]].GetGDist() < nodes[neighbor[0], neighbor[1]].GetGDist())
                 {
-                    nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + neighbor[2]);
+                    //nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + neighbor[2]);
+                    nodes[neighbor[0], neighbor[1]].SetGDist(nodes[current[0], current[1]].GetGDist() + 1);
                     nodes[neighbor[0], neighbor[1]].SetParentNode(current);
 
                     if (!openContainsNeighbor)
                     {
-                        open.Add(new int[] { neighbor[0], neighbor[1] });
-                        nodes[neighbor[0], neighbor[1]].SetHDist(grid.DiagDist(neighbor[0], neighbor[1], finish[0], finish[1]));
+                        //open.Add(new int[] { neighbor[0], neighbor[1] });
+                        //nodes[neighbor[0], neighbor[1]].SetHDist(grid.DiagDist(neighbor[0], neighbor[1], finish[0], finish[1]));
+                        open.Add(neighbor);
+                        nodes[neighbor[0], neighbor[1]].SetHDist(grid.ManhattenDist(neighbor[0], neighbor[1], finish[0], finish[1]));
                     }
                 }
             }

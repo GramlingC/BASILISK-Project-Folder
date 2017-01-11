@@ -8,8 +8,9 @@ public class DialogueController : MonoBehaviour {
     public string dialogue = "";
     public int distance = 6;
     public bool obscurable = false;
-    private bool started = false;
+    public bool started = false;
     public bool finished = false;
+    public int speed = 4;
     
     public int dialogue_type; //0 for regular dialogue; 1 for randomly assigned dialogue
 
@@ -46,7 +47,7 @@ public class DialogueController : MonoBehaviour {
                     label.target = target;
                     label.obscurable = obscurable;
                     label.distance = distance;
-                    yield return new WaitForSeconds(2.0f + 0.12f * segments[1].Length);
+                    yield return new WaitForSeconds(2.0f + 0.12f * segments[1].Length * (1/speed));
                     Destroy(label);
                 }
             } while (!sr.EndOfStream && !targetsAlerted());

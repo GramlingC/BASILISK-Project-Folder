@@ -228,7 +228,7 @@ public class Player_Controller : MonoBehaviour
                 else
                     player_sprite.SetInteger("Direction", 1);
             }
-            else if (Mathf.Abs(mov_V) < Mathf.Abs(mov_H))
+            else if (Mathf.Abs(mov_V) <= Mathf.Abs(mov_H))
             {
                 if (mov_H > 0)
                     player_sprite.SetInteger("Direction", 2);
