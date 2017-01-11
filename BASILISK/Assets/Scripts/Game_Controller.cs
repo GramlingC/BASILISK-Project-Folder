@@ -175,9 +175,10 @@ public class Game_Controller : MonoBehaviour
 
     private void runGame()
     {
-        journal_drop();
+        
         if (holding_journal)
         {
+            journal_drop();
             Time.timeScale = 0;
         }
         else if (paused && Time.timeScale != 0)
