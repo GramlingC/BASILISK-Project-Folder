@@ -18,6 +18,11 @@ public class MenuButtons : MonoBehaviour {
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void loadScene1()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
+
     public void loadPlaytesting() {
         SceneManager.LoadScene("Playtesting level");
     }
