@@ -17,7 +17,7 @@ public class MenuButtons : MonoBehaviour {
     public void loadTutorial() {
         SceneManager.LoadScene("Tutorial");
     }
-
+    
     public void loadScene1()
     {
         SceneManager.LoadScene("Scene1");

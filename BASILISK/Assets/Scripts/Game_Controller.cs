@@ -13,10 +13,12 @@ public class Game_Controller : MonoBehaviour
     //    public string pauseButton = "escape";
     public bool paused;
     private GameObject pauseCanvas;
+    public GameObject journal_list;
     private Scene CurrentLevel;
     private int level;
     private bool holding_journal;
-    private Journal journal_held;
+    private Journal journal;
+    public GameObject journal_text;
 
     public int Journal_count;
     //public GameObject[] journals;
@@ -94,16 +96,16 @@ public class Game_Controller : MonoBehaviour
     public void PickUp(Journal J)
     {
         holding_journal = true;
-        journal_held = J;
+        journal = J;
         //loops through all journals, and if they are picked up it adds that journal to a list of journals collected.
+        collected.Add(int.Parse(journal.name));
+        collected = collected.OrderBy(tile => tile).ToList();
+        print("added " + journal.name);
         foreach (GameObject journal in journals)
         {
-            var distance_to_journal = Vector3.Distance(player.transform.position, journal.transform.position);
-            if (distance_to_journal < 2)
-            {
-                collected.Add(int.Parse(journal.name));
-                collected = collected.OrderBy(tile => tile).ToList();
-            }
+            
+            
+         
 
         }
         //Removes specific journal based on which key is pressed, will change to display journal later
@@ -127,17 +129,18 @@ public class Game_Controller : MonoBehaviour
         {
             holding_journal = false;
             togglePause();
-            journal_held.sprite.transform.Translate(0, 0, -.5f);
+            journal.sprite.transform.Translate(0, 0, -.5f);
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
             holding_journal = false;
-            journal_held.sprite.transform.Translate(0, 0, -.5f);
+            journal.sprite.transform.Translate(0, 0, -.5f);
         }
     }
     public void togglePause() {
         paused = !paused;
         pauseCanvas.SetActive(paused);
+
     }
     public void SaveGame()
     {
@@ -172,7 +175,16 @@ public class Game_Controller : MonoBehaviour
             print("does not exist");
         }
     }
+    public void listjournals()
+    {
 
+        pauseCanvas.SetActive(false);
+        journal_list.SetActive(true);
+
+
+
+
+    }
     private void runGame()
     {
         
