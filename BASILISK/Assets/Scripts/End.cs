@@ -6,7 +6,7 @@ public class End : MonoBehaviour {
 
 	public GameObject player;
     public string nextScene;
-
+	public bool islock = true;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class End : MonoBehaviour {
 		
 	}
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Player") 
+		if (col.gameObject.tag == "Player" && islock == false) 
 		{
 			victory ();
 		}
