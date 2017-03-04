@@ -40,7 +40,7 @@ public class Bat_Controller : MonoBehaviour
     private GameObject player;  //Used to keep tabs on the players' position.
 
     private A_Pathfinding pathfinder;
-
+    private SpriteRenderer spr;
     //private int nextState; //The next state the enemy will move to - used since guard won't change behavior until reaching a round
     //coordinate.
 
@@ -51,8 +51,9 @@ public class Bat_Controller : MonoBehaviour
         yOffset = transform.position.y;
         atRoundCoord = true;
         pathfinder = GameObject.Find("PathfindingObj").GetComponent<A_Pathfinding>();
+        spr = transform.parent.Find("Bat_Sprite").GetComponent<SpriteRenderer>();
         nextChasePos = transform.position;
-
+        
         direction = transform.forward;
 
         //Sets up the patrol path.  Keeps enemy movement unitized.
@@ -183,6 +184,10 @@ public class Bat_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isLightTriggered)
+            spr.material = Resources.Load("SpriteDefault", typeof(Material)) as Material;
+        else
+            spr.material = Resources.Load("SpriteLit", typeof(Material)) as Material;
         //Debug.Log("enemy state: " + enemyState);
 
         //Something may be wrong with atRoundCoord
@@ -351,6 +356,7 @@ public class Bat_Controller : MonoBehaviour
             }
             //Debug.Log("Ending return movement");
         }
+        isLightTriggered = false;
     }
 
     //Function that needs to be called by the player when a raycast hits this enemy.  Might use a "Guard" tag or something.
