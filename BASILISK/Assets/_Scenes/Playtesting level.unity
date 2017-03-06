@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 75572410}
   - component: {fileID: 75572409}
   m_Layer: 5
-  m_Name: Journal (2)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,11 +327,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1445946607}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: displayjournals
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1532015541}
+          m_ObjectArgumentAssemblyTypeName: Journal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 3
@@ -1640,6 +1640,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000013926016454, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
     type: 2}
   m_PrefabInternal: {fileID: 590073176}
+--- !u!114 &787757032 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011960588754, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 590073176}
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
 --- !u!1001 &793275934
 Prefab:
   m_ObjectHideFlags: 0
@@ -1849,7 +1855,7 @@ GameObject:
   - component: {fileID: 805585920}
   - component: {fileID: 805585919}
   m_Layer: 5
-  m_Name: Journal (3)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1913,11 +1919,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1445946607}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: displayjournals
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 787757032}
+          m_ObjectArgumentAssemblyTypeName: Journal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 4
@@ -2128,6 +2134,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000013749661490, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
     type: 2}
   m_PrefabInternal: {fileID: 590073176}
+--- !u!114 &917295210 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000014239668626, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 590073176}
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
 --- !u!1001 &917317019
 Prefab:
   m_ObjectHideFlags: 0
@@ -2965,6 +2977,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011394560582, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
     type: 2}
   m_PrefabInternal: {fileID: 590073176}
+--- !u!114 &1221541044 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011213919684, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 590073176}
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
 --- !u!4 &1230480340 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011817631452, guid: cbd5f22d3bd496346addf75861c29eb9,
@@ -3720,6 +3738,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000012060812348, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
     type: 2}
   m_PrefabInternal: {fileID: 590073176}
+--- !u!114 &1532015541 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012692289740, guid: c4f62bb3d7ebb4344987cb5b77be7dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 590073176}
+  m_Script: {fileID: 11500000, guid: 9e145b5677396064693df010edfc6c66, type: 3}
 --- !u!4 &1532258237 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013332118538, guid: 17bbb8580eee39b4d845e1800a1bb2db,
@@ -4539,7 +4563,7 @@ GameObject:
   - component: {fileID: 1864262490}
   - component: {fileID: 1864262492}
   m_Layer: 5
-  m_Name: Journal
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4644,11 +4668,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1445946607}
-        m_MethodName: set_name
-        m_Mode: 5
+        m_MethodName: displayjournals
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 917295210}
+          m_ObjectArgumentAssemblyTypeName: Journal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 1
@@ -5099,7 +5123,7 @@ GameObject:
   - component: {fileID: 2123510027}
   - component: {fileID: 2123510026}
   m_Layer: 5
-  m_Name: Journal (1)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5163,11 +5187,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1445946607}
-        m_MethodName: SendMessage
-        m_Mode: 5
+        m_MethodName: displayjournals
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1221541044}
+          m_ObjectArgumentAssemblyTypeName: Journal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 2

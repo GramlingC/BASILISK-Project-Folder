@@ -180,10 +180,17 @@ public class Game_Controller : MonoBehaviour
 
         pauseCanvas.SetActive(false);
         journal_list.SetActive(true);
-
-
-
-
+    }
+    public void displayjournals(Journal journal)
+    {
+        int journal_number;
+        journal_number = int.Parse(journal.name);
+        if (collected.Contains(journal_number))
+        {
+            print("Displayed journal");
+            journal.sprite.transform.Translate(0, 0, .5f);
+        }
+        
     }
     private void runGame()
     {
