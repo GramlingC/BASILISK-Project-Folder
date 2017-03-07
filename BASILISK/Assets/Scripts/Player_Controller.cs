@@ -12,10 +12,10 @@ public class Player_Controller : MonoBehaviour
     Rigidbody player_rb;
     Light player_light;
     public Animator player_sprite;
-    public float lightDiminishPerSecond = 3f;
-    public float lightCrankedPerSecond = 5f;
-    public float secondsUntilStartDiminish = 5f;
-    public float maxLightAngle = 60;
+    public float lightDiminishPerSecond = 5f;
+    public float lightCrankedPerSecond = 15f;
+    public float secondsUntilStartDiminish = 3f;
+    public float maxLightAngle = 90;
     private float currentSecondsBeforeDiminish;
 
     private float crankTime;
@@ -25,10 +25,10 @@ public class Player_Controller : MonoBehaviour
     public bool lightIsOn;
     public string lightSwitching = "z";
 
-    public float maxStamina = 5;
+    public float maxStamina = 10;
     private float stamina;
-    public float TirePerSecond = 5f;
-    public float RestPerSecond = 4f;
+    public float TirePerSecond = 2f;
+    public float RestPerSecond = 2f;
 
     private GUIStyle LightBoxStyle;
     private GUIStyle StaminaBoxStyle;
@@ -309,13 +309,13 @@ public class Player_Controller : MonoBehaviour
     }
     private void restMovement()
     {
-        if (player_rb.velocity == Vector3.zero)
-        {
-            increaseStamina(RestPerSecond * Time.deltaTime);
-        }
-        else if (Input.GetAxis("Run") > 0)
+        if (Input.GetAxis("Run") > 0)
         {
             decreaseStamina(TirePerSecond * Time.deltaTime);
+        }
+        else
+        {
+            increaseStamina(RestPerSecond * Time.deltaTime);
         }
     }
 
