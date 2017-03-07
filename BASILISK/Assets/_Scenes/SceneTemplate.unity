@@ -759,6 +759,23 @@ Prefab:
       propertyPath: maxLightAngle
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 108000012488775434, guid: f9f9bc2a84bdb634ba1017bab876ca65,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010435366384, guid: f9f9bc2a84bdb634ba1017bab876ca65, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010435366384, guid: f9f9bc2a84bdb634ba1017bab876ca65, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010435366384, guid: f9f9bc2a84bdb634ba1017bab876ca65, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9f9bc2a84bdb634ba1017bab876ca65, type: 2}
   m_IsPrefabParent: 0
