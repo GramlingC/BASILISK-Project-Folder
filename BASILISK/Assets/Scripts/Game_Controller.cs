@@ -16,7 +16,7 @@ public class Game_Controller : MonoBehaviour
     public GameObject journal_list;
     private Scene CurrentLevel;
     private int level;
-    private bool holding_journal;
+    public bool holding_journal;
     private Journal journal;
     public GameObject journal_text;
 
@@ -25,8 +25,9 @@ public class Game_Controller : MonoBehaviour
     public List<GameObject> journals;
     public GameObject player;
     public List<int> collected;
-
+    public bool JournalList;
     public bool contains_journal;
+    public bool in_menu;
     // Use this for initialization
     void Awake()
     {
@@ -46,6 +47,7 @@ public class Game_Controller : MonoBehaviour
     /// </summary>
     void Start()
     {
+        in_menu = false;
         print("started");
         //print(Application.persistentDataPath);
         //print(SceneManager.GetActiveScene().buildIndex);
@@ -53,6 +55,7 @@ public class Game_Controller : MonoBehaviour
         pauseCanvas = transform.GetChild(0).gameObject;
         pauseCanvas.SetActive(false);
         holding_journal = false;
+        JournalList = false;
     }
 
     // Update is called once per frame
@@ -120,27 +123,51 @@ public class Game_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            togglePause();
+            if (holding_journal && in_menu)
+            {
+                print("step1");
+                listjournals();
+                journal.hidejournal();
+                
+            }
+            else if (JournalList)
+            {
+                print("step2");
+            }
+            else if (!holding_journal)
+            {
+                print("step3");
+                togglePause();
+                in_menu = !in_menu;
+            }
         }
     }
     private void journal_drop()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !in_menu)
         {
             holding_journal = false;
             togglePause();
-            journal.sprite.transform.Translate(0, 0, -.5f);
+            journal.hidejournal();
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
             holding_journal = false;
-            journal.sprite.transform.Translate(0, 0, -.5f);
+            journal.hidejournal();
         }
     }
     public void togglePause() {
         paused = !paused;
         pauseCanvas.SetActive(paused);
 
+    }
+    public void Pausecanvasoff()
+    {
+        pauseCanvas.SetActive(false);
+    }
+    public void Pausecanvason()
+    {
+        pauseCanvas.SetActive(true);
     }
     public void SaveGame()
     {
@@ -177,10 +204,15 @@ public class Game_Controller : MonoBehaviour
     }
     public void listjournals()
     {
-
-        pauseCanvas.SetActive(false);
-        journal_list.SetActive(true);
+        JournalList = !JournalList;
+        journal_list.SetActive(JournalList);
     }
+
+    public void journaltoggle()
+    {
+        holding_journal = !holding_journal;
+    }
+    
     public void displayjournals(Journal journal)
     {
         int journal_number;
@@ -188,8 +220,9 @@ public class Game_Controller : MonoBehaviour
         if (collected.Contains(journal_number))
         {
             print("Displayed journal");
-            journal.sprite.transform.Translate(0, 0, .5f);
+            journal.displayjournal();
         }
+        listjournals();
         
     }
     private void runGame()

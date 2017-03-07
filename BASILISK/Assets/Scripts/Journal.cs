@@ -17,6 +17,7 @@ public class Journal : MonoBehaviour {
 	void Start () {
         journal = gameObject;
         journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
+
         journals_script.journals.Add(journal);
         journals_script.journals.RemoveAll(item => item == null);        
         journal_held = false;
@@ -49,6 +50,16 @@ public class Journal : MonoBehaviour {
             
         
         
+    }
+    public void displayjournal()
+    {
+        sprite.transform.Translate(0, 0, .5f);
+        journals_script.holding_journal = true;
+    }
+    public void hidejournal()
+    {
+        sprite.transform.Translate(0, 0, -.5f);
+        journals_script.holding_journal = false;
     }
     void OnGUI() {
 
