@@ -119,8 +119,8 @@ public class Player_Controller : MonoBehaviour
             GUI.Label(new Rect(200, 200, 300, 400), "Game Over press R to restart");
         }
 
-        GUI.Box(new Rect(10, Screen.height - 20, (stamina / maxStamina) * Screen.width / 6, 20), (int)(stamina * 100 / maxStamina) + "/" + 100, StaminaBoxStyle);
-        GUI.Box(new Rect(10, Screen.height - 50, ((player_light.spotAngle - 1) / (maxLightAngle - 1)) * Screen.width / 6, 20), (int)(player_light.spotAngle - 1) * 100 / 59 + "/" + 100, LightBoxStyle);
+        GUI.Box(new Rect(10, Screen.height - 20, (stamina / maxStamina) * Screen.width / 6, 20), "STAMINA " + (int)(stamina * 100 / maxStamina) + "/" + 100, StaminaBoxStyle);
+        GUI.Box(new Rect(10, Screen.height - 50, ((player_light.spotAngle - 1) / (maxLightAngle - 1)) * Screen.width / 6, 20), "LIGHT " + (int)(player_light.spotAngle - 1) * 100 / (89) + "/" + 100, LightBoxStyle);
 
 
     }

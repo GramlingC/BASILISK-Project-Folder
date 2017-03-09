@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.3
+  m_AmbientIntensity: 0.2
   m_AmbientMode: 0
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -34,10 +34,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11009701, g: 0.11130791, b: 0.103105076, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2232,7 +2232,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010978208824, guid: 8f06d5b426c03634d9f8e2febd92bfc9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.66
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4000010978208824, guid: 8f06d5b426c03634d9f8e2febd92bfc9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3152,7 +3152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013332118538, guid: 17bbb8580eee39b4d845e1800a1bb2db, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.68
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013332118538, guid: 17bbb8580eee39b4d845e1800a1bb2db, type: 2}
       propertyPath: m_LocalPosition.z
