@@ -65,6 +65,7 @@ public class DialogueController : MonoBehaviour {
             label.obscurable = obscurable;
             label.distance = distance;
             yield return new WaitForSeconds(1.0f + 0.08f * randomline.Length);
+            Destroy(label.text);
             Destroy(label);
 
         }
