@@ -48,6 +48,7 @@ public class DialogueController : MonoBehaviour {
                     label.obscurable = obscurable;
                     label.distance = distance;
                     yield return new WaitForSeconds(2.0f + 0.12f * segments[1].Length * (1/speed));
+                    Destroy(label.text);
                     Destroy(label);
                 }
             } while (!sr.EndOfStream && !targetsAlerted());

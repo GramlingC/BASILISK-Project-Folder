@@ -2,10 +2,12 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 //Will be used to allow player to access previously collected journals when completed
   
 public class Journal : MonoBehaviour {
 
+    private GameObject Text;
     public GameObject player;
     private bool journal_held;
     private bool near_journal;
@@ -15,6 +17,7 @@ public class Journal : MonoBehaviour {
   
     // Use this for initialization
 	void Start () {
+        Text = GameObject.Find("TextCanvas/PickUp");
         journal = gameObject;
         journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
 
@@ -32,10 +35,15 @@ public class Journal : MonoBehaviour {
         var distance_to_journal = Vector3.Distance(player.transform.position, transform.position);
         if (distance_to_journal < 2)
         {
+            Text.GetComponent<Text>().enabled = true;
+            Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+            Text.GetComponent<RectTransform>().position = new Vector3(pos.x,pos.y + 20, pos.z);
             near_journal = true;
         }
         else
         {
+            if (distance_to_journal < 3)
+                Text.GetComponent<Text>().enabled = false;
             near_journal = false;
         }
 
@@ -61,12 +69,5 @@ public class Journal : MonoBehaviour {
         sprite.transform.Translate(0, 0, -.5f);
         journals_script.holding_journal = false;
     }
-    void OnGUI() {
 
-        //Displays "Press E to pick up when player is near journal
-        if (near_journal == true)
-        {
-            GUI.Label(new Rect(10, 10, 100, 200), "Press 'E' to pick up");
-        }        
-    }
 }

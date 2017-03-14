@@ -3,10 +3,10 @@ GUARD1: passed through here a few days ago?
 GUARD2: The ones who acquired that woman? Yeah.
 GUARD1: You know what happened to her?
 GUARD2: If we were important enough to know that,
-GUARD2: we wouldn’t be stuck out here
+GUARD2: we wouldn't be stuck out here
 GUARD2: guarding the tunnels.
-GUARD1: Point. But, doesn’t it seem strange?
+GUARD1: Point. But, doesn't it seem strange?
 GUARD1: What does the Board want with her?
 GUARD2: She probably just crossed
 GUARD2: the Institute or something.
-GUARD2: I don’t know, man.
+GUARD2: I don't know, man.
