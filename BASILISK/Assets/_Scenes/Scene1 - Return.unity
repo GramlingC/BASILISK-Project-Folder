@@ -279,7 +279,7 @@ Prefab:
         type: 2}
       propertyPath: restrictedVecObj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 216267949}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18477ac23d8095e40a3692706d7f3e35, type: 2}
   m_IsPrefabParent: 0

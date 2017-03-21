@@ -1496,6 +1496,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050644251935874, guid: 1b852bb771546f84abc31f56d83cdc73,
+        type: 2}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050644251935874, guid: 1b852bb771546f84abc31f56d83cdc73,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b852bb771546f84abc31f56d83cdc73, type: 2}
   m_IsPrefabParent: 0
