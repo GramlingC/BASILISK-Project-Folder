@@ -54,6 +54,7 @@ public class Journal : MonoBehaviour {
             transform.Translate(0, -10, 0);
             journal_held = true;
             journals_script.PickUp(this);
+            Text.GetComponent<Text>().enabled = false;
         }
             
         
