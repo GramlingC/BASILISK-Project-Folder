@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011702410880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0.63, z: -2}
+  m_LocalPosition: {x: -2, y: 0.63, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012206158318}
@@ -157,7 +157,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011233482334}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.15}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
@@ -261,7 +261,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.01
+    m_Bias: 0.1
     m_NormalBias: 0.2
     m_NearPlane: 0.4
   m_Cookie: {fileID: 0}
@@ -304,7 +304,10 @@ MonoBehaviour:
   runMultiplier: 2
   enemy_sprite: {fileID: 95000012276445530}
   coords:
-  - {x: 4, y: 0, z: -2}
+  - {x: -2, y: 0, z: -5}
+  - {x: -2, y: 0, z: -12}
+  - {x: 1, y: 0, z: -12}
+  - {x: 1, y: 0, z: -5}
   chaseTimerMax: 3
   canSeePlayer: 0
 --- !u!114 &114000013203975416
