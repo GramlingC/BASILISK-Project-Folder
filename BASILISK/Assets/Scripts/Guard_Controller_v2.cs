@@ -433,6 +433,11 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 {
                     canSeePlayer = true;
                 }
+                else if (hit.transform.gameObject.tag == "Bat")
+                {
+                    Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
+                    enemy.LightTrigger();
+                }
             }
         }
         /*if (sawPlayer == true)
