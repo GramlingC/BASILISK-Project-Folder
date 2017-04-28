@@ -240,7 +240,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 8
-  m_Range: 5
+  m_Range: 9
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 2
   numberOfRays: 30
+  light_length: 7
   player_sprite: {fileID: 95000013506317886}
   lightDiminishPerSecond: 5
   lightCrankedPerSecond: 15

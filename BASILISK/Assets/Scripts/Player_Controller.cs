@@ -23,7 +23,7 @@ public class Player_Controller : MonoBehaviour
     private KeyCode crankKeyPress;
     public bool crankingLight;
     public bool lightIsOn;
-    public string lightSwitching = "z";
+    public string lightSwitching = "q";
 
     public float maxStamina = 10;
     private float stamina;
@@ -163,6 +163,7 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetKey(lightSwitching))
         {
             lightIsOn = !lightIsOn;
+            player_light.enabled = !player_light.enabled;
         }
     }
 
