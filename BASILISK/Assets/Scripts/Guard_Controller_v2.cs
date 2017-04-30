@@ -10,15 +10,15 @@ public class Guard_Controller_v2 : MonoBehaviour {
 
     private float enemySpeed; //How fast the enemy moves
 
-    public float speedMultiplier = 1f; //To allow changing speed in unity editor
-    public float runMultiplier; //Could allow for different speeds (ie. running and chasing are faster than patrol)
+    public float speedMultiplier = 1.5f; //To allow changing speed in unity editor
+    public float runMultiplier = 3f; //Could allow for different speeds (ie. running and chasing are faster than patrol)
 
     public Animator enemy_sprite;
 
     public Vector3[] coords; //Array of coordinates the enemy will travel to, in order.
     private float yOffset;  //y coordinate the enemy starts at.  This is used to keep the enemy's y coordinate constant.
 
-    public float chaseTimerMax = 3f; //Seconds till give up chase
+    public float chaseTimerMax = 5f; //Seconds till give up chase
     private float chaseTimer;
     private bool isChasing;
 
@@ -326,6 +326,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
             if (atRoundCoord && (canSeePlayer || isLightTriggered))
             {
                 //Debug.Log("Going to chasing...");
+                chaseTimer = chaseTimerMax;
                 enemyState = 1;
                 canSeePlayer = false;
                 isLightTriggered = false;

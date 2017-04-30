@@ -300,11 +300,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyChaseOff: 0
-  speedMultiplier: 1
-  runMultiplier: 2
+  speedMultiplier: 1.5
+  runMultiplier: 3
   enemy_sprite: {fileID: 95000012276445530}
   coords:
-  - {x: -3, y: 0, z: -5}
+  - {x: 4, y: 0, z: -2}
   chaseTimerMax: 5
   canSeePlayer: 0
 --- !u!114 &114000013203975416

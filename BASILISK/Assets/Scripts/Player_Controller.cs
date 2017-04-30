@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
 
-    public float speedMultiplier = 5f;
-    public int numberOfRays = 10;
-    public float light_length = 4f;
+    public float speedMultiplier = 2f;
+    public int numberOfRays = 30;
+    public float light_length = 7f;
+    public LayerMask layerMask;
     int floorMask;
     Rigidbody player_rb;
     Light player_light;
@@ -25,10 +26,10 @@ public class Player_Controller : MonoBehaviour
     public bool lightIsOn;
     public string lightSwitching = "q";
 
-    public float maxStamina = 10;
+    public float maxStamina = 15;
     private float stamina;
-    public float TirePerSecond = 2f;
-    public float RestPerSecond = 2f;
+    public float TirePerSecond = 5f;
+    public float RestPerSecond = 5f;
 
     private GUIStyle LightBoxStyle;
     private GUIStyle StaminaBoxStyle;
@@ -93,10 +94,8 @@ public class Player_Controller : MonoBehaviour
         //Player Movement
         restMovement();
         playerActivateDeactivateLight();
-        if (!crankingLight)
-            playerMovement();
-        else
-            player_sprite.SetBool("isWalking", false);
+        playerMovement();
+        
         //player_rb.velocity = new Vector3(0, 0, 0);
 
     }
@@ -207,8 +206,8 @@ public class Player_Controller : MonoBehaviour
     private void playerMovement()
     {
 
-        float mov_V = Input.GetAxis("Vertical") * speedMultiplier * speedKeys();
-        float mov_H = Input.GetAxis("Horizontal") * speedMultiplier * speedKeys();
+        float mov_V = Input.GetAxis("Vertical") * getSpeed();
+        float mov_H = Input.GetAxis("Horizontal") * getSpeed();
 
         if (mov_V == 0 & mov_H == 0)
         {
@@ -280,7 +279,7 @@ public class Player_Controller : MonoBehaviour
 
             //Cast ray
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, LightDirection, out hit, light_length))
+            if (Physics.Raycast(transform.position, LightDirection, out hit, light_length,layerMask))
             {
                 //Trigger enemy behavior
                 if (hit.transform.gameObject.tag == "Guard")
@@ -322,9 +321,10 @@ public class Player_Controller : MonoBehaviour
 
     private float getSpeed()
     {
-        float speed = Time.deltaTime;
-        speed *= speedMultiplier;
+        float speed = speedMultiplier;
         speed *= speedKeys();
+        if (crankingLight)
+            speed *= .5f;
         return speed;
     }
     private float speedKeys()
