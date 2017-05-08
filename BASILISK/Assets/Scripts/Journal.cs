@@ -50,7 +50,7 @@ public class Journal : MonoBehaviour {
         if (distance_to_journal < 2 & Input.GetKeyDown(KeyCode.E))
         {
             journals_script.Journal_count = journals_script.Journal_count + 1;
-            sprite.transform.Translate(0, 0, .5f);
+            sprite.transform.Translate(0, 0, 8f);
             transform.Translate(0, -10, 0);
             journal_held = true;
             journals_script.PickUp(this);
@@ -62,12 +62,12 @@ public class Journal : MonoBehaviour {
     }
     public void displayjournal()
     {
-        sprite.transform.Translate(0, 0, .5f);
+        sprite.transform.Translate(0, 0, 8f);
         journals_script.holding_journal = true;
     }
     public void hidejournal()
     {
-        sprite.transform.Translate(0, 0, -.5f);
+        sprite.transform.Translate(0, 0, -8f);
         journals_script.holding_journal = false;
     }
 
