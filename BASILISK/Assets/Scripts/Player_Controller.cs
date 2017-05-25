@@ -24,7 +24,7 @@ public class Player_Controller : MonoBehaviour
     private KeyCode crankKeyPress;
     public bool crankingLight;
     public bool lightIsOn;
-    public string lightSwitching = "q";
+    private KeyCode lightSwitching = KeyCode.Mouse1;
 
     public float maxStamina = 15;
     private float stamina;
@@ -53,7 +53,6 @@ public class Player_Controller : MonoBehaviour
         Game_Controller journals_script = GameObject.Find("GameController").GetComponent<Game_Controller>();
         journals_script.player = player;
         player_rb = GetComponent<Rigidbody>();
-        lightIsOn = true;
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         maxLightAngle = Mathf.Max(player_light.spotAngle, maxLightAngle);
@@ -159,7 +158,7 @@ public class Player_Controller : MonoBehaviour
     //Light's spotAngle can't go lower than 1, so if it is 1, then turn the light object off
     private void playerActivateDeactivateLight()
     {
-        if (Input.GetKey(lightSwitching))
+        if (Input.GetKeyDown(lightSwitching))
         {
             lightIsOn = !lightIsOn;
             player_light.enabled = !player_light.enabled;

@@ -354,6 +354,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114608882937639704, guid: d09f80c1f6e24634d8c70e7f784a568b,
+        type: 2}
+      propertyPath: lightIsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108971051193113924, guid: d09f80c1f6e24634d8c70e7f784a568b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d09f80c1f6e24634d8c70e7f784a568b, type: 2}
   m_IsPrefabParent: 0
@@ -2072,6 +2082,10 @@ Prefab:
     - target: {fileID: 1000013680217496, guid: 82265d6638f1d8847a148a6a78600cb7, type: 2}
       propertyPath: m_Name
       value: Exit post (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012525300802, guid: 82265d6638f1d8847a148a6a78600cb7, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82265d6638f1d8847a148a6a78600cb7, type: 2}
