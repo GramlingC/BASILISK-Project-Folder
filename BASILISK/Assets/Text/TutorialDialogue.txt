@@ -1,0 +1,7 @@
+GUARD1: Just got news from the Institute 
+GUARD1: about what that rebel light machine looks like. 
+GUARD2: I didn’t get any info on the thing...
+GUARD1: Apparently this thing is a lamp affixed to a short pole.
+GUARD1: To make it work, you gotta use a crank.
+GUARD2: A crank? How primitive.
+GUARD1: What do you expect from a bunch of cave people?

@@ -1,0 +1,10 @@
+GUARD1: Any idea what they dragged that lady out of town for? 
+GUARD2: I heard that she was one of those rebels
+GUARD2: that people have been siding with recently.
+GUARD1: Really? So they took her in for questioning?
+GUARD2: There's talk that she made some light machine for the rebels.
+GUARD2: They didn't find it when they caught her.
+GUARD1: So that's why we're posted out here,
+GUARD1: looking for whichever rebel has that machine then?
+GUARD2: Our orders were vague, just said to find the machine,
+GUARD2: but I can put two and two together.
