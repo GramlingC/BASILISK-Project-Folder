@@ -41,6 +41,9 @@ public class Bat_Controller : MonoBehaviour
 
     private A_Pathfinding pathfinder;
     private SpriteRenderer spr;
+
+    private GameObject source;
+    
     //private int nextState; //The next state the enemy will move to - used since guard won't change behavior until reaching a round
     //coordinate.
 
@@ -360,8 +363,9 @@ public class Bat_Controller : MonoBehaviour
     }
 
     //Function that needs to be called by the player when a raycast hits this enemy.  Might use a "Guard" tag or something.
-    public void LightTrigger()
+    public void LightTrigger(GameObject s)
     {
+        source = s;
         isLightTriggered = true;
     }
 
@@ -468,9 +472,9 @@ public class Bat_Controller : MonoBehaviour
         preferences.Add(Vector3.back, 2);
 
         //Higher preference for closer horizontal direction
-        if (player.transform.position.x - transform.position.x < 0)
+        if (source.transform.position.x - transform.position.x < 0)
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(source.transform.position.z - transform.position.z) < Mathf.Abs(source.transform.position.x - transform.position.x))
             {
                 //Even higher if farther away horizontally than vertically
                 preferences[Vector3.right] += 2;
@@ -481,7 +485,7 @@ public class Bat_Controller : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) < Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(source.transform.position.z - transform.position.z) < Mathf.Abs(source.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.left] += 2;
                 preferences[Vector3.right]--;
@@ -490,9 +494,9 @@ public class Bat_Controller : MonoBehaviour
                 preferences[Vector3.left]++;
         }
         //Same but vertically
-        if (player.transform.position.z - transform.position.z < 0)
+        if (source.transform.position.z - transform.position.z < 0)
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(source.transform.position.z - transform.position.z) > Mathf.Abs(source.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.forward] += 2;
                 preferences[Vector3.back]--;
@@ -502,7 +506,7 @@ public class Bat_Controller : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(player.transform.position.z - transform.position.z) > Mathf.Abs(player.transform.position.x - transform.position.x))
+            if (Mathf.Abs(source.transform.position.z - transform.position.z) > Mathf.Abs(source.transform.position.x - transform.position.x))
             {
                 preferences[Vector3.back] += 2;
                 preferences[Vector3.forward]--;

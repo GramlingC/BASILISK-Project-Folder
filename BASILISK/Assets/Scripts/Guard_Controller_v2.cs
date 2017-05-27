@@ -345,6 +345,50 @@ public class Guard_Controller_v2 : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Bat")
+        {
+            enemyState = 2;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        
+        if (other.gameObject.tag == "Bat")
+        {
+            Debug.Log(other.gameObject.tag);
+            Debug.Log("    :]    ");
+            enemyState = 3;
+            Vector3 enemy_ray = other.transform.position - transform.position;
+            enemy_ray.y = 0.0f;
+            if (enemy_ray != new Vector3(0, 0, 0))
+            {
+                Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
+                GetComponent<Rigidbody>().MoveRotation(newRotation);
+            }
+            float ox = other.transform.position.x - transform.position.x;
+            float oy = other.transform.position.y - transform.position.y;
+            if (Mathf.Abs(ox) >= Mathf.Abs(oy))
+            {
+                if (ox > 0)
+                    enemy_sprite.SetInteger("Direction", 2);
+                else
+                    enemy_sprite.SetInteger("Direction", 4);
+            }
+            else
+            {
+                if (oy > 0)
+                    enemy_sprite.SetInteger("Direction", 1);
+                else
+                    enemy_sprite.SetInteger("Direction", 3);
+            }
+
+        }
+    }
+
+
     //Function that needs to be called by the player when a raycast hits this enemy.  Might use a "Guard" tag or something.
     public void LightTrigger()
     {
@@ -437,7 +481,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 else if (hit.transform.gameObject.tag == "Bat")
                 {
                     Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
-                    enemy.LightTrigger();
+                    enemy.LightTrigger(gameObject);
                 }
             }
         }

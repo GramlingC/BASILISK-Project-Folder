@@ -289,7 +289,7 @@ public class Player_Controller : MonoBehaviour
                 else if (hit.transform.gameObject.tag == "Bat")
                 {
                     Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
-                    enemy.LightTrigger();
+                    enemy.LightTrigger(gameObject);
                 }
             }
         }
