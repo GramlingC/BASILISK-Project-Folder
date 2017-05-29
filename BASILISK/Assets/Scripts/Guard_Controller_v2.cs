@@ -207,7 +207,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
         //Debug.Log(enemyState);
         if (enemyState == 0)
         {
-            
+
             //Debug.Log("Starting patrol movement");
             //Moves enemy to next coordinate in the patrolPath list
             RouteEnemy(patrolPath[nextPatrolCoord]);
@@ -292,7 +292,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 enemyState = 2;
                 returnPath = pathfinder.FindPath(transform.position, patrolPath[nextPatrolCoord]);
                 //Debug.Log("Last coord in Return Path: " + returnPath[returnPath.Count - 1]);
-                foreach(Vector3 vec in returnPath)
+                foreach (Vector3 vec in returnPath)
                 {
                     Debug.Log("Return path: " + vec);
                 }
@@ -343,49 +343,64 @@ public class Guard_Controller_v2 : MonoBehaviour {
             }
             //Debug.Log("Ending return movement");
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Bat")
-        {
-            enemyState = 2;
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
         
-        if (other.gameObject.tag == "Bat")
-        {
-            Debug.Log(other.gameObject.tag);
-            Debug.Log("    :]    ");
-            enemyState = 3;
-            Vector3 enemy_ray = other.transform.position - transform.position;
-            enemy_ray.y = 0.0f;
-            if (enemy_ray != new Vector3(0, 0, 0))
-            {
-                Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
-                GetComponent<Rigidbody>().MoveRotation(newRotation);
-            }
-            float ox = other.transform.position.x - transform.position.x;
-            float oy = other.transform.position.y - transform.position.y;
-            if (Mathf.Abs(ox) >= Mathf.Abs(oy))
-            {
-                if (ox > 0)
-                    enemy_sprite.SetInteger("Direction", 2);
-                else
-                    enemy_sprite.SetInteger("Direction", 4);
-            }
-            else
-            {
-                if (oy > 0)
-                    enemy_sprite.SetInteger("Direction", 1);
-                else
-                    enemy_sprite.SetInteger("Direction", 3);
-            }
+    }
 
+    public void BatExit(Collider other)
+    {
+        enemyState = 2;
+        returnPath = pathfinder.FindPath(transform.position, patrolPath[nextPatrolCoord]);
+        //Debug.Log("Last coord in Return Path: " + returnPath[returnPath.Count - 1]);
+        nextReturnCoord = 0;
+    }
+
+
+    public void BatStay(Collider other)
+    {
+
+        enemyState = 3;
+        enemy_sprite.SetBool("isWalking", false);
+        Vector3 enemy_ray = other.transform.position - transform.position;
+        enemy_ray.y = 0.0f;
+        if (enemy_ray != new Vector3(0, 0, 0))
+        {
+            Quaternion newRotation = Quaternion.LookRotation(enemy_ray);
+            GetComponent<Rigidbody>().MoveRotation(newRotation);
         }
+        float ox = other.transform.position.x - transform.position.x;
+        float oy = other.transform.position.y - transform.position.y;
+        /*
+        if (Mathf.Abs(ox) >= Mathf.Abs(oy))
+        {
+            if (ox > 0)
+                RouteEnemy(transform.position + Vector3.right);
+            else
+                RouteEnemy(transform.position + Vector3.left);
+        }
+        else
+        {
+            if (oy > 0)
+                RouteEnemy(transform.position + Vector3.up);
+            else
+                RouteEnemy(transform.position + Vector3.down);
+        }
+        */
+
+        if (Mathf.Abs(ox) >= Mathf.Abs(oy))
+        {
+            if (ox > 0)
+                enemy_sprite.SetInteger("Direction", 2);
+            else
+                enemy_sprite.SetInteger("Direction", 4);
+        }
+        else
+        {
+            if (oy > 0)
+                enemy_sprite.SetInteger("Direction", 1);
+            else
+                enemy_sprite.SetInteger("Direction", 3);
+        }
+        lightCast();
     }
 
 
@@ -470,7 +485,8 @@ public class Guard_Controller_v2 : MonoBehaviour {
         }
         for (float degree = -45f; degree < 45f; degree += 5f)
         {
-            Vector3 LookDirection = Quaternion.AngleAxis(degree, Vector3.up) * transform.forward;
+            Vector3 LookDirection = Quaternion.AngleAxis(degree, Vector3.up) * transform.forward * 3;
+            //Debug.DrawRay(transform.position, LookDirection, Color.green);
             if (Physics.Raycast(transform.position, LookDirection, out hit, 3F))
             {
                 //Debug.Log(hit.transform.gameObject.tag);
@@ -481,7 +497,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
                 else if (hit.transform.gameObject.tag == "Bat")
                 {
                     Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
-                    enemy.LightTrigger(gameObject);
+                    enemy.LightTrigger(transform.position);
                 }
             }
         }
@@ -489,6 +505,29 @@ public class Guard_Controller_v2 : MonoBehaviour {
             canSeePlayer = true;
         else
             canSeePlayer = false;*/
+    }
+
+    private void lightCast()
+    {
+        RaycastHit hit;
+        for (float degree = -45f; degree < 45f; degree += 5f)
+        {
+            Vector3 LookDirection = Quaternion.AngleAxis(degree, Vector3.up) * transform.forward * 3;
+            //Debug.DrawRay(transform.position, LookDirection, Color.green);
+            if (Physics.Raycast(transform.position, LookDirection, out hit, 3F))
+            {
+                //Debug.Log(hit.transform.gameObject.tag);
+                if (hit.transform.gameObject.tag == "Player")
+                {
+                    canSeePlayer = true;
+                }
+                else if (hit.transform.gameObject.tag == "Bat")
+                {
+                    Bat_Controller enemy = (Bat_Controller)hit.transform.gameObject.GetComponent(typeof(Bat_Controller));
+                    enemy.LightTrigger(transform.position);
+                }
+            }
+        }
     }
 
     private void setChasePos()
