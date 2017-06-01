@@ -191,9 +191,8 @@ public class Guard_Controller_v2 : MonoBehaviour {
     // accessed by DialogueController
     public bool detectsPlayer()
     {
-        if (isChasing || enemyState > 0)
-            return true;
-        return false;
+        return isChasing || enemyState == 1;
+
     }
 
     // Update is called once per frame
@@ -630,4 +629,6 @@ public class Guard_Controller_v2 : MonoBehaviour {
         
         nextChasePos = transform.position + l.Key;
     }
+
+
 }

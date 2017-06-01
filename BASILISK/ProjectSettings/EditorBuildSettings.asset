@@ -7,15 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/_Scenes/MainMenu.unity
+    guid: 2015987190d929246870678ef0ab2620
   - enabled: 1
-    path: Assets/_Scenes/Scene1.unity
+    path: Assets/_Scenes/Level1.unity
+    guid: 4c22c6cea465d51438c18fca605cc3ac
   - enabled: 1
-    path: Assets/_Scenes/Scene1 - Return.unity
-  - enabled: 1
-    path: Assets/_Scenes/Scene2.unity
-  - enabled: 0
-    path: Assets/_Scenes/Christian.unity
-  - enabled: 0
-    path: Assets/_Scenes/Tutorial.unity
-  - enabled: 0
-    path: Assets/_Scenes/Playtesting level.unity
+    path: Assets/_Scenes/Level1 - return.unity
+    guid: 7f2911fc6aaf2f746841865c616e606e

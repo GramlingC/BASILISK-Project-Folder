@@ -12,6 +12,7 @@ public class Player_Controller : MonoBehaviour
     int floorMask;
     Rigidbody player_rb;
     Light player_light;
+    Light point_light;
     public Animator player_sprite;
     public float lightDiminishPerSecond = 5f;
     public float lightCrankedPerSecond = 15f;
@@ -30,6 +31,8 @@ public class Player_Controller : MonoBehaviour
     private float stamina;
     public float TirePerSecond = 5f;
     public float RestPerSecond = 5f;
+
+    float maxLightIntensity;
 
     private GUIStyle LightBoxStyle;
     private GUIStyle StaminaBoxStyle;
@@ -56,6 +59,7 @@ public class Player_Controller : MonoBehaviour
         crankingLight = false;
         currentSecondsBeforeDiminish = secondsUntilStartDiminish;
         maxLightAngle = Mathf.Max(player_light.spotAngle, maxLightAngle);
+        maxLightIntensity = 4f;
         crankTime = 0;
         secondsCrankUntilDiminish = 1;
         stamina = maxStamina;
@@ -74,7 +78,14 @@ public class Player_Controller : MonoBehaviour
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
-        player_light = GetComponentInChildren<Light>();
+        foreach (Light l in GetComponentsInChildren<Light>())
+        {
+            if (l.type == LightType.Spot)
+                player_light = l;
+            else if (l.type == LightType.Point)
+                point_light = l;
+        }
+
     }
     void FixedUpdate()
     {
@@ -140,6 +151,7 @@ public class Player_Controller : MonoBehaviour
     public void diminishLight(float angleAmount)
     {
         player_light.spotAngle -= angleAmount;
+        point_light.intensity -= maxLightIntensity * (angleAmount / maxLightAngle);
     }
 
     private void gradualLightDiminish()
@@ -148,7 +160,7 @@ public class Player_Controller : MonoBehaviour
         if (currentSecondsBeforeDiminish > 0)
             return;
 
-        activatateOrDisableLight();
+        activateOrDisableLight();
         if (crankingLight)
             return;
         if (player_light.spotAngle > 1)
@@ -162,12 +174,14 @@ public class Player_Controller : MonoBehaviour
         {
             lightIsOn = !lightIsOn;
             player_light.enabled = !player_light.enabled;
+            point_light.enabled = !point_light.enabled;
         }
     }
 
-    private void activatateOrDisableLight()
+    private void activateOrDisableLight()
     {
         player_light.gameObject.SetActive(player_light.spotAngle <= 1 ? false : true);
+        point_light.gameObject.SetActive(player_light.spotAngle <= 1 ? false : true);
     }
 
     public bool lightIsDisabled()
@@ -178,7 +192,10 @@ public class Player_Controller : MonoBehaviour
     public void increaseLight(float angleAmount)
     {
         if (player_light.spotAngle < maxLightAngle)
+        {
             player_light.spotAngle += angleAmount;
+            point_light.intensity += maxLightIntensity * (angleAmount / maxLightAngle);
+        }
     }
 
     private void crankLight()
