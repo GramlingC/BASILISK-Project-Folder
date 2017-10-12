@@ -413,7 +413,7 @@ public class Guard_Controller_v2 : MonoBehaviour {
     private void RouteEnemy(Vector3 dest)
     {
         //Will likely be changed to allow routing around obstacles.
-        //When sprites are added, code to change the faced direction may go here.
+ 
 
         direction = new Vector3(dest.x, yOffset, dest.z);
 
@@ -531,6 +531,9 @@ public class Guard_Controller_v2 : MonoBehaviour {
 
     private void setChasePos()
     {
+        nextChasePos = transform.position + look(transform.position, 5).Key;
+        return;
+        /* OLD CODE
         //Creates dictionary of preferences regarding which direction to go
         Dictionary<Vector3, int> preferences = new Dictionary<Vector3, int>();
         preferences.Add(Vector3.right, 2);
@@ -628,7 +631,135 @@ public class Guard_Controller_v2 : MonoBehaviour {
         }
         
         nextChasePos = transform.position + l.Key;
+        */
+
     }
 
+    private KeyValuePair<Vector3,int> look(Vector3 pos, int depth)
+    {//uses a priority queue to search through a maximum "depth" of moves to find optimal route
+        PriorityQueue<Vector3> pQ = new PriorityQueue<Vector3>();
+        float hdist;
+        float vdist;
+        int cost;
+        List<Vector3> vectors = new List<Vector3>();
+        vectors.Add(Vector3.right);
+        vectors.Add(Vector3.left);
+        vectors.Add(Vector3.forward);
+        vectors.Add(Vector3.back);
+        foreach (Vector3 p in vectors)
+        {
+            Vector3 tpos = pos + p;
+            hdist = tpos.z - player.transform.position.z;
+            vdist = tpos.x - player.transform.position.x;
+            cost = Mathf.RoundToInt(Mathf.Abs(hdist) + Mathf.Abs(vdist));
+            pQ.Enqueue(new KeyValuePair<Vector3, int>(p, cost));
+        }
 
+
+
+
+        /*
+        float hdist = pos.z - player.transform.position.z;
+        float vdist = pos.x - player.transform.position.x;
+        float cost = hdist + vdist;
+        if (hdist > 0)
+        {
+            if (Mathf.Abs(hdist) > Mathf.Abs(vdist))
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.right, 1));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.left, 4));
+            }
+            else
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.right, 2));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.left, 3));
+            }
+        }
+        else
+        {
+            if (Mathf.Abs(hdist) > Mathf.Abs(vdist))
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.left, 1));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.right, 4));
+            }
+            else
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.left, 2));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.right, 3));
+            }
+        }
+        if (vdist > 0)
+        {
+            if (Mathf.Abs(hdist) < Mathf.Abs(vdist))
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.up, 1));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.down, 4));
+            }
+            else
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.up, 2));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.down, 3));
+            }
+        }
+        else
+        {
+            if (Mathf.Abs(hdist) < Mathf.Abs(vdist))
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.down, 1));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.up, 4));
+            }
+            else
+            {
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.down, 2));
+                pQ.Enqueue(new KeyValuePair<Vector3, int>(pos + Vector3.up, 3));
+            }
+        }
+        */
+        RaycastHit hit;
+        if (depth == 0)
+        {
+            while (pQ.Count() > 0)
+            {
+                KeyValuePair<Vector3, int> top = pQ.Dequeue();
+                if (Physics.Raycast(transform.position, top.Key, out hit, 1F))
+                {
+                    if (hit.transform.gameObject.tag == "Player")
+                    {
+                        return new KeyValuePair<Vector3, int>(top.Key,-5);
+                    }
+                }
+                else
+                    return top;
+            }
+            return new KeyValuePair<Vector3, int>(Vector3.zero, 5);
+        }
+
+        PriorityQueue<Vector3> sQ = new PriorityQueue<Vector3>();
+        while (pQ.Count() > 0)
+        {
+            KeyValuePair<Vector3,int> top = pQ.Dequeue();
+            if (Physics.Raycast(transform.position, top.Key, out hit, 1F))
+            {
+                if (hit.transform.gameObject.tag == "Player")
+                {
+                    return top;
+                }
+            }
+            else
+            {
+                KeyValuePair<Vector3, int> kv = look(pos + top.Key, depth-1);
+                sQ.Enqueue(new KeyValuePair<Vector3, int>(top.Key, top.Value + kv.Value));
+            }
+        }
+
+        if (sQ.Count() > 0)
+        {
+            return sQ.Dequeue();
+        }
+        else
+        {
+            return new KeyValuePair<Vector3, int>(Vector3.zero, 0);
+        }
+
+    }
 }

@@ -20,7 +20,22 @@ public class MenuButtons : MonoBehaviour {
     
     public void loadScene1()
     {
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void loadScene2()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void loadScene3()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void loadScene4()
+    {
+        SceneManager.LoadScene("Level4");
     }
 
     public void loadPlaytesting() {
@@ -31,4 +46,8 @@ public class MenuButtons : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void quit()
+    {
+        Application.Quit();
+    }
 }

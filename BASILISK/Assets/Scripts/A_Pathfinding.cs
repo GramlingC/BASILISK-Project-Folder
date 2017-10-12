@@ -68,9 +68,104 @@ public class A_Pathfinding : MonoBehaviour
         Node[,] nodes = grid.GetGridNodes();
         //Debug.Log("To vector" + ConvertToVector(new int[] { width-1, length-1 }));
 
+        
 
         int[] start = ConvertToGridCoord(startVec);
         int[] finish = ConvertToGridCoord(finishVec);
+        // *
+        string starts = string.Join(" ", new List<int>(start).ConvertAll(i => i.ToString()).ToArray());
+        //new trial
+
+        foreach (int[] rNode in restrictedNodes)
+        {
+            //Debugging check - make sure finishing point is not a restricted node.
+            if (rNode[0] == finish[0] && rNode[1] == finish[1])
+                Debug.Log(finishVec + " is also a restricted node.  Not setting that restricted node to illegal to avoid crash.");
+            else
+            {
+                Debug.Log(rNode[0] + " " + rNode[1]);
+                nodes[rNode[0], rNode[1]].SetIllegal(); //problem- the game keeps saying that this array index is out of range
+            }
+        }
+        /*
+        HashSet<string> visited = new HashSet<string>();
+
+        Dictionary<string, int[]> camefrom = new Dictionary<string, int[]>();
+
+        Dictionary<string, int> cost = new Dictionary<string, int>();
+
+        visited.Add(starts);
+
+        nodes[start[0], start[1]].SetGDist(0);
+
+        nodes[start[0], start[1]].SetHDist(grid.ManhattenDist(start[0], start[1], finish[0], finish[1]));
+
+        cost[starts] = nodes[start[0], start[1]].GetGDist() + nodes[start[0], start[1]].GetHDist();
+
+        PriorityQueue front = new PriorityQueue();
+
+        front.Enqueue(new KeyValuePair<int[],int>(start, cost[starts]));
+        
+        while (front.Count() > 0)
+        {
+            int[] c = front.Dequeue();
+            
+            if (c[0] == finish[0] && c[1] == finish[1])
+                break;
+
+            List<int[]> neighbors = grid.GetNeighborNodes(c[0], c[1]);
+
+            foreach (int[] n in neighbors)
+            {
+                if (!nodes[n[0], n[1]].GetIsLegal())
+                    continue;
+                string ns = string.Join(" ", new List<int>(n).ConvertAll(i => i.ToString()).ToArray());
+                string cs = string.Join(" ", new List<int>(c).ConvertAll(i => i.ToString()).ToArray());
+                
+                try
+                {
+                    if ((!visited.Contains(ns) || cost[cs] < cost[ns]-1) && ns != starts)
+                    {
+                        nodes[n[0], n[1]].SetGDist(nodes[c[0], c[1]].GetGDist() + 1);
+                        nodes[n[0], n[1]].SetHDist(grid.ManhattenDist(n[0], n[1], finish[0], finish[1]));
+                        cost[ns] = nodes[n[0], n[1]].GetGDist() + nodes[n[0], n[1]].GetHDist();
+                        camefrom[ns] = c;
+                        front.Enqueue(new KeyValuePair<int[], int>(n, cost[ns]));
+                        if (!visited.Contains(ns))
+                            visited.Add(ns);
+                    }
+                } catch(System.Exception E)
+                {
+                    Debug.Log(E);
+                }
+            }
+        }
+
+        List<int[]> npath = new List<int[]>();
+
+        int[] current = finish;
+
+        while (current[0] != start[0] && current[1] != start[1])
+        {
+            npath.Add(current);
+            System.Console.WriteLine(current[0] +" " +current[1]);
+            string currents = string.Join(" ", new List<int>(current).ConvertAll(i => i.ToString()).ToArray());
+            current = camefrom[currents];
+        }
+        npath.Add(start);
+
+        npath.Reverse();
+
+        List<Vector3> vecPath = new List<Vector3>();
+        foreach (int[] coords in npath)
+        {
+            vecPath.Add(ConvertToVector(coords));
+        }
+        return vecPath;
+        */
+        //end trial
+        /*
+
 
         //OLD CODE.  Being kept around in case.
         /*foreach (Vector3 rVec in restrictedNodes)
@@ -233,6 +328,7 @@ public class A_Pathfinding : MonoBehaviour
             vecPath.Add(ConvertToVector(coords));
         }
         return vecPath;
+        //*/
     }
 
     //The methods below may need to be adjusted depending on the orientation of the game relative to the axis.

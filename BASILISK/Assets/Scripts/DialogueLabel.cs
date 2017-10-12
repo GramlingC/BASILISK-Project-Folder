@@ -28,7 +28,7 @@ public class DialogueLabel : MonoBehaviour {
         Text textComponent = text.GetComponent<Text>();
         textComponent.font = GameObject.Find("TextCanvas/PickUp").GetComponent<Text>().font;
         textComponent.text = message;
-        textComponent.color = new Color(1,1,1,1);
+        textComponent.color = Color.white;
         textComponent.horizontalOverflow = HorizontalWrapMode.Wrap;
         textComponent.verticalOverflow = VerticalWrapMode.Truncate;
         textComponent.alignment = TextAnchor.UpperCenter;
