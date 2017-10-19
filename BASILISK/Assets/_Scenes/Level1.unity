@@ -3297,68 +3297,40 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.32
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalPosition.z
       value: -24.51
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    - target: {fileID: 4343034035940274, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
       propertyPath: m_RootOrder
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011388330472, guid: f05170fe13852cd4eb2238ea84b01bf4,
-        type: 2}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 1490951455}
-    - target: {fileID: 114000011388330472, guid: f05170fe13852cd4eb2238ea84b01bf4,
-        type: 2}
-      propertyPath: targets.Array.data[1]
-      value: 
-      objectReference: {fileID: 1000852739}
-    - target: {fileID: 1000014177502496, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
-      propertyPath: m_Name
-      value: Dialogue (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011388330472, guid: f05170fe13852cd4eb2238ea84b01bf4,
-        type: 2}
-      propertyPath: dialogue
-      value: TutorialDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014201608834, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011388330472, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: f05170fe13852cd4eb2238ea84b01bf4, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 84b32fc31ed0fb44c9f90433ba3476dc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &998954311
 Prefab:
@@ -4715,7 +4687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012139153012, guid: c4f62bb3d7ebb4344987cb5b77be7dbf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -7.06
       objectReference: {fileID: 0}
     - target: {fileID: 4000013368761558, guid: c4f62bb3d7ebb4344987cb5b77be7dbf, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4733,34 +4705,13 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -31
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011394560582, guid: c4f62bb3d7ebb4344987cb5b77be7dbf, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4f62bb3d7ebb4344987cb5b77be7dbf, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1483021371 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000014177502496, guid: f05170fe13852cd4eb2238ea84b01bf4,
-    type: 2}
-  m_PrefabInternal: {fileID: 997161444}
---- !u!114 &1483021372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1483021371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3a214a6a55780741b53b258d8755e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 1483021372}
-  dialogue: TutorialPopup
-  distance: 10
-  obscurable: 0
-  started: 0
-  finished: 0
-  speed: 10
-  dialogue_type: 0
 --- !u!1001 &1485767392
 Prefab:
   m_ObjectHideFlags: 0

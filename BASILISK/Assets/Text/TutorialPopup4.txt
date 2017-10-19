@@ -1,0 +1,1 @@
+TUTORIAL: Hold the SHIFT key to run. You can only run for a while before your stamina depletes.

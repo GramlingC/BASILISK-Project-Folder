@@ -1,0 +1,1 @@
+TUTORIAL: Press Right Click to Toggle your light. Your light meter does not disspate while your light is off.
